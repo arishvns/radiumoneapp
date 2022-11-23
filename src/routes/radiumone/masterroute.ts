@@ -3,7 +3,7 @@ import { BaseRoutes } from "../baseroutes";
 import cores from "cors";
 import path from "path";
 import fs from 'fs'
-import { radiumControler } from '../../controllers/RadiumControler/radiumController';
+import { radiumControler } from '../../controllers/Radium/radiumController';
 import { dashboardControler } from '../../controllers/Dashboard/dashoardController';
 import { receiptsControler } from '../../controllers/Receipts/receiptsController';
 import { userControler } from '../../controllers/Users/userController';
@@ -84,16 +84,36 @@ class MasterRouteV1 extends BaseRoutes {
             })
 
         // Receipts endpoints
-
         this.router.get('/transaction',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transaction(req, res, next);
             })
 
+        this.router.get('/transactionList',
+            (req: Request, res: Response, next: NextFunction) => {
+                receiptsControler.transactionList(req, res, next);
+            }) 
+
         // Users endpoints
         this.router.post('/addNewUser',
             (req: Request, res: Response, next: NextFunction) => {
                 userControler.addNewUser(req, res, next);
+            })
+        
+         // default url
+         this.router.get('/config',
+            (req: Request, res: Response, next: NextFunction) => {
+                radiumControler.config(req, res, next);
+            })
+
+        this.router.get('/getUrlPath',
+            (req: Request, res: Response, next: NextFunction) => {
+                radiumControler.getUrlPath(req, res, next);
+            })
+
+        this.router.get('/footer/version',
+            (req: Request, res: Response, next: NextFunction) => {
+                radiumControler.footerVersion(req, res, next);
             })
 
     }

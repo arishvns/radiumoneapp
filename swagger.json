@@ -33,7 +33,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/topCustomerCountResponse"
                             }
                         }
                     },
@@ -60,7 +60,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/resellerResponse"
                             }
                         }
                     },
@@ -87,7 +87,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/donutCardStatsResponse"
                             }
                         }
                     },
@@ -114,7 +114,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/topCustomerAmtResponse"
                             }
                         }
                     },
@@ -141,7 +141,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/generalStatsResponse"
                             }
                         }
                     },
@@ -168,7 +168,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/generalDayAndWeekCountStatsResponse"
                             }
                         }
                     },
@@ -388,9 +388,440 @@
                     }
                 }
             }
+        },
+        "/footer/version": {
+            "get": {
+                "summary": "Get footer version",
+                "description": "Get footer version",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/todosResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/getUrlPath": {
+            "get": {
+                "summary": "Get URL path",
+                "description": "Get URL path",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/todosResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "topCustomerCountResponse": {
+            "type": "object",
+            "properties": {
+              "topCustomerCountDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "topCustomerCardTypeDTOList": {
+                "type": "string"
+              },
+              "branchCodeTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "branchCodeSettlementAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cardTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cardOriginWithPercentageDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "generalStatsList": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+        },
+        "resellerResponse": {
+            "type": "object",
+            "properties": {
+              "reseller": {
+                "type": "string"
+              },
+              "currencyCode3": {
+                "type": "string"
+              },
+              "topCustomerCountDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "topCustomerAmtDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "topCustomerCardTypeDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "branchCodeTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "branchCodeSettlementAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "cardTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "cardOriginWithPercentageDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "generalStatsList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+        },
+        "donutCardStatsResponse": {
+            "type": "object",
+            "properties": {
+              "topCustomerCountDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "topCustomerAmtDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "topCustomerCardTypeDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "branchCodeTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "branchCodeSettlementAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "cardTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "cardAmountTotal": {
+                      "type": "string"
+                    },
+                    "descripiton": {
+                      "type": "string"
+                    },
+                    "newCardNumberPercent": {
+                      "type": "string"
+                    },
+                    "returnCardNumberPercent": {
+                      "type": "string"
+                    },
+                    "newCardNumbers": {
+                      "type": "string"
+                    },
+                    "returnCardNumbers": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "cardOriginWithPercentageDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "generalStatsList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+        },
+        "topCustomerAmtResponse": {
+            "type": "object",
+            "properties": {
+              "topCustomerCountDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "topCustomerAmtDTOList": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string"
+                  }
+                }
+              },
+              "topCustomerCardTypeDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "branchCodeTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "branchCodeSettlementAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "cardTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "generalStatsList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+        },
+        "generalStatsResponse": {
+            "type": "object",
+            "properties": {
+              "currencyCode3": {
+                "type": "string"
+              },
+              "topCustomerCountDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "topCustomerAmtDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "topCustomerCardTypeDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "branchCodeTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "branchCodeSettlementAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "cardTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "cardOriginWithPercentageDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "generalStatsList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "cardAmountTotal": {
+                      "type": "string"
+                    },
+                    "descripiton": {
+                      "type": "string"
+                    },
+                    "newCardNumberPercent": {
+                      "type": "string"
+                    },
+                    "returnCardNumberPercent": {
+                      "type": "string"
+                    },
+                    "newCardNumbers": {
+                      "type": "string"
+                    },
+                    "returnCardNumbers": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+        },
+        "generalDayAndWeekCountStatsResponse": {
+            "type": "object",
+            "properties": {
+              "currencyCode3": {
+                "type": "string"
+              },
+              "topCustomerCountDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "topCustomerAmtDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "topCustomerCardTypeDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "branchCodeTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "branchCodeSettlementAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "cardTransactionAnalyticsDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "cardOriginWithPercentageDTOList": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "generalStatsList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "cardAmountTotal": {
+                      "type": "string"
+                    },
+                    "descripiton": {
+                      "type": "string"
+                    },
+                    "newCardNumberPercent": {
+                      "type": "string"
+                    },
+                    "returnCardNumberPercent": {
+                      "type": "string"
+                    },
+                    "newCardNumbers": {
+                      "type": "string"
+                    },
+                    "returnCardNumbers": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+        },
         "todosResponse": {
             "type": "object",
             "properties": {
@@ -408,7 +839,7 @@
                 }
             }
         },
-        
+
         "addNewUser": {
             "type": "object",
             "properties": {
@@ -459,7 +890,9 @@
                 },
                 "userAddons": {
                     "properties":{
-                        "user.profile.image":{"type": "string"}
+                        "user.profile.image":{
+                            "type": "string"
+                        }
                     }
                 }
             }

@@ -23,6 +23,14 @@ class ReceiptsControler extends BaseController {
         }
     }
 
+    public async transactionList(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await receiptsService.transactionList(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
 
 }
 
