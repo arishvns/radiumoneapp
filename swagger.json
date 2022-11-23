@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "All RadiumOne API V1",
+        "description": "All RadiumOne API",
         "version": "1.0.0",
         "title": "RadiumOne API",
         "contact": {
