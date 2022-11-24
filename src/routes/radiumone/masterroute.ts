@@ -30,9 +30,14 @@ class MasterRouteV1 extends BaseRoutes {
         // Dashboard endpoints
         
         this.router.get('/dashboardcard',
-        (req: Request, res: Response, next: NextFunction) => {
-            dashboardControler.dashboardCard(req, res, next);
-        })
+            (req: Request, res: Response, next: NextFunction) => {
+                dashboardControler.dashboardCard(req, res, next);
+            })
+            
+        this.router.get('/analyticscard',
+            (req: Request, res: Response, next: NextFunction) => {
+                dashboardControler.analyticsCard(req, res, next);
+            })
 
         this.router.get('/topCustomerCount',
             (req: Request, res: Response, next: NextFunction) => {

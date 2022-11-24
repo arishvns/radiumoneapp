@@ -75,35 +75,56 @@ class DashboardService {
         }
     }
     public dashboardCard = async () => {
-    let object={
-        "currencyCode": "SGD",
-        "transaction_volume":
-        {
-            "error": "",
-            "todayTxnVolume": "5.00",
-            "lastWeekAvgToTodayTxnVolumeCompare": "11.00%",
-            "thisWeekTxnVolume": "12.00",
-            "lastWeekToThisWeekTxnVolumeCompare": "33.00%"
-        },
-        "transaction_count":
-        {
-            "error": "",
-            "todayTxnCount": "7",
-            "lastWeekAvgToTodayTxnCountCompare": "66.00%",
-            "thisWeekTxnCount": "32",
-            "lastWeekToThisWeekTxnCountCompare": "45.00%"
-        },
-        "new_customers_and_carbon_footprint":
-        {
-            "error": "",
-            "monthNewCustomers": "17",
-            "monthNewCustomersCompare": "23.00%",
-            "yearToDateTxn": "44.0"
+        let object={
+            "currencyCode": "SGD",
+            "transaction_volume":
+            {
+                "error": "",
+                "todayTxnVolume": "5.00",
+                "lastWeekAvgToTodayTxnVolumeCompare": "11.00%",
+                "thisWeekTxnVolume": "12.00",
+                "lastWeekToThisWeekTxnVolumeCompare": "33.00%"
+            },
+            "transaction_count":
+            {
+                "error": "",
+                "todayTxnCount": "7",
+                "lastWeekAvgToTodayTxnCountCompare": "66.00%",
+                "thisWeekTxnCount": "32",
+                "lastWeekToThisWeekTxnCountCompare": "45.00%"
+            },
+            "new_customers_and_carbon_footprint":
+            {
+                "error": "",
+                "monthNewCustomers": "17",
+                "monthNewCustomersCompare": "23.00%",
+                "yearToDateTxn": "44.0"
+            }
         }
-    }
-    return object;        
+        return object;        
     }
     
+    public analyticsCard = async () => {
+        let object={
+            "transaction_analytics":
+            {
+                "error": "",
+                "cardAmountTotal": "10",
+                "newCardNumberPercent": "20",
+                "returnCardNumberPercent": "23",
+                "newCardNumbers": "66",
+                "returnCardNumbers": "4"
+            },
+            "settlement_analytics":
+            {
+                "error": "",
+                "thisMonthSettleAvg": "33",
+                "lastMonthSettleAvg": "21",
+                "lastSixMonthSettleAvg": "7"
+            }
+        }
+        return object;        
+    }
 
 }
 

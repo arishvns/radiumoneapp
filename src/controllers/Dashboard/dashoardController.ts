@@ -21,6 +21,15 @@ class DashboardControler extends BaseController {
         }
     }
 
+    public async analyticsCard(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await dashboardService.analyticsCard();
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
     public async topCustomerCount(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await dashboardService.allDashboardApi(secretUtil.TopCustomerCount_PATH);
