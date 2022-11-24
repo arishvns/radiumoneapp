@@ -73,6 +73,35 @@
               }
           }
         },
+
+        "/topcustomercardlist": {
+          "get": {
+              "summary": "Get all analyticscard data",
+              "description": "Get all analyticscard data",
+              "produces": [
+                  "application/json"
+              ],
+              "parameters": [],
+              "responses": {
+                  "200": {
+                      "description": "successful operation",
+                      "schema": {
+                          "type": "array",
+                          "items": {
+                              "$ref": "#/definitions/topcustomercardlist"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Invalid status value",
+                      "schema": {
+                          "$ref": "#/definitions/InvalidResponse"
+                      }
+                  }
+              }
+          }
+        },
+
         "/topCustomerCount": {
             "get": {
                 "summary": "Get all the tasks",
@@ -581,6 +610,171 @@
                   "lastMonthSettleAvg":{"type": "string"},
                   "lastSixMonthSettleAvg":{"type": "string"}
                 }
+              }
+            }
+        },
+
+        "topcustomercardlist":{
+          "type": "object",
+            "properties": {
+              "topCustomerCountDTOList": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "cardNumberMask": {
+                        "type": "string"
+                      },
+                      "count": {
+                        "type": "string"
+                      },
+                      "day": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "cardNumberMask",
+                      "count",
+                      "day"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "cardNumberMask": {
+                        "type": "string"
+                      },
+                      "count": {
+                        "type": "string"
+                      },
+                      "day": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "cardNumberMask",
+                      "count",
+                      "day"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "cardNumberMask": {
+                        "type": "string"
+                      },
+                      "count": {
+                        "type": "string"
+                      },
+                      "day": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "cardNumberMask",
+                      "count",
+                      "day"
+                    ]
+                  }
+                ]
+              },
+              "topCustomerAmtDTOList": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "cardNumberMask": {
+                        "type": "string"
+                      },
+                      "count": {
+                        "type": "string"
+                      },
+                      "day": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "cardNumberMask",
+                      "count",
+                      "day"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "cardNumberMask": {
+                        "type": "string"
+                      },
+                      "count": {
+                        "type": "string"
+                      },
+                      "day": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "cardNumberMask",
+                      "count",
+                      "day"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "cardNumberMask": {
+                        "type": "string"
+                      },
+                      "count": {
+                        "type": "string"
+                      },
+                      "day": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "cardNumberMask",
+                      "count",
+                      "day"
+                    ]
+                  }
+                ]
+              },
+              "best_performing_cards": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "cardNumberMask": {
+                        "type": "string"
+                      },
+                      "day": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "cardNumberMask",
+                      "day"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "cardNumberMask": {
+                        "type": "string"
+                      },
+                      "day": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "cardNumberMask",
+                      "day"
+                    ]
+                  }
+                ]
               }
             }
         },
