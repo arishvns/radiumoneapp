@@ -74,6 +74,36 @@ class DashboardService {
             
         }
     }
+    public dashboardCard = async () => {
+    let object={
+        "currencyCode": "SGD",
+        "transaction_volume":
+        {
+            "error": "",
+            "todayTxnVolume": "5.00",
+            "lastWeekAvgToTodayTxnVolumeCompare": "11.00%",
+            "thisWeekTxnVolume": "12.00",
+            "lastWeekToThisWeekTxnVolumeCompare": "33.00%"
+        },
+        "transaction_count":
+        {
+            "error": "",
+            "todayTxnCount": "7",
+            "lastWeekAvgToTodayTxnCountCompare": "66.00%",
+            "thisWeekTxnCount": "32",
+            "lastWeekToThisWeekTxnCountCompare": "45.00%"
+        },
+        "new_customers_and_carbon_footprint":
+        {
+            "error": "",
+            "monthNewCustomers": "17",
+            "monthNewCustomersCompare": "23.00%",
+            "yearToDateTxn": "44.0"
+        }
+    }
+    return object;        
+    }
+    
 
 }
 

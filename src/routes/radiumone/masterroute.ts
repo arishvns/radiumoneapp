@@ -28,6 +28,12 @@ class MasterRouteV1 extends BaseRoutes {
         this.router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { customCss }));
 
         // Dashboard endpoints
+        
+        this.router.get('/dashboardcard',
+        (req: Request, res: Response, next: NextFunction) => {
+            dashboardControler.dashboardCard(req, res, next);
+        })
+
         this.router.get('/topCustomerCount',
             (req: Request, res: Response, next: NextFunction) => {
                 dashboardControler.topCustomerCount(req, res, next);
