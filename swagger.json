@@ -343,6 +343,33 @@
                 }
             }
         },
+        "/transactionList": {
+            "get": {
+                "summary": "Get all the transaction list by current date",
+                "description": "Get all the transaction list by current date",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/todosResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/addNewUser": {
             "post": {
                 "summary": "Save the task",
