@@ -29,6 +29,14 @@ class DashboardControler extends BaseController {
             return null;
         }
     }
+    public async topcustomercardlist(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await dashboardService.topcustomercardlist();
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
 
     public async topCustomerCount(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {

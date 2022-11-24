@@ -125,6 +125,50 @@ class DashboardService {
         }
         return object;        
     }
+    public topcustomercardlist = async () => {
+        let object={
+            "topCustomerCountDTOList": [
+              {
+                "cardNumberMask": "10",
+                "count": "11",
+                "day": "1"
+              },
+              {
+                "cardNumberMask": "20",
+                "count": "12",
+                "day": "4"
+              },
+              {
+                "cardNumberMask": "30",
+                "count": "13",
+                "day": "7"
+              }
+            ],
+            "topCustomerAmtDTOList": [
+              {
+                "cardNumberMask": "10",
+                "amount": "11.33",
+                "day": "1"
+              },
+              {
+                "cardNumberMask": "20",
+                "amount": "19.33",
+                "day": "4"
+              }
+            ],
+            "topCustomerCardTypeDTOList": [
+              {
+                "cardNumberMask": "23",
+                "day": "12"
+              },
+              {
+                "cardNumberMask": "23",
+                "day": "12"
+              }
+            ]
+          }
+        return object;        
+    }
 
 }
 
