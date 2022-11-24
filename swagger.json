@@ -19,6 +19,33 @@
         }
     ],
     "paths": {
+        "/dashboardcard": {
+          "get": {
+              "summary": "Get all the tasks",
+              "description": "Get all the tasks",
+              "produces": [
+                  "application/json"
+              ],
+              "parameters": [],
+              "responses": {
+                  "200": {
+                      "description": "successful operation",
+                      "schema": {
+                          "type": "array",
+                          "items": {
+                              "$ref": "#/definitions/dashboardcard"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Invalid status value",
+                      "schema": {
+                          "$ref": "#/definitions/InvalidResponse"
+                      }
+                  }
+              }
+          }
+        },
         "/topCustomerCount": {
             "get": {
                 "summary": "Get all the tasks",
@@ -472,6 +499,41 @@
         }
     },
     "definitions": {
+        "dashboardcard": {
+            "type": "object",
+            "properties": {
+              "currencyCode": {
+                "type": "string"
+              },
+              "transaction_volume":{
+                "properties": {
+                  "error":{"type": "string"},
+                  "todayTxnVolume":{"type": "string"},
+                  "lastWeekAvgToTodayTxnVolumeCompare":{"type": "string"},
+                  "thisWeekTxnVolume":{"type": "string"},
+                  "lastWeekToThisWeekTxnVolumeCompare":{"type": "string"}
+                }
+              },
+              "transaction_count":{
+                "properties": {
+                  "error":{"type": "string"},
+                  "todayTxnCount":{"type": "string"},
+                  "lastWeekAvgToTodayTxnCountCompare":{"type": "string"},
+                  "thisWeekTxnCount":{"type": "string"},
+                  "lastWeekToThisWeekTxnCountCompare":{"type": "string"}
+                }
+              },
+              "new_customers_and_carbon_footprint":{
+                "properties": {
+                  "error":{"type": "string"},
+                  "monthNewCustomers":{"type": "string"},
+                  "monthNewCustomersCompare":{"type": "string"},
+                  "yearToDateTxn":{"type": "string"}
+                }
+              }
+            }
+        },
+
         "topCustomerCountResponse": {
             "type": "object",
             "properties": {
@@ -516,6 +578,7 @@
               }
             }
         },
+
         "resellerResponse": {
             "type": "object",
             "properties": {
@@ -575,6 +638,7 @@
               }
             }
         },
+
         "donutCardStatsResponse": {
             "type": "object",
             "properties": {
@@ -648,6 +712,7 @@
               }
             }
         },
+
         "topCustomerAmtResponse": {
             "type": "object",
             "properties": {
@@ -697,6 +762,7 @@
               }
             }
         },
+
         "generalStatsResponse": {
             "type": "object",
             "properties": {
@@ -773,6 +839,7 @@
               }
             }
         },
+
         "generalDayAndWeekCountStatsResponse": {
             "type": "object",
             "properties": {
@@ -849,6 +916,7 @@
               }
             }
         },
+
         "todosResponse": {
             "type": "object",
             "properties": {

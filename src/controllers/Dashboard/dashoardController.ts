@@ -12,6 +12,15 @@ import fs from 'fs'
 
 class DashboardControler extends BaseController {
 
+    public async dashboardCard(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await dashboardService.dashboardCard();
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
     public async topCustomerCount(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await dashboardService.allDashboardApi(secretUtil.TopCustomerCount_PATH);
