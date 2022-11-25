@@ -9,9 +9,9 @@
         }
     },
     "schemes": [
-        "https"
+        "http"
     ],
-    "host": "techomni.in",
+    "host": "localhost:3005",
     "basePath": "/api",
     "tags": [
         {
@@ -187,33 +187,14 @@
             }
         },
 
-        "/transactionList/{page}": {
+        "/transactionList": {
             "get": {
                 "summary": "Get all the transaction list by current date",
                 "description": "Get all the transaction list by current date",
                 "produces": [
                     "application/json"
                 ],
-                "parameters" : [ 
-                  {
-                    "name" : "page",
-                    "in": "path",
-                    "required" : true,
-                    "type" : "integer"
-                  }, 
-                  {
-                    "name" : "branch_code",
-                    "in": "query",
-                    "required" : false,
-                    "type" : "string"
-                  }, 
-                  {
-                    "name" : "transaction_type",
-                    "in": "query",
-                    "required" : false,
-                    "type" : "integer"
-                  } 
-                ],
+                "parameters" : [],
                 "responses": {
                     "200": {
                         "description": "successful operation",
