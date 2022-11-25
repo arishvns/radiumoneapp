@@ -107,7 +107,7 @@ class MasterRouteV1 extends BaseRoutes {
                 receiptsControler.transaction(req, res, next);
             })
 
-        this.router.get('/transactionList',
+        this.router.get('/transactionList/'+ ':page',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transactionList(req, res, next);
             }) 

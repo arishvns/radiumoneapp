@@ -46,7 +46,7 @@ class ReceiptsService {
     public transactionList = async (req?: any) => {
         var resObj = {};
        try{
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionList_PATH + "?" + new URLSearchParams(req.query);
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionList_PATH + req.params.page+ "?" + new URLSearchParams(req.query);
         let options = {
             method: 'GET',
             url: _url,
