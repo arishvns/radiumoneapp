@@ -32,6 +32,15 @@ class ReceiptsControler extends BaseController {
         }
     }
 
+    public async getDate(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await receiptsService.getDate();
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
 }
 
 export const receiptsControler = new ReceiptsControler();

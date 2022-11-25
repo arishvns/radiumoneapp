@@ -33,7 +33,7 @@ class MasterRouteV1 extends BaseRoutes {
             (req: Request, res: Response, next: NextFunction) => {
                 dashboardControler.dashboardCard(req, res, next);
             })
-
+            
         this.router.get('/analyticscard',
             (req: Request, res: Response, next: NextFunction) => {
                 dashboardControler.analyticsCard(req, res, next);
@@ -107,10 +107,15 @@ class MasterRouteV1 extends BaseRoutes {
                 receiptsControler.transaction(req, res, next);
             })
 
-        this.router.get('/transactionList',
+        this.router.get('/transactionList/'+ ':page',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transactionList(req, res, next);
             }) 
+
+        this.router.get('/getDate',
+            (req: Request, res: Response, next: NextFunction) => {
+                receiptsControler.getDate(req, res, next);
+            })
 
         // Users endpoints
         this.router.post('/addNewUser',

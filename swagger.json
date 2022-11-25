@@ -1,1014 +1,1203 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "description": "All RadiumOne API",
-        "version": "1.0.0",
-        "title": "RadiumOne API",
-        "contact": {
-            "email": "abc@gmail.com"
-        }
-    },
-    "schemes": [
-        "http"
-    ],
-    "host": "localhost:3005",
-    "basePath": "/api",
-    "tags": [
-        {
-            "name": "dashboard"
-        }
-    ],
-    "paths": {
-        "/dashboardcard": {
-          "get": {
-              "summary": "Get all the tasks",
-              "description": "Get all the tasks",
-              "produces": [
-                  "application/json"
-              ],
-              "parameters": [],
-              "responses": {
-                  "200": {
-                      "description": "successful operation",
-                      "schema": {
-                          "type": "array",
-                          "items": {
-                              "$ref": "#/definitions/dashboardcard"
-                          }
-                      }
-                  },
-                  "400": {
-                      "description": "Invalid status value",
-                      "schema": {
-                          "$ref": "#/definitions/InvalidResponse"
-                      }
-                  }
-              }
-          }
-        },
-
-        "/analyticscard": {
-          "get": {
-              "summary": "Get all analyticscard data",
-              "description": "Get all analyticscard data",
-              "produces": [
-                  "application/json"
-              ],
-              "parameters": [],
-              "responses": {
-                  "200": {
-                      "description": "successful operation",
-                      "schema": {
-                          "type": "array",
-                          "items": {
-                              "$ref": "#/definitions/analyticscard"
-                          }
-                      }
-                  },
-                  "400": {
-                      "description": "Invalid status value",
-                      "schema": {
-                          "$ref": "#/definitions/InvalidResponse"
-                      }
-                  }
-              }
-          }
-        },
-
-        "/topcustomercardlist": {
-          "get": {
-              "summary": "Get all analyticscard data",
-              "description": "Get all analyticscard data",
-              "produces": [
-                  "application/json"
-              ],
-              "parameters": [],
-              "responses": {
-                  "200": {
-                      "description": "successful operation",
-                      "schema": {
-                          "type": "array",
-                          "items": {
-                              "$ref": "#/definitions/topcustomercardlist"
-                          }
-                      }
-                  },
-                  "400": {
-                      "description": "Invalid status value",
-                      "schema": {
-                          "$ref": "#/definitions/InvalidResponse"
-                      }
-                  }
-              }
-          }
-        },
-
-        "/donutCardStats": {
-            "get": {
-                "summary": "Get all the tasks",
-                "description": "Get all the tasks",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/donutCardStatsResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-
-        "/bankCardStats": {
-            "get": {
-                "summary": "Get all the tasks",
-                "description": "Get all the tasks",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-
-        "/transaction": {
-            "get": {
-                "summary": "Get all the tasks",
-                "description": "Get all the tasks",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-
-        "/transactionList": {
-            "get": {
-                "summary": "Get all the transaction list by current date",
-                "description": "Get all the transaction list by current date",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters" : [],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/addNewUser": {
-            "post": {
-                "summary": "Save the task",
-                "description": "Save the task",
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Add New User",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "addNewUser": {
-                                    "type": "object",
-                                    "$ref": "#/definitions/addNewUser"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/footer/version": {
-            "get": {
-                "summary": "Get footer version",
-                "description": "Get footer version",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/getUrlPath": {
-            "get": {
-                "summary": "Get URL path",
-                "description": "Get URL path",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "dashboardcard": {
-            "type": "object",
-            "properties": {
-              "currencyCode": {
-                "type": "string"
-              },
-              "transaction_volume":{
-                "properties": {
-                  "error":{"type": "string"},
-                  "todayTxnVolume":{"type": "string"},
-                  "lastWeekAvgToTodayTxnVolumeCompare":{"type": "string"},
-                  "thisWeekTxnVolume":{"type": "string"},
-                  "lastWeekToThisWeekTxnVolumeCompare":{"type": "string"}
-                }
-              },
-              "transaction_count":{
-                "properties": {
-                  "error":{"type": "string"},
-                  "todayTxnCount":{"type": "string"},
-                  "lastWeekAvgToTodayTxnCountCompare":{"type": "string"},
-                  "thisWeekTxnCount":{"type": "string"},
-                  "lastWeekToThisWeekTxnCountCompare":{"type": "string"}
-                }
-              },
-              "new_customers_and_carbon_footprint":{
-                "properties": {
-                  "error":{"type": "string"},
-                  "monthNewCustomers":{"type": "string"},
-                  "monthNewCustomersCompare":{"type": "string"},
-                  "yearToDateTxn":{"type": "string"}
-                }
-              }
-            }
-        },
-
-        "analyticscard": {
-            "type": "object",
-            "properties": {
-              "transaction_analytics":{
-                "properties": {
-                  "error":{"type": "string"},
-                  "cardAmountTotal":{"type": "string"},
-                  "newCardNumberPercent":{"type": "string"},
-                  "returnCardNumberPercent":{"type": "string"},
-                  "newCardNumbers":{"type": "string"},
-                  "returnCardNumbers":{"type": "string"}
-                }
-              },
-              "settlement_analytics":{
-                "properties": {
-                  "error":{"type": "string"},
-                  "thisMonthSettleAvg":{"type": "string"},
-                  "lastMonthSettleAvg":{"type": "string"},
-                  "lastSixMonthSettleAvg":{"type": "string"}
-                }
-              }
-            }
-        },
-
-        "topcustomercardlist":{
-          "type": "object",
-            "properties": {
-              "topCustomerCountDTOList": {
-                "type": "array",
-                "items": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "cardNumberMask": {
-                        "type": "string"
-                      },
-                      "count": {
-                        "type": "string"
-                      },
-                      "day": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "cardNumberMask",
-                      "count",
-                      "day"
-                    ]
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "cardNumberMask": {
-                        "type": "string"
-                      },
-                      "count": {
-                        "type": "string"
-                      },
-                      "day": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "cardNumberMask",
-                      "count",
-                      "day"
-                    ]
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "cardNumberMask": {
-                        "type": "string"
-                      },
-                      "count": {
-                        "type": "string"
-                      },
-                      "day": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "cardNumberMask",
-                      "count",
-                      "day"
-                    ]
-                  }
-                ]
-              },
-              "topCustomerAmtDTOList": {
-                "type": "array",
-                "items": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "cardNumberMask": {
-                        "type": "string"
-                      },
-                      "count": {
-                        "type": "string"
-                      },
-                      "day": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "cardNumberMask",
-                      "count",
-                      "day"
-                    ]
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "cardNumberMask": {
-                        "type": "string"
-                      },
-                      "count": {
-                        "type": "string"
-                      },
-                      "day": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "cardNumberMask",
-                      "count",
-                      "day"
-                    ]
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "cardNumberMask": {
-                        "type": "string"
-                      },
-                      "count": {
-                        "type": "string"
-                      },
-                      "day": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "cardNumberMask",
-                      "count",
-                      "day"
-                    ]
-                  }
-                ]
-              },
-              "best_performing_cards": {
-                "type": "array",
-                "items": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "cardNumberMask": {
-                        "type": "string"
-                      },
-                      "day": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "cardNumberMask",
-                      "day"
-                    ]
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "cardNumberMask": {
-                        "type": "string"
-                      },
-                      "day": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "cardNumberMask",
-                      "day"
-                    ]
-                  }
-                ]
-              }
-            }
-        },
-
-        "topCustomerCountResponse": {
-            "type": "object",
-            "properties": {
-              "topCustomerCountDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "topCustomerCardTypeDTOList": {
-                "type": "string"
-              },
-              "branchCodeTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "branchCodeSettlementAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "cardTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "cardOriginWithPercentageDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "generalStatsList": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-        },
-
-        "resellerResponse": {
-            "type": "object",
-            "properties": {
-              "reseller": {
-                "type": "string"
-              },
-              "currencyCode3": {
-                "type": "string"
-              },
-              "topCustomerCountDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "topCustomerAmtDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "topCustomerCardTypeDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "branchCodeTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "branchCodeSettlementAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "cardTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "cardOriginWithPercentageDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "generalStatsList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              }
-            }
-        },
-
-        "donutCardStatsResponse": {
-            "type": "object",
-            "properties": {
-              "topCustomerCountDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "topCustomerAmtDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "topCustomerCardTypeDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "branchCodeTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "branchCodeSettlementAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "cardTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "cardAmountTotal": {
-                      "type": "string"
-                    },
-                    "descripiton": {
-                      "type": "string"
-                    },
-                    "newCardNumberPercent": {
-                      "type": "string"
-                    },
-                    "returnCardNumberPercent": {
-                      "type": "string"
-                    },
-                    "newCardNumbers": {
-                      "type": "string"
-                    },
-                    "returnCardNumbers": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "cardOriginWithPercentageDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "generalStatsList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              }
-            }
-        },
-
-        "topCustomerAmtResponse": {
-            "type": "object",
-            "properties": {
-              "topCustomerCountDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "topCustomerAmtDTOList": {
-                "type": "object",
-                "properties": {
-                  "error": {
-                    "type": "string"
-                  }
-                }
-              },
-              "topCustomerCardTypeDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "branchCodeTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "branchCodeSettlementAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "cardTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "generalStatsList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              }
-            }
-        },
-
-        "generalStatsResponse": {
-            "type": "object",
-            "properties": {
-              "currencyCode3": {
-                "type": "string"
-              },
-              "topCustomerCountDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "topCustomerAmtDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "topCustomerCardTypeDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "branchCodeTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "branchCodeSettlementAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "cardTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "cardOriginWithPercentageDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "generalStatsList": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "cardAmountTotal": {
-                      "type": "string"
-                    },
-                    "descripiton": {
-                      "type": "string"
-                    },
-                    "newCardNumberPercent": {
-                      "type": "string"
-                    },
-                    "returnCardNumberPercent": {
-                      "type": "string"
-                    },
-                    "newCardNumbers": {
-                      "type": "string"
-                    },
-                    "returnCardNumbers": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-        },
-
-        "generalDayAndWeekCountStatsResponse": {
-            "type": "object",
-            "properties": {
-              "currencyCode3": {
-                "type": "string"
-              },
-              "topCustomerCountDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "topCustomerAmtDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "topCustomerCardTypeDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "branchCodeTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "branchCodeSettlementAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "cardTransactionAnalyticsDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "cardOriginWithPercentageDTOList": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "generalStatsList": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "cardAmountTotal": {
-                      "type": "string"
-                    },
-                    "descripiton": {
-                      "type": "string"
-                    },
-                    "newCardNumberPercent": {
-                      "type": "string"
-                    },
-                    "returnCardNumberPercent": {
-                      "type": "string"
-                    },
-                    "newCardNumbers": {
-                      "type": "string"
-                    },
-                    "returnCardNumbers": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-        },
-
-        "todosResponse": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "task": {
-                    "type": "string"
-                },
-                "assignee": {
-                    "type": "string"
-                },
-                "status": {
-                    "type": "string"
-                }
-            }
-        },
-
-        "addNewUser": {
-            "type": "object",
-            "properties": {
-                "emailAddress": {
-                    "type": "string"
-                },
-                "firstName": {
-                    "type": "string"
-                },
-                "lastName": {
-                    "type": "string"
-                },
-                "phoneNo": {
-                    "type": "string"
-                },
-                "password": {
-                    "type": "string"
-                },
-                "userRole": {
-                    "type": "integer"
-                },
-                "branchCodeSelected": {
-                    "type": "string"
-                },
-                "parentId": {
-                    "type": "integer"
-                },
-                "userType": {
-                    "type": "string"
-                },
-                "roleSelected": {
-                    "type": "string"
-                },
-                "acquirerSelected": {
-                    "type": "string"
-                },
-                "selectedCountry": {
-                    "type": "string"
-                },
-                "selectedTimezone": {
-                    "type": "string"
-                },
-                "selectedLanguage": {
-                    "type": "string"
-                },
-                "generatePassword": {
-                    "type": "integer"
-                },
-                "userAddons": {
-                    "properties":{
-                        "user.profile.image":{
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-
-        "InvalidResponse": {
-            "type": "object",
-            "properties": {
-                "statusCode": {
-                    "type": "string"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        }
+  "swagger": "2.0",
+  "info": {
+    "description": "All RadiumOne API",
+    "version": "1.0.0",
+    "title": "RadiumOne API",
+    "contact": {
+      "email": "abc@gmail.com"
     }
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "techomni.in",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "dashboard"
+    }
+  ],
+  "paths": {
+    "/dashboardcard": {
+      "get": {
+        "summary": "Get all details of this week transaction voulme/today's transaction volume & new customers,carbon footprint cards.",
+        "description": "Get all details of this week transaction voulme/today's transaction volume & new customers,carbon footprint cards.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/dashboardcard"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/analyticscard": {
+      "get": {
+        "summary": "Get all details of transaction/settlement analytic card.",
+        "description": "Get all details of transaction/settlement analytic card.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/analyticscard"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/topcustomercardlist": {
+      "get": {
+        "summary": "Get all details of top customers by receipt count,receipt amount & best performing cards.",
+        "description": "Get all details of top customers by receipt count,receipt amount & best performing cards.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/topcustomercardlist"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/donutCardStats": {
+      "get": {
+        "summary": "Get all details of bank cards origin",
+        "description": "Get all details of bank cards origin",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/donutCardStatsResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/bankCardStats": {
+      "get": {
+        "summary": "Get all the tasks",
+        "description": "Get all the tasks",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/transaction": {
+      "get": {
+        "summary": "Get all transaction details which are under find reciept",
+        "description": "Get all transaction details which are under find reciept",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/transactionList/{page}": {
+      "get": {
+        "summary": "Get all the transaction list by current date",
+        "description": "Get all the transaction list by current date",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "branch_code",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "transaction_type",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "mid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "tid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "trace_no",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "batch_no",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "card_no",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "card_type",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "invoice_no",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "ref_no",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "order_no",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "auth_code",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "transaction_date_range",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default":"23/11/2022 - 25/11/2022"
+          },
+          {
+            "name": "time_range",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "signature_exist",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": true,
+            "type": "boolean",
+            "default":"true"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "default":"10"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+ 
+
+    "/addNewUser": {
+      "post": {
+        "summary": "Save the task",
+        "description": "Save the task",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Add New User",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "addNewUser": {
+                  "type": "object",
+                  "$ref": "#/definitions/addNewUser"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/footer/version": {
+      "get": {
+        "summary": "Get footer version",
+        "description": "Get footer version",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    
+    "/getUrlPath": {
+      "get": {
+        "summary": "Get URL path",
+        "description": "Get URL path",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "dashboardcard": {
+      "type": "object",
+      "properties": {
+        "currencyCode": {
+          "type": "string"
+        },
+    "transaction_volume": {
+          "properties": {
+            "error": {
+              "type": "string"
+            },
+            "todayTxnVolume": {
+              "type": "string"
+            },
+            "lastWeekAvgToTodayTxnVolumeCompare": {
+              "type": "string"
+            },
+            "thisWeekTxnVolume": {
+              "type": "string"
+            },
+            "lastWeekToThisWeekTxnVolumeCompare": {
+              "type": "string"
+            }
+          }
+        },
+    "transaction_count": {
+         "properties": {
+              "error": {
+                "type": "string"
+              },
+              "todayTxnCount": {
+                "type": "string"
+              },
+              "lastWeekAvgToTodayTxnCountCompare": {
+                "type": "string"
+              },
+              "thisWeekTxnCount": {
+                "type": "string"
+              },
+              "lastWeekToThisWeekTxnCountCompare": {
+                "type": "string"
+              }
+            }
+        },
+    "new_customers_and_carbon_footprint": {
+          "properties": {
+            "error": {
+              "type": "string"
+            },
+            "monthNewCustomers": {
+              "type": "string"
+            },
+            "monthNewCustomersCompare": {
+              "type": "string"
+            },
+            "yearToDateTxn": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }, 
+
+    "analyticscard": {
+      "type": "object",
+      "properties": {
+        "transaction_analytics": {
+          "properties": {
+            "error": {
+              "type": "string"
+            },
+            "cardAmountTotal": {
+              "type": "string"
+            },
+            "newCardNumberPercent": {
+              "type": "string"
+            },
+            "returnCardNumberPercent": {
+              "type": "string"
+            },
+            "newCardNumbers": {
+              "type": "string"
+            },
+            "returnCardNumbers": {
+              "type": "string"
+            }
+          }
+        },
+        "settlement_analytics": {
+          "properties": {
+            "error": {
+              "type": "string"
+            },
+            "thisMonthSettleAvg": {
+              "type": "string"
+            },
+            "lastMonthSettleAvg": {
+              "type": "string"
+            },
+            "lastSixMonthSettleAvg": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+
+    "topcustomercardlist": {
+      "type": "object",
+      "properties": {
+        "topCustomerCountDTOList": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "cardNumberMask": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "string"
+                },
+                "day": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cardNumberMask",
+                "count",
+                "day"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "cardNumberMask": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "string"
+                },
+                "day": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cardNumberMask",
+                "count",
+                "day"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "cardNumberMask": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "string"
+                },
+                "day": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cardNumberMask",
+                "count",
+                "day"
+              ]
+            }
+          ]
+        },
+        "topCustomerAmtDTOList": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "cardNumberMask": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "string"
+                },
+                "day": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cardNumberMask",
+                "count",
+                "day"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "cardNumberMask": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "string"
+                },
+                "day": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cardNumberMask",
+                "count",
+                "day"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "cardNumberMask": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "string"
+                },
+                "day": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cardNumberMask",
+                "count",
+                "day"
+              ]
+            }
+          ]
+        },
+        "best_performing_cards": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "cardNumberMask": {
+                  "type": "string"
+                },
+                "day": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cardNumberMask",
+                "day"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "cardNumberMask": {
+                  "type": "string"
+                },
+                "day": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cardNumberMask",
+                "day"
+              ]
+            }
+          ]
+        }
+      }
+    },
+
+
+    "topCustomerCountResponse": {
+      "type": "object",
+      "properties": {
+        "topCustomerCountDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "topCustomerCardTypeDTOList": {
+          "type": "string"
+        },
+        "branchCodeTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "branchCodeSettlementAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cardTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cardOriginWithPercentageDTOList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "generalStatsList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+
+    "resellerResponse": {
+      "type": "object",
+      "properties": {
+        "reseller": {
+          "type": "string"
+        },
+        "currencyCode3": {
+          "type": "string"
+        },
+        "topCustomerCountDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "topCustomerAmtDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "topCustomerCardTypeDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "branchCodeTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "branchCodeSettlementAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "cardTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "cardOriginWithPercentageDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "generalStatsList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+
+    "donutCardStatsResponse": {
+      "type": "object",
+      "properties": {
+        "topCustomerCountDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "topCustomerAmtDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "topCustomerCardTypeDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "branchCodeTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "branchCodeSettlementAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "cardTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "cardAmountTotal": {
+                "type": "string"
+              },
+              "descripiton": {
+                "type": "string"
+              },
+              "newCardNumberPercent": {
+                "type": "string"
+              },
+              "returnCardNumberPercent": {
+                "type": "string"
+              },
+              "newCardNumbers": {
+                "type": "string"
+              },
+              "returnCardNumbers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cardOriginWithPercentageDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "generalStatsList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+
+    "topCustomerAmtResponse": {
+      "type": "object",
+      "properties": {
+        "topCustomerCountDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "topCustomerAmtDTOList": {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "string"
+            }
+          }
+        },
+        "topCustomerCardTypeDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "branchCodeTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "branchCodeSettlementAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "cardTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "generalStatsList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+
+    "generalStatsResponse": {
+      "type": "object",
+      "properties": {
+        "currencyCode3": {
+          "type": "string"
+        },
+        "topCustomerCountDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "topCustomerAmtDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "topCustomerCardTypeDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "branchCodeTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "branchCodeSettlementAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "cardTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "cardOriginWithPercentageDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "generalStatsList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "cardAmountTotal": {
+                "type": "string"
+              },
+              "descripiton": {
+                "type": "string"
+              },
+              "newCardNumberPercent": {
+                "type": "string"
+              },
+              "returnCardNumberPercent": {
+                "type": "string"
+              },
+              "newCardNumbers": {
+                "type": "string"
+              },
+              "returnCardNumbers": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "generalDayAndWeekCountStatsResponse": {
+      "type": "object",
+      "properties": {
+        "currencyCode3": {
+          "type": "string"
+        },
+        "topCustomerCountDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "topCustomerAmtDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "topCustomerCardTypeDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "branchCodeTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "branchCodeSettlementAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "cardTransactionAnalyticsDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "cardOriginWithPercentageDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "generalStatsList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "cardAmountTotal": {
+                "type": "string"
+              },
+              "descripiton": {
+                "type": "string"
+              },
+              "newCardNumberPercent": {
+                "type": "string"
+              },
+              "returnCardNumberPercent": {
+                "type": "string"
+              },
+              "newCardNumbers": {
+                "type": "string"
+              },
+              "returnCardNumbers": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "todosResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "task": {
+          "type": "string"
+        },
+        "assignee": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+
+    "addNewUser": {
+      "type": "object",
+      "properties": {
+        "emailAddress": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "phoneNo": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "userRole": {
+          "type": "integer"
+        },
+        "branchCodeSelected": {
+          "type": "string"
+        },
+        "parentId": {
+          "type": "integer"
+        },
+        "userType": {
+          "type": "string"
+        },
+        "roleSelected": {
+          "type": "string"
+        },
+        "acquirerSelected": {
+          "type": "string"
+        },
+        "selectedCountry": {
+          "type": "string"
+        },
+        "selectedTimezone": {
+          "type": "string"
+        },
+        "selectedLanguage": {
+          "type": "string"
+        },
+        "generatePassword": {
+          "type": "integer"
+        },
+        "userAddons": {
+          "properties": {
+            "user.profile.image": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+
+    "InvalidResponse": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
 }
