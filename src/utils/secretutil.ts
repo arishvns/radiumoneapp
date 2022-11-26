@@ -33,10 +33,11 @@ class SecretUtil {
     public TopCardtype_PATH = "/dashboard/topCardtype";
     
     
-    //// Receiptes
+    //// Receipts
     public Transaction_PATH = "/main/merchant/transaction";
     public TransactionList_PATH = "/main/merchant/transaction/";
-    public GetDatePath = "main/merchant/settlement/getDate"
+    public GetDatePath = "/merchant/settlement/getDate";
+    public settlementPath = "/merchant/settlement/getSettlementList/";
     
     //  Users endPoints
     public AddNewUser_PATH = "/main/admin/user/addNewUser";

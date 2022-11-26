@@ -117,6 +117,11 @@ class MasterRouteV1 extends BaseRoutes {
                 receiptsControler.getDate(req, res, next);
             })
 
+        this.router.get('/settlementList/'+ ':page',
+            (req: Request, res: Response, next: NextFunction) => {
+                receiptsControler.settlementList(req, res, next);
+            }) 
+
         // Users endpoints
         this.router.post('/addNewUser',
             (req: Request, res: Response, next: NextFunction) => {

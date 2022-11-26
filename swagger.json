@@ -350,7 +350,146 @@
       }
     },
 
- 
+    "/getDate": {
+      "get": {
+        "summary": "Get current date",
+        "description": "Get current date",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+  
+    "/settlementList/{page}": {
+      "get": {
+        "summary": "Get all the settlement list by putting date range",
+        "description": "Get all the settlement list by putting date range",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "mid",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "tid",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "branch_code",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "batch_num",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "host_name",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "soc_num",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "settlement_date_range",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default":"23/11/2022-25/11/2022"
+          },
+          {
+            "name": "time_range",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "default": "10"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "allowEmptyValue": true,
+            "type": "string"
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "default": "true",
+            "required":true,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/getSettlementList"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
 
     "/addNewUser": {
       "post": {
@@ -725,6 +864,148 @@
             }
           ]
         }
+      }
+    },
+
+    
+    "getSettlementList": {
+        "type": "object",
+        "properties": {
+          "transactionDTOList": {
+            "type": "array"
+          },
+          "txnBatchMsgIdList": {
+            "type": "array",
+            "items": []
+          },
+          "txnSettlementDTOList": {
+            "type": "array",
+            "items": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "settleDateTime": {
+                    "type": "string"
+                  },
+                  "tid": {
+                    "type": "integer"
+                  },
+                  "mid": {
+                    "type": "string"
+                  },
+                  "batchNum": {
+                    "type": "integer"
+                  },
+                  "hostName": {
+                    "type": "string"
+                  },
+                  "totalCnt": {
+                    "type": "string"
+                  },
+                  "currency": {
+                    "type": "string"
+                  },
+                  "totalAmt": {
+                    "type": "string"
+                  },
+                  "isManualReceipt": {
+                    "type": "integer"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "settleDateTime": {
+                    "type": "string"
+                  },
+                  "tid": {
+                    "type": "integer"
+                  },
+                  "mid": {
+                    "type": "string"
+                  },
+                  "batchNum": {
+                    "type": "integer"
+                  },
+                  "hostName": {
+                    "type": "string"
+                  },
+                  "totalCnt": {
+                    "type": "string"
+                  },
+                  "currency": {
+                    "type": "string"
+                  },
+                  "totalAmt": {
+                    "type": "string"
+                  },
+                  "isManualReceipt": {
+                    "type": "integer"
+                  }
+                }
+              }
+            ]
+          },
+          "txnSettlementEntityList": {
+            "type": "array",
+            "items": []
+          },
+          "txnSettleHostNameEntityList": {
+            "type": "array",
+            "items": []
+          },
+          "settleHostNameMap": {
+            "type": "array",
+            "items": []
+          },
+          "helperDTO":{
+            "type":"object",
+            "items": {
+              "current": {
+                "type": "integer"             
+              },
+              "begin": {
+                "type": "integer"             
+              },
+              "end": {
+                "type": "integer"             
+              },
+              "startFrm": {
+                "type": "integer"             
+              },
+              "endFrm": {
+                "type": "integer"             
+              },
+              "totalResults": {
+                "type": "integer"             
+              }
+          }
+          },
+          "currentIndex": {
+            "type": "integer"
+          },
+          "beginIndex": {
+            "type": "integer"
+          },
+          "endIndex": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "receiptEmailLimit": {
+            "type": "integer"
+          },
+          "receiptPrintLimit": {
+            "type": "integer"
+          }
       }
     },
 

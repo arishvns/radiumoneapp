@@ -30,7 +30,7 @@ class ReceiptsControler extends BaseController {
         } catch (error) {
             return null;
         }
-    }
+    } 
 
     public async getDate(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
@@ -40,6 +40,17 @@ class ReceiptsControler extends BaseController {
             return null;
         }
     }
+
+    public async settlementList(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await receiptsService.settlementList(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    
 
 }
 
