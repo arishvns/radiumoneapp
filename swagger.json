@@ -13,18 +13,16 @@
   ],
   "host": "40.87.100.33",
   "basePath": "/api",
-  "tags": [
-    {
-      "name": "dashboard"
-    }
-  ],
   "paths": {
-    "/dashboardcard": {
+    "/dashboard/dashboardCard": {
       "get": {
-        "summary": "Get all details of this week transaction voulme/today's transaction volume & new customers,carbon footprint cards.",
-        "description": "Get all details of this week transaction voulme/today's transaction volume & new customers,carbon footprint cards.",
+        "summary": "Get all details of this week transaction voulme/today's transaction volume,new customers & carbon footprint cards.",
+        "description": "Get all details of this week transaction voulme/today's transaction volume,new customers & carbon footprint cards.",
         "produces": [
           "application/json"
+        ],
+        "tags": [
+          "Dashboard"
         ],
         "parameters": [],
         "responses": {
@@ -33,7 +31,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/dashboardcard"
+                "$ref": "#/definitions/dashboardCard"
               }
             }
           },
@@ -46,14 +44,16 @@
         }
       }
     },
-
-    "/analyticscard": {
+    "/dashboard/analyticsCard": {
       "get": {
         "summary": "Get all details of transaction/settlement analytic card.",
         "description": "Get all details of transaction/settlement analytic card.",
         "produces": [
           "application/json"
         ],
+        "tags": [
+          "Dashboard"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -61,7 +61,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/analyticscard"
+                "$ref": "#/definitions/analyticsCard"
               }
             }
           },
@@ -74,14 +74,16 @@
         }
       }
     },
-
-    "/topcustomercardlist": {
+    "/dashboard/topCustomerCardList": {
       "get": {
         "summary": "Get all details of top customers by receipt count,receipt amount & best performing cards.",
         "description": "Get all details of top customers by receipt count,receipt amount & best performing cards.",
         "produces": [
           "application/json"
         ],
+        "tags": [
+          "Dashboard"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -89,7 +91,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/topcustomercardlist"
+                "$ref": "#/definitions/topCustomerCardList"
               }
             }
           },
@@ -102,16 +104,17 @@
         }
       }
     },
-
-
-    "/transaction": {
+    "/digitalReceipt/transaction": {
       "get": {
-        "summary": "Get all transaction details which are under find reciept",
-        "description": "Get all transaction details which are under find reciept",
+        "summary": "To get filter parameters to refine transaction records",
+        "description": "To get filter parameters to refine transaction records",
         "produces": [
           "application/json"
         ],
         "parameters": [],
+        "tags": [
+          "Digital Receipt"
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -131,13 +134,15 @@
         }
       }
     },
-
-    "/transactionList/{page}": {
+    "/digitalReceipt/transactionList/{page}": {
       "get": {
         "summary": "Get all the transaction list by current date",
         "description": "Get all the transaction list by current date",
         "produces": [
           "application/json"
+        ],
+        "tags": [
+          "Digital Receipt"
         ],
         "parameters": [
           {
@@ -237,7 +242,7 @@
             "required": false,
             "type": "string",
             "allowEmptyValue": true,
-            "default":"23/11/2022 - 25/11/2022"
+            "default": "23/11/2022 - 25/11/2022"
           },
           {
             "name": "time_range",
@@ -265,14 +270,14 @@
             "in": "query",
             "required": true,
             "type": "boolean",
-            "default":"true"
+            "default": "true"
           },
           {
             "name": "pageLength",
             "in": "query",
             "required": true,
             "type": "integer",
-            "default":"10"
+            "default": "10"
           }
         ],
         "responses": {
@@ -294,13 +299,15 @@
         }
       }
     },
-
-    "/getDate": {
+    "/digitalReceipt/settlement": {
       "get": {
-        "summary": "Get current date",
-        "description": "Get current date",
+        "summary": "To get filter parameters to refine settlement records",
+        "description": "To get filter parameters to refine settlement records",
         "produces": [
           "application/json"
+        ],
+        "tags": [
+          "Digital Receipt"
         ],
         "parameters": [],
         "responses": {
@@ -309,7 +316,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/todosResponse"
+                "$ref": "#/definitions/settlement"
               }
             }
           },
@@ -322,13 +329,15 @@
         }
       }
     },
-  
-    "/settlementList/{page}": {
+    "/digitalReceipt/settlementList/{page}": {
       "get": {
         "summary": "Get all the settlement list by putting date range",
         "description": "Get all the settlement list by putting date range",
         "produces": [
           "application/json"
+        ],
+        "tags": [
+          "Digital Receipt"
         ],
         "parameters": [
           {
@@ -385,7 +394,7 @@
             "in": "query",
             "required": true,
             "type": "string",
-            "default":"23/11/2022-25/11/2022"
+            "default": "23/11/2022-25/11/2022"
           },
           {
             "name": "time_range",
@@ -412,7 +421,7 @@
             "name": "isDesc",
             "in": "query",
             "default": "true",
-            "required":true,
+            "required": true,
             "type": "boolean"
           }
         ],
@@ -422,7 +431,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/getSettlementList"
+                "$ref": "#/definitions/settlementList"
               }
             }
           },
@@ -435,7 +444,6 @@
         }
       }
     },
-
     "/addNewUser": {
       "post": {
         "summary": "Save the task",
@@ -482,7 +490,6 @@
         }
       }
     },
-
     "/footer/version": {
       "get": {
         "summary": "Get footer version",
@@ -510,7 +517,6 @@
         }
       }
     },
-    
     "/getUrlPath": {
       "get": {
         "summary": "Get URL path",
@@ -540,13 +546,13 @@
     }
   },
   "definitions": {
-    "dashboardcard": {
+    "dashboardCard": {
       "type": "object",
       "properties": {
         "currencyCode": {
           "type": "string"
         },
-    "transaction_volume": {
+        "transaction_volume": {
           "properties": {
             "error": {
               "type": "string"
@@ -565,26 +571,26 @@
             }
           }
         },
-    "transaction_count": {
-         "properties": {
-              "error": {
-                "type": "string"
-              },
-              "todayTxnCount": {
-                "type": "string"
-              },
-              "lastWeekAvgToTodayTxnCountCompare": {
-                "type": "string"
-              },
-              "thisWeekTxnCount": {
-                "type": "string"
-              },
-              "lastWeekToThisWeekTxnCountCompare": {
-                "type": "string"
-              }
+        "transaction_count": {
+          "properties": {
+            "error": {
+              "type": "string"
+            },
+            "todayTxnCount": {
+              "type": "string"
+            },
+            "lastWeekAvgToTodayTxnCountCompare": {
+              "type": "string"
+            },
+            "thisWeekTxnCount": {
+              "type": "string"
+            },
+            "lastWeekToThisWeekTxnCountCompare": {
+              "type": "string"
             }
+          }
         },
-    "new_customers_and_carbon_footprint": {
+        "new_customers_and_carbon_footprint": {
           "properties": {
             "error": {
               "type": "string"
@@ -601,9 +607,8 @@
           }
         }
       }
-    }, 
-
-    "analyticscard": {
+    },
+    "analyticsCard": {
       "type": "object",
       "properties": {
         "transaction_analytics": {
@@ -646,192 +651,76 @@
         }
       }
     },
-
-    "topcustomercardlist": {
+    "topCustomerAmtDTOListOfTopCustomerCardList": {
+      "properties": {
+        "cardNumberMask": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "day": {
+          "type": "string"
+        }
+      }
+    },
+    "best_performing_cardsOfTopCustomerCardList": {
+      "properties": {
+        "cardNumberMask": {
+          "type": "string"
+        },
+        "day": {
+          "type": "string"
+        }
+      }
+    },
+    "topCustomerCardList": {
       "type": "object",
       "properties": {
         "topCustomerCountDTOList": {
           "type": "array",
-          "items": [
-            {
-              "type": "object",
-              "properties": {
-                "cardNumberMask": {
-                  "type": "string"
-                },
-                "count": {
-                  "type": "string"
-                },
-                "day": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "cardNumberMask",
-                "count",
-                "day"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "cardNumberMask": {
-                  "type": "string"
-                },
-                "count": {
-                  "type": "string"
-                },
-                "day": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "cardNumberMask",
-                "count",
-                "day"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "cardNumberMask": {
-                  "type": "string"
-                },
-                "count": {
-                  "type": "string"
-                },
-                "day": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "cardNumberMask",
-                "count",
-                "day"
-              ]
-            }
-          ]
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/topCustomerCountDTOListOfTopCustomerCardList"
+          }
         },
         "topCustomerAmtDTOList": {
           "type": "array",
-          "items": [
-            {
-              "type": "object",
-              "properties": {
-                "cardNumberMask": {
-                  "type": "string"
-                },
-                "count": {
-                  "type": "string"
-                },
-                "day": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "cardNumberMask",
-                "count",
-                "day"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "cardNumberMask": {
-                  "type": "string"
-                },
-                "count": {
-                  "type": "string"
-                },
-                "day": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "cardNumberMask",
-                "count",
-                "day"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "cardNumberMask": {
-                  "type": "string"
-                },
-                "count": {
-                  "type": "string"
-                },
-                "day": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "cardNumberMask",
-                "count",
-                "day"
-              ]
-            }
-          ]
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/topCustomerAmtDTOListOfTopCustomerCardList"
+          }
         },
         "best_performing_cards": {
           "type": "array",
-          "items": [
-            {
-              "type": "object",
-              "properties": {
-                "cardNumberMask": {
-                  "type": "string"
-                },
-                "day": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "cardNumberMask",
-                "day"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "cardNumberMask": {
-                  "type": "string"
-                },
-                "day": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "cardNumberMask",
-                "day"
-              ]
-            }
-          ]
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/best_performing_cardsOfTopCustomerCardList"
+          }
         }
       }
     },
-
     "transaction": {
       "type": "object",
       "properties": {
         "branchCodeString": {
           "type": "array",
-          "items":
-              {"type": "string"}
+          "items": {
+            "type": "string"
+          }
         },
         "dateRange": {
           "type": "string"
         },
         "transactionTypeList": {
           "type": "array",
-          "items":
-              {"type": "string"}
+          "items": {
+            "type": "string"
+          }
         },
         "transactionDTOList": {
           "type": "array",
-          "items":
-              {"type": "object"}
+          "items": []
         },
         "cardTypeMap": {
           "type": "object",
@@ -851,6 +740,9 @@
             "DISCOVER": {
               "type": "string"
             },
+            "WCD-MC": {
+              "type": "string"
+            },
             "MC": {
               "type": "string"
             },
@@ -861,9 +753,6 @@
               "type": "string"
             },
             "Visa Credit Card": {
-              "type": "string"
-            },
-            "Card Type": {
               "type": "string"
             },
             "Chuan": {
@@ -882,9 +771,6 @@
               "type": "string"
             },
             "JCB": {
-              "type": "string"
-            },
-            "Card Type": {
               "type": "string"
             },
             "VISA": {
@@ -934,137 +820,20 @@
         "receiptEmailLimit": {
           "type": "integer"
         },
-        "receiptPrintLimit":{
+        "receiptPrintLimit": {
           "type": "integer"
         }
       }
     },
-
     "transactionList": {
       "type": "object",
       "properties": {
         "transactionDTOList": {
           "type": "array",
-          "items": [
-            {
-              "type": "object",
-              "properties": {
-                "msg_id": {
-                  "type": "string"
-                },
-                "datetime": {
-                  "type": "string"
-                },
-                "mid": {
-                  "type": "string"
-                },
-                "tid": {
-                  "type": "string"
-                },
-                "trans_type": {
-                  "type": "string"
-                },
-                "card_no": {
-                  "type": "string"
-                },
-                "card_type": {
-                  "type": "string"
-                },
-                "dccAmount": {
-                  "type": "string"
-                },
-                "totalAmount": {
-                  "type": "string"
-                },
-                "baseAmountCurrency": {
-                  "type": "string"
-                },
-                "dccAmountCurrency": {
-                  "type": "string"
-                },
-                "totalAmountCurrency": {
-                  "type": "string"
-                },
-                "invoiceNo": {
-                  "type": "string"
-                },
-                "orderReferenceNo": {
-                  "type": "string"
-                },
-                "batchNo": {
-                  "type": "string"
-                },
-                "isManualReceipt": {
-                  "type": "string"
-                },
-                "trans_id": {
-                  "type": "string"
-                },
-                "orderNum": {
-                  "type": "string"
-                }
-              }     
-            },
-            {
-              "type": "object",
-              "properties": {
-                "msg_id": {
-                  "type": "string"
-                },
-                "datetime": {
-                  "type": "string"
-                },
-                "mid": {
-                  "type": "string"
-                },
-                "tid": {
-                  "type": "string"
-                },
-                "trans_type": {
-                  "type": "string"
-                },
-                "card_no": {
-                  "type": "string"
-                },
-                "card_type": {
-                  "type": "string"
-                },
-                "dccAmount": {
-                  "type": "string"
-                },
-                "totalAmount": {
-                  "type": "string"
-                },
-                "baseAmountCurrency": {
-                  "type": "string"
-                },
-                "dccAmountCurrency": {
-                  "type": "string"
-                },
-                "totalAmountCurrency": {
-                  "type": "string"
-                },
-                "invoiceNo": {
-                  "type": "string"
-                },
-                "orderReferenceNo": {
-                  "type": "string"
-                },
-                "batchNo": {
-                  "type": "string"
-                },
-                "isManualReceipt": {
-                  "type": "string"
-                },
-                "trans_id": {
-                  "type": "string"
-                },
-                "orderNum": {
-                  "type": "string"
-                }
-              }     
-            }
-          ]
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/transactionDTOListOftransactionList"
+          }
         },
         "cardTypeMap": {
           "type": "object"
@@ -1107,155 +876,266 @@
         "receiptEmailLimit": {
           "type": "integer"
         },
-        "receiptPrintLimit":{
+        "receiptPrintLimit": {
           "type": "integer"
         }
       }
     },
-
-
-
-    "getSettlementList": {
-        "type": "object",
-        "properties": {
-          "transactionDTOList": {
-            "type": "array"
-          },
-          "txnBatchMsgIdList": {
-            "type": "array",
-            "items": []
-          },
-          "txnSettlementDTOList": {
-            "type": "array",
-            "items": [
-              {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "integer"
-                  },
-                  "settleDateTime": {
-                    "type": "string"
-                  },
-                  "tid": {
-                    "type": "integer"
-                  },
-                  "mid": {
-                    "type": "string"
-                  },
-                  "batchNum": {
-                    "type": "integer"
-                  },
-                  "hostName": {
-                    "type": "string"
-                  },
-                  "totalCnt": {
-                    "type": "string"
-                  },
-                  "currency": {
-                    "type": "string"
-                  },
-                  "totalAmt": {
-                    "type": "string"
-                  },
-                  "isManualReceipt": {
-                    "type": "integer"
-                  }
-                }
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "integer"
-                  },
-                  "settleDateTime": {
-                    "type": "string"
-                  },
-                  "tid": {
-                    "type": "integer"
-                  },
-                  "mid": {
-                    "type": "string"
-                  },
-                  "batchNum": {
-                    "type": "integer"
-                  },
-                  "hostName": {
-                    "type": "string"
-                  },
-                  "totalCnt": {
-                    "type": "string"
-                  },
-                  "currency": {
-                    "type": "string"
-                  },
-                  "totalAmt": {
-                    "type": "string"
-                  },
-                  "isManualReceipt": {
-                    "type": "integer"
-                  }
-                }
-              }
-            ]
-          },
-          "txnSettlementEntityList": {
-            "type": "array",
-            "items": []
-          },
-          "txnSettleHostNameEntityList": {
-            "type": "array",
-            "items": []
-          },
-          "settleHostNameMap": {
-            "type": "array",
-            "items": []
-          },
-          "helperDTO":{
-            "type":"object",
-            "items": {
-              "current": {
-                "type": "integer"             
-              },
-              "begin": {
-                "type": "integer"             
-              },
-              "end": {
-                "type": "integer"             
-              },
-              "startFrm": {
-                "type": "integer"             
-              },
-              "endFrm": {
-                "type": "integer"             
-              },
-              "totalResults": {
-                "type": "integer"             
-              }
-          }
-          },
-          "currentIndex": {
-            "type": "integer"
-          },
-          "beginIndex": {
-            "type": "integer"
-          },
-          "endIndex": {
-            "type": "integer"
-          },
-          "totalPages": {
-            "type": "integer"
-          },
-          "receiptEmailLimit": {
-            "type": "integer"
-          },
-          "receiptPrintLimit": {
-            "type": "integer"
-          }
+    "topCustomerCountDTOListOfTopCustomerCardList": {
+      "properties": {
+        "cardNumberMask": {
+          "type": "string"
+        },
+        "count": {
+          "type": "string"
+        },
+        "day": {
+          "type": "string"
+        }
       }
     },
-
+    "transactionDTOListOftransactionList": {
+      "properties": {
+        "msg_id": {
+          "type": "string"
+        },
+        "datetime": {
+          "type": "string"
+        },
+        "mid": {
+          "type": "string"
+        },
+        "tid": {
+          "type": "string"
+        },
+        "trans_type": {
+          "type": "string"
+        },
+        "card_no": {
+          "type": "string"
+        },
+        "card_type": {
+          "type": "string"
+        },
+        "authCode": {
+          "type": "string"
+        },
+        "baseAmount": {
+          "type": "string"
+        },
+        "dccAmount": {
+          "type": "string"
+        },
+        "totalAmount": {
+          "type": "string"
+        },
+        "baseAmountCurrency": {
+          "type": "string"
+        },
+        "dccAmountCurrency": {
+          "type": "string"
+        },
+        "totalAmountCurrency": {
+          "type": "string"
+        },
+        "invoiceNo": {
+          "type": "string"
+        },
+        "orderReferenceNo": {
+          "type": "string"
+        },
+        "batchNo": {
+          "type": "string"
+        },
+        "isManualReceipt": {
+          "type": "integer"
+        },
+        "trans_id": {
+          "type": "string"
+        },
+        "orderNum": {
+          "type": "string"
+        }
+      }
+    },
+    "txnSettlementDTOListOfSettlementList": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "settleDateTime": {
+          "type": "string"
+        },
+        "tid": {
+          "type": "string"
+        },
+        "mid": {
+          "type": "string"
+        },
+        "batchNum": {
+          "type": "string"
+        },
+        "hostName": {
+          "type": "string"
+        },
+        "totalCnt": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "totalAmt": {
+          "type": "string"
+        },
+        "isManualReceipt": {
+          "type": "string"
+        }
+      }
+    },
+    "settlementList": {
+      "type": "object",
+      "properties": {
+        "transactionDTOList": {
+          "type": "array",
+          "items": []
+        },
+        "txnBatchMsgIdList": {
+          "type": "array",
+          "items": []
+        },
+        "txnSettlementDTOList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/txnSettlementDTOListOfSettlementList"
+          }
+        },
+        "txnSettlementEntityList": {
+          "type": "array",
+          "items": []
+        },
+        "txnSettleHostNameEntityList": {
+          "type": "array",
+          "items": []
+        },
+        "settleHostNameMap": {
+          "type": "object"
+        },
+        "helperDTO": {
+          "type": "object",
+          "properties": {
+            "current": {
+              "type": "integer"
+            },
+            "begin": {
+              "type": "integer"
+            },
+            "end": {
+              "type": "integer"
+            },
+            "startFrm": {
+              "type": "integer"
+            },
+            "endFrm": {
+              "type": "integer"
+            },
+            "totalResults": {
+              "type": "integer"
+            }
+          }
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "receiptEmailLimit": {
+          "type": "integer"
+        },
+        "receiptPrintLimit": {
+          "type": "integer"
+        }
+      }
+    },
+    "settlement": {
+      "type": "object",
+      "properties": {
+        "transactionDTOList": {
+          "type": "array",
+          "items": []
+        },
+        "txnBatchMsgIdList": {
+          "type": "array",
+          "items": []
+        },
+        "txnSettlementDTOList": {
+          "type": "array",
+          "items": []
+        },
+        "txnSettlementEntityList": {
+          "type": "array",
+          "items": []
+        },
+        "txnSettleHostNameEntityList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/txnSettleHostNameEntityListOfSettlement"
+          }
+        },
+        "settleHostNameMap": {
+          "type": "object"
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "receiptEmailLimit": {
+          "type": "integer"
+        },
+        "receiptPrintLimit": {
+          "type": "integer"
+        },
+        "branchCodeString": {
+          "type": "array",
+          "items": []
+        },
+        "dateRange": {
+          "type": "string"
+        },
+        "reseller": {
+          "type": "string"
+        }
+      }
+    },
+    "txnSettleHostNameEntityListOfSettlement": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "hostName": {
+          "type": "string"
+        },
+        "createdOn": {
+          "type": "string"
+        }
+      }
+    },
     "topCustomerCountResponse": {
       "type": "object",
       "properties": {
@@ -1300,7 +1180,6 @@
         }
       }
     },
-
     "resellerResponse": {
       "type": "object",
       "properties": {
@@ -1360,7 +1239,6 @@
         }
       }
     },
-
     "topCustomerAmtResponse": {
       "type": "object",
       "properties": {
@@ -1410,7 +1288,6 @@
         }
       }
     },
-
     "generalStatsResponse": {
       "type": "object",
       "properties": {
@@ -1487,7 +1364,6 @@
         }
       }
     },
-
     "generalDayAndWeekCountStatsResponse": {
       "type": "object",
       "properties": {
@@ -1564,7 +1440,6 @@
         }
       }
     },
-
     "todosResponse": {
       "type": "object",
       "properties": {
@@ -1582,7 +1457,6 @@
         }
       }
     },
-
     "addNewUser": {
       "type": "object",
       "properties": {
@@ -1640,7 +1514,6 @@
         }
       }
     },
-
     "InvalidResponse": {
       "type": "object",
       "properties": {

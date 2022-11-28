@@ -32,8 +32,13 @@ class SecretUtil {
     public BankCardStats_PATH = "/dashboard/bankCardStats";
     public TopCardtype_PATH = "/dashboard/topCardtype";
     
+    public DashboardCard_PATH = "/dashboard/dashboardCard";
+    public AnalyticsCard_PATH = "/dashboard/analyticsCard";
+    public TopCustomerCardList = "/dashboard/topCustomerCardList";
+    public Transaction1_PATH = "/digitalReceipt/transaction"
     
-    //// Receipts
+    
+    // Receipts
     public Transaction_PATH = "/main/merchant/transaction";
     public TransactionList_PATH = "/main/merchant/transaction/";
     public GetDatePath = "/merchant/settlement/getDate";

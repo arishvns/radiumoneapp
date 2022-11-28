@@ -29,95 +29,38 @@ class MasterRouteV1 extends BaseRoutes {
 
         // Dashboard endpoints
         
-        this.router.get('/dashboardcard',
+        this.router.get('/dashboard/dashboardCard',
             (req: Request, res: Response, next: NextFunction) => {
                 dashboardControler.dashboardCard(req, res, next);
             })
             
-        this.router.get('/analyticscard',
+        this.router.get('/dashboard/analyticsCard',
             (req: Request, res: Response, next: NextFunction) => {
                 dashboardControler.analyticsCard(req, res, next);
             })
 
-        this.router.get('/topcustomercardlist',
+        this.router.get('/dashboard/topCustomerCardList',
             (req: Request, res: Response, next: NextFunction) => {
                 dashboardControler.topcustomercardlist(req, res, next);
             })
-        
-
-
-        this.router.get('/topCustomerCount',
-            (req: Request, res: Response, next: NextFunction) => {
-                dashboardControler.topCustomerCount(req, res, next);
-            })
-
-        this.router.get('/reseller',
-            (req: Request, res: Response, next: NextFunction) => {
-                dashboardControler.reseller(req, res, next);
-            })
-
-        this.router.get('/donutCardStats',
-            (req: Request, res: Response, next: NextFunction) => {
-                dashboardControler.donutCardStats(req, res, next);
-            })
-
-        this.router.get('/topCustomerAmt',
-            (req: Request, res: Response, next: NextFunction) => {
-                dashboardControler.topCustomerAmt(req, res, next);
-            })
-
-        this.router.get('/generalStats',
-            (req: Request, res: Response, next: NextFunction) => {
-                dashboardControler.generalStats(req, res, next);
-            })
-
-        this.router.get('/generalDayAndWeekCountStats',
-            (req: Request, res: Response, next: NextFunction) => {
-                dashboardControler.generalDayAndWeekCountStats(req, res, next);
-            })
-
-        this.router.get('/generalDayAndWeekVolumeStats',
-            (req: Request, res: Response, next: NextFunction) => {
-                dashboardControler.generalDayAndWeekVolumeStats(req, res, next);
-            })
-
-        this.router.get('/txnAnalytics',
-            (req: Request, res: Response, next: NextFunction) => {
-                dashboardControler.txnAnalytics(req, res, next);
-            })
-
-        this.router.get('/settleSummary',
-            (req: Request, res: Response, next: NextFunction) => {
-                dashboardControler.settleSummary(req, res, next);
-            })
-
-        this.router.get('/bankCardStats',
-            (req: Request, res: Response, next: NextFunction) => {
-                dashboardControler.bankCardStats(req, res, next);
-            })
-
-        this.router.get('/topCardtype',
-            (req: Request, res: Response, next: NextFunction) => {
-                dashboardControler.topCardtype(req, res, next);
-            })
 
         // Receipts endpoints
-        this.router.get('/transaction',
+        this.router.get('/digitalReceipt/transaction',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transaction(req, res, next);
             })
 
-        this.router.get('/transactionList/'+ ':page',
+        this.router.get('/digitalReceipt/transactionList/'+ ':page',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transactionList(req, res, next);
             }) 
 
-        this.router.get('/getDate',
+        this.router.get('/digitalReceipt/settlement',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.getDate(req, res, next);
             })
 
-        this.router.get('/settlementList/'+ ':page',
+        this.router.get('/digitalReceipt/settlementList/'+ ':page',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.settlementList(req, res, next);
             }) 
