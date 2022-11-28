@@ -9,9 +9,9 @@
     }
   },
   "schemes": [
-    "https"
+    "http"
   ],
-  "host": "techomni.in",
+  "host": "40.87.100.33",
   "basePath": "/api",
   "tags": [
     {
@@ -103,61 +103,6 @@
       }
     },
 
-    "/donutCardStats": {
-      "get": {
-        "summary": "Get all details of bank cards origin",
-        "description": "Get all details of bank cards origin",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/donutCardStatsResponse"
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
-          }
-        }
-      }
-    },
-
-    "/bankCardStats": {
-      "get": {
-        "summary": "Get all the tasks",
-        "description": "Get all the tasks",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/todosResponse"
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
-          }
-        }
-      }
-    },
 
     "/transaction": {
       "get": {
@@ -173,7 +118,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/todosResponse"
+                "$ref": "#/definitions/transaction"
               }
             }
           },
@@ -336,7 +281,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/todosResponse"
+                "$ref": "#/definitions/transactionList"
               }
             }
           },
@@ -867,7 +812,309 @@
       }
     },
 
-    
+    "transaction": {
+      "type": "object",
+      "properties": {
+        "branchCodeString": {
+          "type": "array",
+          "items":
+              {"type": "string"}
+        },
+        "dateRange": {
+          "type": "string"
+        },
+        "transactionTypeList": {
+          "type": "array",
+          "items":
+              {"type": "string"}
+        },
+        "transactionDTOList": {
+          "type": "array",
+          "items":
+              {"type": "object"}
+        },
+        "cardTypeMap": {
+          "type": "object",
+          "properties": {
+            "1": {
+              "type": "string"
+            },
+            "UNIONPAY": {
+              "type": "string"
+            },
+            "AMEX": {
+              "type": "string"
+            },
+            "WCD-VISA": {
+              "type": "string"
+            },
+            "DISCOVER": {
+              "type": "string"
+            },
+            "MC": {
+              "type": "string"
+            },
+            "MASTERCARD": {
+              "type": "string"
+            },
+            "LOYALTY MASTERCARD": {
+              "type": "string"
+            },
+            "Visa Credit Card": {
+              "type": "string"
+            },
+            "Card Type": {
+              "type": "string"
+            },
+            "Chuan": {
+              "type": "string"
+            },
+            "LOYALTY VISA": {
+              "type": "string"
+            },
+            "CUP": {
+              "type": "string"
+            },
+            "test": {
+              "type": "string"
+            },
+            "Card Type": {
+              "type": "string"
+            },
+            "JCB": {
+              "type": "string"
+            },
+            "Card Type": {
+              "type": "string"
+            },
+            "VISA": {
+              "type": "string"
+            },
+            "UOB card test SGD": {
+              "type": "string"
+            },
+            "MASTERCARD OFFUS": {
+              "type": "string"
+            },
+            "BER": {
+              "type": "string"
+            },
+            "PAYNOW": {
+              "type": "string"
+            },
+            "WCD-Master Card": {
+              "type": "string"
+            },
+            "VI": {
+              "type": "string"
+            },
+            "VISA OFFUS": {
+              "type": "string"
+            },
+            "ALIPAY": {
+              "type": "string"
+            },
+            "WCD-BER": {
+              "type": "string"
+            }
+          }
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "receiptEmailLimit": {
+          "type": "integer"
+        },
+        "receiptPrintLimit":{
+          "type": "integer"
+        }
+      }
+    },
+
+    "transactionList": {
+      "type": "object",
+      "properties": {
+        "transactionDTOList": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "msg_id": {
+                  "type": "string"
+                },
+                "datetime": {
+                  "type": "string"
+                },
+                "mid": {
+                  "type": "string"
+                },
+                "tid": {
+                  "type": "string"
+                },
+                "trans_type": {
+                  "type": "string"
+                },
+                "card_no": {
+                  "type": "string"
+                },
+                "card_type": {
+                  "type": "string"
+                },
+                "dccAmount": {
+                  "type": "string"
+                },
+                "totalAmount": {
+                  "type": "string"
+                },
+                "baseAmountCurrency": {
+                  "type": "string"
+                },
+                "dccAmountCurrency": {
+                  "type": "string"
+                },
+                "totalAmountCurrency": {
+                  "type": "string"
+                },
+                "invoiceNo": {
+                  "type": "string"
+                },
+                "orderReferenceNo": {
+                  "type": "string"
+                },
+                "batchNo": {
+                  "type": "string"
+                },
+                "isManualReceipt": {
+                  "type": "string"
+                },
+                "trans_id": {
+                  "type": "string"
+                },
+                "orderNum": {
+                  "type": "string"
+                }
+              }     
+            },
+            {
+              "type": "object",
+              "properties": {
+                "msg_id": {
+                  "type": "string"
+                },
+                "datetime": {
+                  "type": "string"
+                },
+                "mid": {
+                  "type": "string"
+                },
+                "tid": {
+                  "type": "string"
+                },
+                "trans_type": {
+                  "type": "string"
+                },
+                "card_no": {
+                  "type": "string"
+                },
+                "card_type": {
+                  "type": "string"
+                },
+                "dccAmount": {
+                  "type": "string"
+                },
+                "totalAmount": {
+                  "type": "string"
+                },
+                "baseAmountCurrency": {
+                  "type": "string"
+                },
+                "dccAmountCurrency": {
+                  "type": "string"
+                },
+                "totalAmountCurrency": {
+                  "type": "string"
+                },
+                "invoiceNo": {
+                  "type": "string"
+                },
+                "orderReferenceNo": {
+                  "type": "string"
+                },
+                "batchNo": {
+                  "type": "string"
+                },
+                "isManualReceipt": {
+                  "type": "string"
+                },
+                "trans_id": {
+                  "type": "string"
+                },
+                "orderNum": {
+                  "type": "string"
+                }
+              }     
+            }
+          ]
+        },
+        "cardTypeMap": {
+          "type": "object"
+        },
+        "helperDTO": {
+          "type": "object",
+          "properties": {
+            "current": {
+              "type": "integer"
+            },
+            "begin": {
+              "type": "integer"
+            },
+            "end": {
+              "type": "integer"
+            },
+            "startFrm": {
+              "type": "integer"
+            },
+            "endFrm": {
+              "type": "integer"
+            },
+            "totalResults": {
+              "type": "integer"
+            }
+          }
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "receiptEmailLimit": {
+          "type": "integer"
+        },
+        "receiptPrintLimit":{
+          "type": "integer"
+        }
+      }
+    },
+
+
+
     "getSettlementList": {
         "type": "object",
         "properties": {
@@ -1009,7 +1256,6 @@
       }
     },
 
-
     "topCustomerCountResponse": {
       "type": "object",
       "properties": {
@@ -1098,80 +1344,6 @@
           "type": "array",
           "items": {
             "type": "object"
-          }
-        },
-        "cardOriginWithPercentageDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "generalStatsList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        }
-      }
-    },
-
-    "donutCardStatsResponse": {
-      "type": "object",
-      "properties": {
-        "topCustomerCountDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "topCustomerAmtDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "topCustomerCardTypeDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "branchCodeTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "branchCodeSettlementAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "cardTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "cardAmountTotal": {
-                "type": "string"
-              },
-              "descripiton": {
-                "type": "string"
-              },
-              "newCardNumberPercent": {
-                "type": "string"
-              },
-              "returnCardNumberPercent": {
-                "type": "string"
-              },
-              "newCardNumbers": {
-                "type": "string"
-              },
-              "returnCardNumbers": {
-                "type": "string"
-              }
-            }
           }
         },
         "cardOriginWithPercentageDTOList": {
