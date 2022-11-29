@@ -74,6 +74,7 @@
         }
       }
     },
+
     "/dashboard/topCustomerCardList": {
       "get": {
         "summary": "Get all details of top customers by receipt count,receipt amount & best performing cards.",
@@ -134,6 +135,7 @@
         }
       }
     },
+  
     "/digitalReceipt/transactionList/{page}": {
       "get": {
         "summary": "Get all the transaction list by current date",
@@ -299,6 +301,53 @@
         }
       }
     },
+
+    "/digitalReceipt/exportTransaction/": {
+      "get": {
+        "summary": "Export transaction details by selected dates",
+        "description": "Export transaction details by selected dates",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Digital Receipt"
+        ],
+        "parameters": [
+          {
+            "name": "trans_ids",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "1"
+          },
+          {
+            "name": "ismidempty",
+            "in": "query",
+            "required": true,
+            "type": "boolean",
+            "default":"true"
+          }      
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    
     "/digitalReceipt/settlement": {
       "get": {
         "summary": "To get filter parameters to refine settlement records",
