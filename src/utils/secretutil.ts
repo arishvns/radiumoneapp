@@ -41,9 +41,10 @@ class SecretUtil {
     // Receipts
     public Transaction_PATH = "/main/merchant/transaction";
     public TransactionList_PATH = "/main/merchant/transaction/";
-    public GetDatePath = "/merchant/settlement/getDate";
-    public settlementPath = "/merchant/settlement/getSettlementList/";
-    
+    public exportTransaction_PATH = "/main/merchant/transaction/export/excel/"
+    public GetDate_Path = "/merchant/settlement/getDate";
+    public settlement_Path = "/merchant/settlement/getSettlementList/";
+   
     //  Users endPoints
     public AddNewUser_PATH = "/main/admin/user/addNewUser";
 

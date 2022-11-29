@@ -42,6 +42,38 @@ class ReceiptsService {
             
         }
     }
+    
+    public exportTransaction = async (req?: any) => {
+        var resObj = {};
+       try{
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.exportTransaction_PATH + "?" + new URLSearchParams(req.query);
+        let options = {
+            method: 'GET',
+            url: _url,
+            headers: {
+                Authorization: "Bearer " + secretUtil.token,
+                "Content-Type": 'application/json'
+            },
+            strictSSL: false
+        }
+
+        let resData: any = await new Promise((resolve, reject) => {
+            request(options, (err, res) => {
+                if (err) return resolve(null);
+                try {
+                    resolve((res.body));
+                }
+                catch (ex) {
+                    return resolve(null);
+                }
+            });
+        });
+        return resData
+
+        } catch (err) {
+            
+        }
+    }
 
     public transactionList = async (req?: any) => {
         var resObj = {};
@@ -78,7 +110,7 @@ class ReceiptsService {
     public getDate = async (req?: any) => {
         var resObj = {};
        try{
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.GetDatePath;
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.GetDate_Path;
         let options = {
             method: 'GET',
             url: _url,
@@ -110,7 +142,7 @@ class ReceiptsService {
     public settlementList = async (req?: any) => {
         var resObj = {};
        try{
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.settlementPath + req.params.page+ "?" + new URLSearchParams(req.query);
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.settlement_Path + req.params.page+ "?" + new URLSearchParams(req.query);
         let options = {
             method: 'GET',
             url: _url,

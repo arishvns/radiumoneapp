@@ -50,6 +50,13 @@ class MasterRouteV1 extends BaseRoutes {
                 receiptsControler.transaction(req, res, next);
             })
 
+
+        this.router.get('/digitalReceipt/exportTransaction/',
+            (req: Request, res: Response, next: NextFunction) => {
+                receiptsControler.exportTransaction(req, res, next);
+            })
+
+
         this.router.get('/digitalReceipt/transactionList/'+ ':page',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transactionList(req, res, next);
