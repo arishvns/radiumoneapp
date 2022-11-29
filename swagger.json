@@ -165,7 +165,7 @@
             "name": "transaction_type",
             "in": "query",
             "required": false,
-            "type": "integer",
+            "type": "string",
             "allowEmptyValue": true
           },
           {
@@ -318,7 +318,7 @@
             "in": "query",
             "required": true,
             "type": "string",
-            "default": "1"
+            "default": "90766109"
           },
           {
             "name": "ismidempty",
@@ -334,7 +334,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/todosResponse"
+                "$ref": "#/definitions/exportTransaction"
               }
             }
           },
@@ -1005,6 +1005,18 @@
         "orderNum": {
           "type": "string"
         }
+      }
+    },
+
+    "exportTransaction":{
+        "type": "object",
+        "properties": {
+            "trans_ids": {
+            "type": "integer"
+            },
+            "ismidempty": {
+              "type": "boolean"
+              }
       }
     },
     "txnSettlementDTOListOfSettlementList": {
