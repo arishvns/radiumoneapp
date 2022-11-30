@@ -5,6 +5,7 @@ import path from "path";
 const key = 'RCClicence';
 import request from 'request';
 import { secretUtil } from '../../utils/secretutil';
+import { response } from 'express';
 
 
 const iv = crypto.randomBytes(16);
@@ -43,16 +44,18 @@ class ReceiptsService {
         }
     }
     
-    public exportTransaction = async (req?: any) => {
-        var resObj = {};
+    public exportTransaction = async (req?: any,res?:any) => {
+    let resObj = {};
        try{
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.exportTransaction_PATH + "?" + new URLSearchParams(req.query);
         let options = {
             method: 'GET',
             url: _url,
+           
             headers: {
                 Authorization: "Bearer " + secretUtil.token,
-                "Content-Type": 'application/json'
+                "Content-Type": 'application/json',
+                responseType: 'blob'
             },
             strictSSL: false
         }
@@ -71,7 +74,7 @@ class ReceiptsService {
         return resData
 
         } catch (err) {
-            
+            return err;
         }
     }
 

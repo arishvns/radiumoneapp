@@ -11,7 +11,7 @@
   "schemes": [
     "http"
   ],
-  "host": "40.87.100.33",
+  "host": "localhost:3005",
   "basePath": "/api",
   "paths": {
     "/dashboard/dashboardCard": {
@@ -307,8 +307,9 @@
         "summary": "Export transaction details by selected dates",
         "description": "Export transaction details by selected dates",
         "produces": [
-          "application/json"
+          "application/json" ,"text/plain", "*/*"
         ],
+       
         "tags": [
           "Digital Receipt"
         ],

@@ -25,7 +25,7 @@ class ReceiptsControler extends BaseController {
 
     public async exportTransaction(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
-            const requestResult = await receiptsService.exportTransaction(req);
+            const requestResult = await receiptsService.exportTransaction(req,res);
             return res.send(requestResult);
         } catch (error) {
             return null;
