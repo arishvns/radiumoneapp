@@ -55,7 +55,6 @@ class ReceiptsService {
             headers: {
                 Authorization: "Bearer " + secretUtil.token,
                 "Content-Type": 'arraybuffer',
-                responseType: 'blob'
             },
             strictSSL: false
         }
