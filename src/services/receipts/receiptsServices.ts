@@ -54,7 +54,10 @@ class ReceiptsService {
            
             headers: {
                 Authorization: "Bearer " + secretUtil.token,
-                "Content-Type": 'arraybuffer',
+                'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                responseType: 'arraybuffer'
             },
             strictSSL: false
         }
