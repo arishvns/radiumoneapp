@@ -74,7 +74,6 @@
         }
       }
     },
-
     "/dashboard/topCustomerCardList": {
       "get": {
         "summary": "Get all details of top customers by receipt count,receipt amount & best performing cards.",
@@ -135,7 +134,6 @@
         }
       }
     },
-  
     "/digitalReceipt/transactionList/{page}": {
       "get": {
         "summary": "Get all the transaction list by current date",
@@ -301,15 +299,84 @@
         }
       }
     },
-
+    "/digitalReceipt/transactionReceipt/{customerID}": {
+      "get": {
+        "summary": "Get transaction receipt by selected customer id",
+        "description": "Get transaction receipt by selected customer id",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Digital Receipt"
+        ],
+        "parameters": [
+          {
+            "name": "customerID",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "90766116"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/transactionReceipt"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalReceipt/transactionReceiptImg": {
+      "get": {
+        "summary": "Get transaction receipt image",
+        "description": "Get transaction receipt image",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Digital Receipt"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/digitalReceipt/exportTransaction/": {
       "get": {
         "summary": "Export transaction details by selected dates",
         "description": "Export transaction details by selected dates",
         "produces": [
-          "application/json" ,"text/plain", "*/*"
+          "application/json",
+          "text/plain",
+          "*/*"
         ],
-       
         "tags": [
           "Digital Receipt"
         ],
@@ -326,8 +393,8 @@
             "in": "query",
             "required": true,
             "type": "boolean",
-            "default":"true"
-          }      
+            "default": "true"
+          }
         ],
         "responses": {
           "200": {
@@ -348,7 +415,6 @@
         }
       }
     },
-    
     "/digitalReceipt/settlement": {
       "get": {
         "summary": "To get filter parameters to refine settlement records",
@@ -482,6 +548,36 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/settlementList"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalPaymentGateway/transaction/": {
+      "get": {
+        "summary": "To get all details of payment gateway transaction by selected dates",
+        "description": "To get all details of payment gateway transaction by selected dates",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Payment Gateway"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/settlement"
               }
             }
           },
@@ -931,6 +1027,35 @@
         }
       }
     },
+    "transactionReceipt": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "integer"
+        },
+        "receiptContent": {
+          "type": "string"
+        },
+        "imageWidth": {
+          "type": "integer"
+        },
+        "imageHeight": {
+          "type": "integer"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "serviceURL": {
+          "type": "string"
+        },
+        "awsSwitch": {
+          "type": "string"
+        },
+        "encryptionSwitch": {
+          "type": "string"
+        }
+      }
+    },
     "topCustomerCountDTOListOfTopCustomerCardList": {
       "properties": {
         "cardNumberMask": {
@@ -1008,16 +1133,15 @@
         }
       }
     },
-
-    "exportTransaction":{
-        "type": "object",
-        "properties": {
-            "trans_ids": {
-            "type": "integer"
-            },
-            "ismidempty": {
-              "type": "boolean"
-              }
+    "exportTransaction": {
+      "type": "object",
+      "properties": {
+        "trans_ids": {
+          "type": "integer"
+        },
+        "ismidempty": {
+          "type": "boolean"
+        }
       }
     },
     "txnSettlementDTOListOfSettlementList": {

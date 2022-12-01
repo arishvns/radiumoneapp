@@ -54,10 +54,7 @@ class ReceiptsService {
            
             headers: {
                 Authorization: "Bearer " + secretUtil.token,
-                'Content-Type': 'application/json',
-                'Cache-Control': 'no-cache, no-store, must-revalidate',
-                'Pragma': 'no-cache',
-                responseType: 'arraybuffer'
+                "Content-Type": 'arraybuffer',
             },
             strictSSL: false
         }
@@ -112,8 +109,72 @@ class ReceiptsService {
         }
     }
 
+    
+    public transactionReceipt = async (req?: any) => {
+       try{
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionReceipt_PATH + req.params.customerID;
+        let options = {
+            method: 'GET',
+            url: _url,
+            headers: {
+                Authorization: "Bearer " + secretUtil.token,
+                "Content-Type": 'application/json'
+            },
+            strictSSL: false
+        }
+
+        let resData: any = await new Promise((resolve, reject) => {
+            request(options, (err, res) => {
+                if (err) return resolve(null);
+                try {
+                    resolve(JSON.parse(res.body));
+                }
+                catch (ex) {
+                    return resolve(null);
+                }
+            });
+        });
+        return resData
+
+        } catch (err) {
+            
+        }
+    }
+
+    public transactionReceiptImg = async (req?: any) => {
+       try{
+        let _url = secretUtil.ssl + "://" + secretUtil.ReceiptImgDomain + secretUtil.TransactionReceiptImg_PATH + "=" + + new URLSearchParams(req.query);
+        let options = {
+            method: 'GET',
+            url: _url,
+            headers: {
+                Authorization: "Bearer " + secretUtil.token,
+                "Content-Type": 'application/json'
+            },
+            strictSSL: false
+        }
+
+        let resData: any = await new Promise((resolve, reject) => {
+            request(options, (err, res) => {
+                if (err) return resolve(null);
+                try {
+                    resolve(JSON.parse(res.body));
+                }
+                catch (ex) {
+                    return resolve(null);
+                }
+            });
+        });
+        return resData
+
+        } catch (err) {
+            
+        }
+    }
+
+
+
     public getDate = async (req?: any) => {
-        var resObj = {};
        try{
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.GetDate_Path;
         let options = {

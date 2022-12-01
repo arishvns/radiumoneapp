@@ -1,12 +1,12 @@
 import express, { NextFunction, request, Request, Response } from "express";
 import { BaseRoutes } from "../baseroutes";
 import cores from "cors";
-import path from "path";
 import fs from 'fs'
 import { radiumControler } from '../../controllers/Radium/radiumController';
 import { dashboardControler } from '../../controllers/Dashboard/dashoardController';
 import { receiptsControler } from '../../controllers/Receipts/receiptsController';
 import { userControler } from '../../controllers/Users/userController';
+import { paymentGatewayControler } from "../../controllers/PaymentGateway/paymentGatewayController";
 
 
 const swaggerUi = require('swagger-ui-express');
@@ -62,6 +62,17 @@ class MasterRouteV1 extends BaseRoutes {
                 receiptsControler.transactionList(req, res, next);
             }) 
 
+        
+        this.router.get('/digitalReceipt/transactionReceipt/'+':customerID',
+            (req: Request, res: Response, next: NextFunction) => {
+                receiptsControler.transactionReceipt(req, res, next);
+            })     
+
+        this.router.get('/digitalReceipt/transactionReceiptImg',
+            (req: Request, res: Response, next: NextFunction) => {
+                receiptsControler.transactionReceiptImg(req, res, next);
+            })         
+
         this.router.get('/digitalReceipt/settlement',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.getDate(req, res, next);
@@ -71,6 +82,13 @@ class MasterRouteV1 extends BaseRoutes {
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.settlementList(req, res, next);
             }) 
+
+           // paymenet gateway routes 
+            this.router.get('/digitalPaymentGateway/transaction/',
+            (req: Request, res: Response, next: NextFunction) => {
+                paymentGatewayControler.paymentGatewayTransaction(req, res, next);
+            })
+
 
         // Users endpoints
         this.router.post('/addNewUser',
