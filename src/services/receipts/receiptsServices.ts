@@ -112,7 +112,7 @@ class ReceiptsService {
     
     public transactionReceipt = async (req?: any) => {
        try{
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionReceipt_PATH + req.params.customerID;
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionReceipt_PATH + req.params.trans_id;
         let options = {
             method: 'GET',
             url: _url,
@@ -143,7 +143,7 @@ class ReceiptsService {
 
     public transactionReceiptImg = async (req?: any) => {
        try{
-        let _url = secretUtil.ssl + "://" + secretUtil.ReceiptImgDomain + secretUtil.TransactionReceiptImg_PATH + "=" + + new URLSearchParams(req.query);
+        let _url = secretUtil.ssl + "://" + secretUtil.ReceiptImgDomain + secretUtil.TransactionReceiptImg_PATH +  "=" + req.params.filename + "?" + new URLSearchParams(req.query);
         let options = {
             method: 'GET',
             url: _url,
@@ -158,7 +158,7 @@ class ReceiptsService {
             request(options, (err, res) => {
                 if (err) return resolve(null);
                 try {
-                    resolve(JSON.parse(res.body));
+                    resolve(res.body);
                 }
                 catch (ex) {
                     return resolve(null);
@@ -171,8 +171,6 @@ class ReceiptsService {
             
         }
     }
-
-
 
     public getDate = async (req?: any) => {
        try{

@@ -44,6 +44,7 @@
         }
       }
     },
+
     "/dashboard/analyticsCard": {
       "get": {
         "summary": "Get all details of transaction/settlement analytic card.",
@@ -74,6 +75,7 @@
         }
       }
     },
+
     "/dashboard/topCustomerCardList": {
       "get": {
         "summary": "Get all details of top customers by receipt count,receipt amount & best performing cards.",
@@ -104,6 +106,7 @@
         }
       }
     },
+
     "/digitalReceipt/transaction": {
       "get": {
         "summary": "To get filter parameters to refine transaction records",
@@ -134,6 +137,7 @@
         }
       }
     },
+
     "/digitalReceipt/transactionList/{page}": {
       "get": {
         "summary": "Get all the transaction list by current date",
@@ -299,10 +303,11 @@
         }
       }
     },
-    "/digitalReceipt/transactionReceipt/{customerID}": {
+
+    "/digitalReceipt/transactionReceipt/{trans_id}": {
       "get": {
-        "summary": "Get transaction receipt by selected customer id",
-        "description": "Get transaction receipt by selected customer id",
+        "summary": "Get transaction receipt by selected transaction id",
+        "description": "Get transaction receipt by selected transaction id",
         "produces": [
           "application/json"
         ],
@@ -311,7 +316,7 @@
         ],
         "parameters": [
           {
-            "name": "customerID",
+            "name": "trans_id",
             "in": "path",
             "required": true,
             "type": "integer",
@@ -337,7 +342,8 @@
         }
       }
     },
-    "/digitalReceipt/transactionReceiptImg": {
+
+    "/digitalReceipt/transactionReceiptImg/{filename}": {
       "get": {
         "summary": "Get transaction receipt image",
         "description": "Get transaction receipt image",
@@ -348,6 +354,19 @@
           "Digital Receipt"
         ],
         "parameters": [
+          {
+            "name": "filename",
+            "in": "path",
+            "type": "string",
+            "default": "1f8b0800000000000000358b4b0ec23010c5ae82f4b6f9cc9ba469e712dc21a5082a5501d1c0f9290bbcb32553852aaa62490702cbf5137f1ea951181993fcb169b2a3781ba7795ea478493e9b1fc493f9d8c3b3dd80f3badf6beba71080feaa6daf97be3e1a6032964216a0bdb70dc84e5d72fc0241fdaadb81000000"
+          },
+          {
+            "name": "encryptSwitch",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "default": "0"
+          }
         ],
         "responses": {
           "200": {
@@ -355,7 +374,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/todosResponse"
+                "$ref": "#/definitions/transactionReceiptImg"
               }
             }
           },
@@ -368,6 +387,7 @@
         }
       }
     },
+
     "/digitalReceipt/exportTransaction/": {
       "get": {
         "summary": "Export transaction details by selected dates",
@@ -415,6 +435,7 @@
         }
       }
     },
+
     "/digitalReceipt/settlement": {
       "get": {
         "summary": "To get filter parameters to refine settlement records",
@@ -445,6 +466,7 @@
         }
       }
     },
+
     "/digitalReceipt/settlementList/{page}": {
       "get": {
         "summary": "Get all the settlement list by putting date range",
@@ -560,6 +582,7 @@
         }
       }
     },
+
     "/digitalPaymentGateway/transaction/": {
       "get": {
         "summary": "To get all details of payment gateway transaction by selected dates",
@@ -590,6 +613,7 @@
         }
       }
     },
+
     "/addNewUser": {
       "post": {
         "summary": "Save the task",
@@ -636,6 +660,7 @@
         }
       }
     },
+
     "/footer/version": {
       "get": {
         "summary": "Get footer version",
@@ -663,6 +688,7 @@
         }
       }
     },
+
     "/getUrlPath": {
       "get": {
         "summary": "Get URL path",
@@ -1053,6 +1079,14 @@
         },
         "encryptionSwitch": {
           "type": "string"
+        }
+      }
+    },
+    "transactionReceiptImg": {
+      "type": "object",
+      "properties": {
+        "encryptSwitch ": {
+          "type": "integer"
         }
       }
     },

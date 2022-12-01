@@ -63,12 +63,12 @@ class MasterRouteV1 extends BaseRoutes {
             }) 
 
         
-        this.router.get('/digitalReceipt/transactionReceipt/'+':customerID',
+        this.router.get('/digitalReceipt/transactionReceipt/'+':trans_id',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transactionReceipt(req, res, next);
             })     
 
-        this.router.get('/digitalReceipt/transactionReceiptImg',
+        this.router.get('/digitalReceipt/transactionReceiptImg/'+':filename',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transactionReceiptImg(req, res, next);
             })         
