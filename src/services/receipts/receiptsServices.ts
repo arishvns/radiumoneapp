@@ -233,6 +233,66 @@ class ReceiptsService {
         }
     }
 
+    public TransactionUploadInit = async (req?: any) => {
+        var resObj = {};
+       try{
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionUploadInit_PATH 
+        let options = {
+            method: 'GET',
+            url: _url,
+            headers: {
+                Authorization: "Bearer " + secretUtil.token,
+                "Content-Type": 'application/json'
+            },
+            strictSSL: false
+        }
+
+        let resData: any = await new Promise((resolve, reject) => {
+            request(options, (err, res) => {
+                if (err) return resolve(null);
+                try {
+                    resolve(JSON.parse(res.body));
+                }
+                catch (ex) {
+                    return resolve(null);
+                }
+            });
+        });
+        return resData
+        } catch (err) {           
+        }
+    }
+
+    public TransactionUploadProcessReceipt = async (req?: any) => {
+        var resObj = {};
+       try{
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionUploadProcessReceipt_PATH; 
+        let options = {
+            method: 'GET',
+            url: _url,
+            headers: {
+                Authorization: "Bearer " + secretUtil.token,
+                "Content-Type": 'application/json'
+            },
+            strictSSL: false
+        }
+
+        let resData: any = await new Promise((resolve, reject) => {
+            request(options, (err, res) => {
+                if (err) return resolve(null);
+                try {
+                    resolve(JSON.parse(res.body));
+                }
+                catch (ex) {
+                    return resolve(null);
+                }
+            });
+        });
+        return resData
+        } catch (err) {           
+        }
+    }
+
 
 
 }

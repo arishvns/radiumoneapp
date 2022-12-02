@@ -388,6 +388,57 @@
       }
     },
 
+    "/digitalReceipt/TransactionUploadProcessReceipt/": {
+      "post": {
+        "summary": "To get info of uplaod image receipt processing under find receipts",
+        "description": "To get info of uplaod image receipt processing under find receipts",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Digital Receipt"
+        ],
+        "requestBody": {
+          "content": {
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "requestBody",
+            "description": "Upload file",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TransactionUploadProcessReceipt"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
     "/digitalReceipt/exportTransaction/": {
       "get": {
         "summary": "Export transaction details by selected dates",
@@ -614,6 +665,222 @@
       }
     },
 
+    "/digitalPayNow/transaction/": {
+      "get": {
+        "summary": "To get all details of pay now transaction",
+        "description": "To get all details of pay now transaction",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PayNow"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/payNowTransaction"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/digitalPayNow/getCreateData/": {
+      "get": {
+        "summary": "To get all details of pay now transaction",
+        "description": "To get all details of pay now transaction",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PayNow"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/payNowGetCreateData"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/digitalPayNow/bankstatement/": {
+      "get": {
+        "summary": "To get all details of bank statement transaction",
+        "description": "To get all details of bank statement transaction",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PayNow"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/payNowbankstatement"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/digitalPayNow/getReportTypes/": {
+      "get": {
+        "summary": "To get all details of report types",
+        "description": "To get all details of report types",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PayNow"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/payNowgetReportTypes"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/digitalPreAuth/inIt/": {
+      "get": {
+        "summary": "To get search results of pre-authorisation",
+        "description": "To get search results of pre-authorisation",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PreAuthorisation"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PreAuthorisationInit"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/digitalPreAuth/deviceHealth/{page}": {
+      "get": {
+        "summary": "To get all device health",
+        "description":  "To get all device health",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PreAuthorisation"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default":"true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PreAuthorisationInit"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
     "/addNewUser": {
       "post": {
         "summary": "Save the task",
@@ -780,6 +1047,7 @@
         }
       }
     },
+
     "analyticsCard": {
       "type": "object",
       "properties": {
@@ -823,6 +1091,7 @@
         }
       }
     },
+
     "topCustomerAmtDTOListOfTopCustomerCardList": {
       "properties": {
         "cardNumberMask": {
@@ -836,6 +1105,7 @@
         }
       }
     },
+
     "best_performing_cardsOfTopCustomerCardList": {
       "properties": {
         "cardNumberMask": {
@@ -846,6 +1116,7 @@
         }
       }
     },
+
     "topCustomerCardList": {
       "type": "object",
       "properties": {
@@ -872,6 +1143,7 @@
         }
       }
     },
+
     "transaction": {
       "type": "object",
       "properties": {
@@ -997,6 +1269,7 @@
         }
       }
     },
+
     "transactionList": {
       "type": "object",
       "properties": {
@@ -1053,6 +1326,7 @@
         }
       }
     },
+
     "transactionReceipt": {
       "type": "object",
       "properties": {
@@ -1082,6 +1356,7 @@
         }
       }
     },
+
     "transactionReceiptImg": {
       "type": "object",
       "properties": {
@@ -1090,6 +1365,145 @@
         }
       }
     },
+
+    "TransactionUploadInit": {
+      "type": "object",
+      "properties": {
+        "maxExportRange ": {
+          "type": "string"
+        },"dateRange ": {
+          "type": "string"
+        }
+      }
+    },
+
+    "TransactionUploadProcessReceipt": {
+      "type": "object",
+      "properties": {
+        "finalOutputBase64Str ": {
+          "type": "string"
+        },"inputFileName ": {
+          "type": "string"
+        },"originalImgBase64Str ": {
+          "type": "string"
+        },"processedReceiptFileName ": {
+          "type": "string"
+        },"receiptChecksum ": {
+          "type": "string"
+        }
+      }
+    },
+
+    "payNowTransaction":{
+      "type": "object",
+      "properties": {
+        "branchCodeString ": {
+          "type": "array",
+            "items":{
+            "type":"string"
+        }
+      },
+        "dateRange":{
+          "type":"string"
+        },
+        "transactionTypeList":{
+          "type":"array",
+          "items":[]
+        },
+        "isDeviceListEmpty":{
+          "type":"boolean"
+        },
+        "currentIndex":{
+          "type":"integer"
+        },
+        "beginIndex":{
+          "type":"integer"
+        },
+        "endIndex":{
+          "type":"integer"
+        },
+        "totalPages":{
+          "type":"integer"
+        }
+      }
+    },
+
+    "payNowGetCreateData":{
+      "type": "object",
+      "properties": {
+        "currencyMap ": {
+          "type": "object",
+            "items":{
+            "type":"object"
+        }
+      }
+      }
+    },
+
+    "payNowbankstatement":{
+      "type": "object",
+      "properties": {
+        "branchCodeString ": {
+          "type": "array",
+            "items":{
+            "type":"string"
+        }
+      },
+        "dateRange":{
+          "type":"string"
+        },
+        "transactionTypeList":{
+          "type":"array",
+          "items":[]
+        },
+        "isDeviceListEmpty":{
+          "type":"boolean"
+        },
+        "currentIndex":{
+          "type":"integer"
+        },
+        "beginIndex":{
+          "type":"integer"
+        },
+        "endIndex":{
+          "type":"integer"
+        },
+        "totalPages":{
+          "type":"integer"
+        }
+      }
+    },
+
+    "payNowgetReportTypes":{
+      "type": "object",
+      "properties": {
+        "1": {
+          "type": "string"
+        },
+        "2": {
+          "type": "string"
+        },
+        "3": {
+          "type": "string"
+        },
+        "4": {
+          "type": "string"
+        }
+      }
+    },
+
+    "PreAuthorisationInit":{
+      "type": "object",
+      "properties": {
+        "maxExportRange": {
+          "type": "string"
+        },
+        "dateRange": {
+          "type": "string"
+        }
+      }
+    },
+
     "topCustomerCountDTOListOfTopCustomerCardList": {
       "properties": {
         "cardNumberMask": {
@@ -1103,6 +1517,7 @@
         }
       }
     },
+
     "transactionDTOListOftransactionList": {
       "properties": {
         "msg_id": {
@@ -1167,6 +1582,7 @@
         }
       }
     },
+
     "exportTransaction": {
       "type": "object",
       "properties": {
@@ -1178,6 +1594,7 @@
         }
       }
     },
+
     "txnSettlementDTOListOfSettlementList": {
       "properties": {
         "id": {
@@ -1212,6 +1629,7 @@
         }
       }
     },
+
     "settlementList": {
       "type": "object",
       "properties": {
@@ -1284,6 +1702,7 @@
         }
       }
     },
+
     "settlement": {
       "type": "object",
       "properties": {
@@ -1343,6 +1762,7 @@
         }
       }
     },
+
     "txnSettleHostNameEntityListOfSettlement": {
       "properties": {
         "id": {
@@ -1356,6 +1776,7 @@
         }
       }
     },
+
     "topCustomerCountResponse": {
       "type": "object",
       "properties": {
@@ -1400,6 +1821,7 @@
         }
       }
     },
+
     "resellerResponse": {
       "type": "object",
       "properties": {
@@ -1459,6 +1881,7 @@
         }
       }
     },
+
     "topCustomerAmtResponse": {
       "type": "object",
       "properties": {
@@ -1508,6 +1931,7 @@
         }
       }
     },
+
     "generalStatsResponse": {
       "type": "object",
       "properties": {
@@ -1584,6 +2008,7 @@
         }
       }
     },
+
     "generalDayAndWeekCountStatsResponse": {
       "type": "object",
       "properties": {
@@ -1660,6 +2085,7 @@
         }
       }
     },
+
     "todosResponse": {
       "type": "object",
       "properties": {
@@ -1677,6 +2103,7 @@
         }
       }
     },
+
     "addNewUser": {
       "type": "object",
       "properties": {
@@ -1734,6 +2161,7 @@
         }
       }
     },
+    
     "InvalidResponse": {
       "type": "object",
       "properties": {
@@ -1745,5 +2173,6 @@
         }
       }
     }
+
   }
 }

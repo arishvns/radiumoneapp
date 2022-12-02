@@ -7,6 +7,9 @@ import { dashboardControler } from '../../controllers/Dashboard/dashoardControll
 import { receiptsControler } from '../../controllers/Receipts/receiptsController';
 import { userControler } from '../../controllers/Users/userController';
 import { paymentGatewayControler } from "../../controllers/PaymentGateway/paymentGatewayController";
+import { payNowService } from "../../services/PayNow/PayNowService";
+import { payNowController } from "../../controllers/PayNow/PayNowController";
+import { preAuthController } from "../../controllers/PreAuthorisation/PreAuthController";
 
 
 const swaggerUi = require('swagger-ui-express');
@@ -28,12 +31,12 @@ class MasterRouteV1 extends BaseRoutes {
         this.router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { customCss }));
 
         // Dashboard endpoints
-        
+
         this.router.get('/dashboard/dashboardCard',
             (req: Request, res: Response, next: NextFunction) => {
                 dashboardControler.dashboardCard(req, res, next);
             })
-            
+
         this.router.get('/dashboard/analyticsCard',
             (req: Request, res: Response, next: NextFunction) => {
                 dashboardControler.analyticsCard(req, res, next);
@@ -50,44 +53,84 @@ class MasterRouteV1 extends BaseRoutes {
                 receiptsControler.transaction(req, res, next);
             })
 
-
         this.router.get('/digitalReceipt/exportTransaction/',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.exportTransaction(req, res, next);
+            })          
+
+        this.router.get('/digitalReceipt/transactionList/' + ':page',
+            (req: Request, res: Response, next: NextFunction) => {
+                receiptsControler.transactionList(req, res, next);
             })
 
 
-        this.router.get('/digitalReceipt/transactionList/'+ ':page',
-            (req: Request, res: Response, next: NextFunction) => {
-                receiptsControler.transactionList(req, res, next);
-            }) 
-
-        
-        this.router.get('/digitalReceipt/transactionReceipt/'+':trans_id',
+        this.router.get('/digitalReceipt/transactionReceipt/' + ':trans_id',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transactionReceipt(req, res, next);
-            })     
+            })
 
-        this.router.get('/digitalReceipt/transactionReceiptImg/'+':filename',
+        this.router.get('/digitalReceipt/transactionReceiptImg/' + ':filename',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transactionReceiptImg(req, res, next);
-            })         
+            })
+
+        this.router.get('/digitalReceipt/TransactionUploadInit/',
+            (req: Request, res: Response, next: NextFunction) => {
+                receiptsControler.TransactionUploadInit(req, res, next);
+            })
+            
+        this.router.get('/digitalReceipt/TransactionUploadProcessReceipt/',
+            (req: Request, res: Response, next: NextFunction) => {
+                receiptsControler.TransactionUploadProcessReceipt(req, res, next);
+            })
+            
 
         this.router.get('/digitalReceipt/settlement',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.getDate(req, res, next);
             })
 
-        this.router.get('/digitalReceipt/settlementList/'+ ':page',
+        this.router.get('/digitalReceipt/settlementList/' + ':page',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.settlementList(req, res, next);
-            }) 
+            })
 
-           // paymenet gateway routes 
-            this.router.get('/digitalPaymentGateway/transaction/',
+        // payment gateway routes 
+        this.router.get('/digitalPaymentGateway/transaction/',
             (req: Request, res: Response, next: NextFunction) => {
                 paymentGatewayControler.paymentGatewayTransaction(req, res, next);
             })
+
+        // Paynow routes 
+        
+        this.router.get('/digitalPayNow/transaction/',
+            (req: Request, res: Response, next: NextFunction) => {
+                payNowController.payNowTransaction(req, res, next);
+        })
+        this.router.get('/digitalPayNow/getCreateData/',
+            (req: Request, res: Response, next: NextFunction) => {
+                payNowController.payNowGetCreateData(req, res, next);
+        })
+        this.router.get('/digitalPayNow/bankstatement/',
+            (req: Request, res: Response, next: NextFunction) => {
+                payNowController.payNowbankstatement(req, res, next);
+        })
+        this.router.get('/digitalPayNow/getReportTypes/',
+            (req: Request, res: Response, next: NextFunction) => {
+                payNowController.payNowgetReportTypes(req, res, next);
+        })
+
+        //PreAuthorisation Route
+
+        this.router.get('/digitalPreAuth/inIt/',
+        (req: Request, res: Response, next: NextFunction) => {
+            preAuthController.preAuthInIt(req, res, next);
+        })
+
+        this.router.get('/digitalPreAuth/deviceHealth/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            preAuthController.preAuthdeviceHealth(req, res, next);
+        })
 
 
         // Users endpoints
@@ -95,9 +138,9 @@ class MasterRouteV1 extends BaseRoutes {
             (req: Request, res: Response, next: NextFunction) => {
                 userControler.addNewUser(req, res, next);
             })
-        
-         // default url
-         this.router.get('/config',
+
+        // default url
+        this.router.get('/config',
             (req: Request, res: Response, next: NextFunction) => {
                 radiumControler.config(req, res, next);
             })
