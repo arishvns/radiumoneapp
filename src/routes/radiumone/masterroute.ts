@@ -10,6 +10,7 @@ import { paymentGatewayControler } from "../../controllers/PaymentGateway/paymen
 import { payNowService } from "../../services/PayNow/PayNowService";
 import { payNowController } from "../../controllers/PayNow/PayNowController";
 import { preAuthController } from "../../controllers/PreAuthorisation/PreAuthController";
+import { leadManagementController } from "../../controllers/Lead-Management/GenerateLeadController";
 
 
 const swaggerUi = require('swagger-ui-express');
@@ -132,6 +133,17 @@ class MasterRouteV1 extends BaseRoutes {
             preAuthController.preAuthdeviceHealth(req, res, next);
         })
 
+        this.router.get('/digitalPreAuth/debitCardBin/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            preAuthController.preAuthDebitCardBin(req, res, next);
+        })
+
+        // LeadManagement Route
+
+        this.router.get('/digitalLeadManagement/generateLead/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            leadManagementController.generateLead(req, res, next);
+        })
 
         // Users endpoints
         this.router.post('/addNewUser',

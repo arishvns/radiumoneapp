@@ -5,14 +5,14 @@
     "version": "1.0.0",
     "title": "RadiumOne API",
     "contact": {
-      "email": "abc@gmail.com"
+      "email": "naman@techcompiler.com"
     }
   },
   "schemes": [
     "http"
   ],
   "host": "40.87.100.33",
-  "basePath": "/api",
+  "basePath": "/api",                                       
   "paths": {
     "/dashboard/dashboardCard": {
       "get": {
@@ -44,7 +44,6 @@
         }
       }
     },
-
     "/dashboard/analyticsCard": {
       "get": {
         "summary": "Get all details of transaction/settlement analytic card.",
@@ -75,7 +74,6 @@
         }
       }
     },
-
     "/dashboard/topCustomerCardList": {
       "get": {
         "summary": "Get all details of top customers by receipt count,receipt amount & best performing cards.",
@@ -106,7 +104,6 @@
         }
       }
     },
-
     "/digitalReceipt/transaction": {
       "get": {
         "summary": "To get filter parameters to refine transaction records",
@@ -137,7 +134,6 @@
         }
       }
     },
-
     "/digitalReceipt/transactionList/{page}": {
       "get": {
         "summary": "Get all the transaction list by current date",
@@ -303,7 +299,6 @@
         }
       }
     },
-
     "/digitalReceipt/transactionReceipt/{trans_id}": {
       "get": {
         "summary": "Get transaction receipt by selected transaction id",
@@ -342,7 +337,6 @@
         }
       }
     },
-
     "/digitalReceipt/transactionReceiptImg/{filename}": {
       "get": {
         "summary": "Get transaction receipt image",
@@ -387,7 +381,6 @@
         }
       }
     },
-
     "/digitalReceipt/TransactionUploadProcessReceipt/": {
       "post": {
         "summary": "To get info of uplaod image receipt processing under find receipts",
@@ -438,7 +431,6 @@
         }
       }
     },
-
     "/digitalReceipt/exportTransaction/": {
       "get": {
         "summary": "Export transaction details by selected dates",
@@ -486,7 +478,6 @@
         }
       }
     },
-
     "/digitalReceipt/settlement": {
       "get": {
         "summary": "To get filter parameters to refine settlement records",
@@ -517,7 +508,6 @@
         }
       }
     },
-
     "/digitalReceipt/settlementList/{page}": {
       "get": {
         "summary": "Get all the settlement list by putting date range",
@@ -633,7 +623,6 @@
         }
       }
     },
-
     "/digitalPaymentGateway/transaction/": {
       "get": {
         "summary": "To get all details of payment gateway transaction by selected dates",
@@ -664,7 +653,6 @@
         }
       }
     },
-
     "/digitalPayNow/transaction/": {
       "get": {
         "summary": "To get all details of pay now transaction",
@@ -695,7 +683,6 @@
         }
       }
     },
-
     "/digitalPayNow/getCreateData/": {
       "get": {
         "summary": "To get all details of pay now transaction",
@@ -726,7 +713,6 @@
         }
       }
     },
-
     "/digitalPayNow/bankstatement/": {
       "get": {
         "summary": "To get all details of bank statement transaction",
@@ -757,7 +743,6 @@
         }
       }
     },
-
     "/digitalPayNow/getReportTypes/": {
       "get": {
         "summary": "To get all details of report types",
@@ -788,7 +773,6 @@
         }
       }
     },
-
     "/digitalPreAuth/inIt/": {
       "get": {
         "summary": "To get search results of pre-authorisation",
@@ -819,11 +803,10 @@
         }
       }
     },
-
     "/digitalPreAuth/deviceHealth/{page}": {
       "get": {
         "summary": "To get all device health",
-        "description":  "To get all device health",
+        "description": "To get all device health",
         "produces": [
           "application/json"
         ],
@@ -858,7 +841,7 @@
             "required": false,
             "type": "boolean",
             "allowEmptyValue": true,
-            "default":"true"
+            "default": "true"
           }
         ],
         "responses": {
@@ -881,6 +864,137 @@
       }
     },
 
+    "/digitalPreAuth/debitCardBin/{page}": {
+      "get": {
+        "summary": "To get all details of deleted debit cards",
+        "description": "To get all details of deleted debit cards",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PreAuthorisation"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default":"10"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DebitCardBin"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/digitalLeadManagement/generateLead/{page}": {
+      "get": {
+        "summary": "To get all generated leads accordingly by date",
+        "description": "To get all generated leads accordingly by date",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "DigitalLeadManagement"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "default": "10",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default": "true"
+          },
+          {
+            "name": "sortProperty",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "userType",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GenerateLead"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/addNewUser": {
       "post": {
         "summary": "Save the task",
@@ -927,7 +1041,6 @@
         }
       }
     },
-
     "/footer/version": {
       "get": {
         "summary": "Get footer version",
@@ -955,7 +1068,6 @@
         }
       }
     },
-
     "/getUrlPath": {
       "get": {
         "summary": "Get URL path",
@@ -1047,7 +1159,6 @@
         }
       }
     },
-
     "analyticsCard": {
       "type": "object",
       "properties": {
@@ -1091,7 +1202,6 @@
         }
       }
     },
-
     "topCustomerAmtDTOListOfTopCustomerCardList": {
       "properties": {
         "cardNumberMask": {
@@ -1105,7 +1215,6 @@
         }
       }
     },
-
     "best_performing_cardsOfTopCustomerCardList": {
       "properties": {
         "cardNumberMask": {
@@ -1116,7 +1225,6 @@
         }
       }
     },
-
     "topCustomerCardList": {
       "type": "object",
       "properties": {
@@ -1143,7 +1251,6 @@
         }
       }
     },
-
     "transaction": {
       "type": "object",
       "properties": {
@@ -1269,7 +1376,6 @@
         }
       }
     },
-
     "transactionList": {
       "type": "object",
       "properties": {
@@ -1326,7 +1432,6 @@
         }
       }
     },
-
     "transactionReceipt": {
       "type": "object",
       "properties": {
@@ -1356,7 +1461,6 @@
         }
       }
     },
-
     "transactionReceiptImg": {
       "type": "object",
       "properties": {
@@ -1365,116 +1469,115 @@
         }
       }
     },
-
     "TransactionUploadInit": {
       "type": "object",
       "properties": {
         "maxExportRange ": {
           "type": "string"
-        },"dateRange ": {
+        },
+        "dateRange ": {
           "type": "string"
         }
       }
     },
-
     "TransactionUploadProcessReceipt": {
       "type": "object",
       "properties": {
         "finalOutputBase64Str ": {
           "type": "string"
-        },"inputFileName ": {
+        },
+        "inputFileName ": {
           "type": "string"
-        },"originalImgBase64Str ": {
+        },
+        "originalImgBase64Str ": {
           "type": "string"
-        },"processedReceiptFileName ": {
+        },
+        "processedReceiptFileName ": {
           "type": "string"
-        },"receiptChecksum ": {
+        },
+        "receiptChecksum ": {
           "type": "string"
         }
       }
     },
-
-    "payNowTransaction":{
+    "payNowTransaction": {
       "type": "object",
       "properties": {
         "branchCodeString ": {
           "type": "array",
-            "items":{
-            "type":"string"
-        }
-      },
-        "dateRange":{
-          "type":"string"
+          "items": {
+            "type": "string"
+          }
         },
-        "transactionTypeList":{
-          "type":"array",
-          "items":[]
+        "dateRange": {
+          "type": "string"
         },
-        "isDeviceListEmpty":{
-          "type":"boolean"
+        "transactionTypeList": {
+          "type": "array",
+          "items": []
         },
-        "currentIndex":{
-          "type":"integer"
+        "isDeviceListEmpty": {
+          "type": "boolean"
         },
-        "beginIndex":{
-          "type":"integer"
+        "currentIndex": {
+          "type": "integer"
         },
-        "endIndex":{
-          "type":"integer"
+        "beginIndex": {
+          "type": "integer"
         },
-        "totalPages":{
-          "type":"integer"
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
         }
       }
     },
-
-    "payNowGetCreateData":{
+    "payNowGetCreateData": {
       "type": "object",
       "properties": {
         "currencyMap ": {
           "type": "object",
-            "items":{
-            "type":"object"
+          "items": {
+            "type": "object"
+          }
         }
       }
-      }
     },
-
-    "payNowbankstatement":{
+    "payNowbankstatement": {
       "type": "object",
       "properties": {
         "branchCodeString ": {
           "type": "array",
-            "items":{
-            "type":"string"
-        }
-      },
-        "dateRange":{
-          "type":"string"
+          "items": {
+            "type": "string"
+          }
         },
-        "transactionTypeList":{
-          "type":"array",
-          "items":[]
+        "dateRange": {
+          "type": "string"
         },
-        "isDeviceListEmpty":{
-          "type":"boolean"
+        "transactionTypeList": {
+          "type": "array",
+          "items": []
         },
-        "currentIndex":{
-          "type":"integer"
+        "isDeviceListEmpty": {
+          "type": "boolean"
         },
-        "beginIndex":{
-          "type":"integer"
+        "currentIndex": {
+          "type": "integer"
         },
-        "endIndex":{
-          "type":"integer"
+        "beginIndex": {
+          "type": "integer"
         },
-        "totalPages":{
-          "type":"integer"
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
         }
       }
     },
-
-    "payNowgetReportTypes":{
+    "payNowgetReportTypes": {
       "type": "object",
       "properties": {
         "1": {
@@ -1491,8 +1594,7 @@
         }
       }
     },
-
-    "PreAuthorisationInit":{
+    "PreAuthorisationInit": {
       "type": "object",
       "properties": {
         "maxExportRange": {
@@ -1500,6 +1602,281 @@
         },
         "dateRange": {
           "type": "string"
+        }
+      }
+    },
+    "binFileList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "checksum": {
+          "type": "string"
+        },
+        "createdDateTime": {
+          "type": "string"
+        },
+        "progressPercentage": {
+          "type": "integer"
+        }
+      }
+    },
+    "leadList": {
+      "type": "object",
+      "properties": {
+        "leadId": {
+          "type": "integer"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "contactPerson": {
+          "type": "string"
+        },
+        "contactNumber": {
+          "type": "string"
+        },
+        "contactEmail": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "myRmNumber": {
+          "type": "string"
+        },
+        "myRmEmail": {
+          "type": "string"
+        },
+        "accountNumber": {
+          "type": "string"
+        },
+        "assigned": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "statusName": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "field1": {
+          "type": "string"
+        },
+        "field2": {
+          "type": "string"
+        },
+        "field3": {
+          "type": "string"
+        },
+        "field4": {
+          "type": "string"
+        },
+        "field5": {
+          "type": "string"
+        },
+        "field6": {
+          "type": "string"
+        },
+        "field7": {
+          "type": "string"
+        },
+        "field8": {
+          "type": "string"
+        },
+        "field9": {
+          "type": "string"
+        },
+        "field10": {
+          "type": "string"
+        },
+        "field11": {
+          "type": "string"
+        },
+        "field12": {
+          "type": "string"
+        },
+        "field13": {
+          "type": "string"
+        },
+        "field14": {
+          "type": "string"
+        },
+        "field15": {
+          "type": "string"
+        },
+        "field16": {
+          "type": "string"
+        },
+        "field17": {
+          "type": "string"
+        },
+        "field18": {
+          "type": "string"
+        },
+        "field19": {
+          "type": "string"
+        },
+        "field20": {
+          "type": "string"
+        },
+        "lastUpdatedBy": {
+          "type": "string"
+        },
+        "lastUpdatedByName": {
+          "type": "string"
+        },
+        "lastUpdatedDateTime": {
+          "type": "string"
+        }
+      }
+    },
+    "GenerateLead": {
+      "type": "object",
+      "properties": {
+        "leadList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/leadList"
+          }
+        },
+        "helperDTO": {
+          "type": "object",
+          "properties": {
+            "current": {
+              "type": "integer"
+            },
+            "begin": {
+              "type": "integer"
+            },
+            "end": {
+              "type": "integer"
+            },
+            "startFrm": {
+              "type": "integer"
+            },
+            "endFrm": {
+              "type": "integer"
+            },
+            "totalResults": {
+              "type": "integer"
+            }
+          }
+        },
+        "statusMaps": {
+          "type": "object",
+          "properties": {
+            "8": {
+              "type": "integer"
+            },
+            "9": {
+              "type": "integer"
+            },
+            "10": {
+              "type": "integer"
+            },
+            "11": {
+              "type": "integer"
+            },
+            "12": {
+              "type": "integer"
+            },
+            "13": {
+              "type": "integer"
+            },
+            "14": {
+              "type": "integer"
+            }
+          }
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "maxFieldNo": {
+          "type": "integer"
+        },
+        "binFileList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/binFileList"
+          }
+        }
+      }
+    },
+    "DebitCardBin": {
+      "type": "object",
+      "properties": {
+        "helperDTO": {
+          "type": "object",
+          "properties": {
+            "current": {
+              "type": "integer"
+            },
+            "begin": {
+              "type": "integer"
+            },
+            "end": {
+              "type": "integer"
+            },
+            "startFrm": {
+              "type": "integer"
+            },
+            "endFrm": {
+              "type": "integer"
+            },
+            "totalResults": {
+              "type": "integer"
+            }
+          }
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "binFileList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/binFileList"
+          }
         }
       }
     },
@@ -1517,7 +1894,6 @@
         }
       }
     },
-
     "transactionDTOListOftransactionList": {
       "properties": {
         "msg_id": {
@@ -1582,7 +1958,6 @@
         }
       }
     },
-
     "exportTransaction": {
       "type": "object",
       "properties": {
@@ -1594,7 +1969,6 @@
         }
       }
     },
-
     "txnSettlementDTOListOfSettlementList": {
       "properties": {
         "id": {
@@ -1629,7 +2003,6 @@
         }
       }
     },
-
     "settlementList": {
       "type": "object",
       "properties": {
@@ -1702,7 +2075,6 @@
         }
       }
     },
-
     "settlement": {
       "type": "object",
       "properties": {
@@ -1762,7 +2134,6 @@
         }
       }
     },
-
     "txnSettleHostNameEntityListOfSettlement": {
       "properties": {
         "id": {
@@ -1776,7 +2147,6 @@
         }
       }
     },
-
     "topCustomerCountResponse": {
       "type": "object",
       "properties": {
@@ -1821,7 +2191,6 @@
         }
       }
     },
-
     "resellerResponse": {
       "type": "object",
       "properties": {
@@ -1881,7 +2250,6 @@
         }
       }
     },
-
     "topCustomerAmtResponse": {
       "type": "object",
       "properties": {
@@ -1931,7 +2299,6 @@
         }
       }
     },
-
     "generalStatsResponse": {
       "type": "object",
       "properties": {
@@ -2008,7 +2375,6 @@
         }
       }
     },
-
     "generalDayAndWeekCountStatsResponse": {
       "type": "object",
       "properties": {
@@ -2085,7 +2451,6 @@
         }
       }
     },
-
     "todosResponse": {
       "type": "object",
       "properties": {
@@ -2103,7 +2468,6 @@
         }
       }
     },
-
     "addNewUser": {
       "type": "object",
       "properties": {
@@ -2161,7 +2525,6 @@
         }
       }
     },
-    
     "InvalidResponse": {
       "type": "object",
       "properties": {
@@ -2173,6 +2536,5 @@
         }
       }
     }
-
   }
 }

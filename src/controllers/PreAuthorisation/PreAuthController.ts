@@ -18,6 +18,7 @@ class PreAuthController extends BaseController {
             return null;
         }
     }
+
     public async preAuthdeviceHealth(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await preAuthService.preAuthdeviceHealth();
@@ -26,6 +27,17 @@ class PreAuthController extends BaseController {
             return null;
         }
     }
+
+    public async preAuthDebitCardBin(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await preAuthService.preAuthDebitCardBin(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
+
    
 
 
