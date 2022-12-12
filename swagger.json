@@ -717,7 +717,8 @@
             "name": "card_no",
             "in": "query",
             "required": false,
-            "type": "string"
+            "type": "string",
+            "allowEmptyValue": true
           },
           {
             "name": "invoice_no",
@@ -729,9 +730,9 @@
           {
             "name": "ref_no",
             "in": "query",
-            "required": true,
+            "required": false,
             "type": "integer",
-            "default": "10"
+            "allowEmptyValue": true
           },
           {
             "name": "approveCode",
@@ -743,16 +744,16 @@
           {
             "name": "requestId",
             "in": "query",
-            "default": "true",
-            "required": true,
-            "type": "boolean"
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
           },
           {
             "name": "responseCode",
             "in": "query",
-            "required": true,
+            "required": false,
             "type": "integer",
-            "default": "10"
+            "allowEmptyValue": true
           },
           {
             "name": "entryMode",
@@ -764,23 +765,23 @@
           {
             "name": "time_range",
             "in": "query",
-            "required": true,
-            "type": "integer",
-            "default": "10"
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
           },
           {
             "name": "transaction_date_range",
             "in": "query",
             "required": true,
             "type": "string",
-            "default": "12/12/2022%20-%2012/12/2022"
+            "default": "01/12/2022-12/12/2022"
           },
           {
             "name": "customField",
             "in": "query",
             "required": false,
             "allowEmptyValue": true,
-            "type": "string"
+            "type": "string"     
           },
           {
             "name": "selectedCustomFieldKey",
@@ -800,15 +801,16 @@
             "name": "isDesc",
             "in": "query",
             "required": true,
+            "default":"true",
             "allowEmptyValue": true,
-            "type": "string"
+            "type": "boolean"
           },
           {
             "name": "pageLength",
             "in": "query",
-            "required": false,
+            "required": true,
             "allowEmptyValue": true,
-            "type": "string",
+            "type": "integer",
             "default":"10"
           }
         ],
@@ -1684,23 +1686,45 @@
           "items": {
             "type": "object",
             "$ref": "#/definitions/paygateTransactionDTOList"
+        }
         },
-        "inputFileName ": {
-          "type": "string"
+        "helperDTO ": {
+          "type": "object",
+          "properties": {
+            "current ": {
+              "type": "integer"
+            },
+            "begin": {
+              "type": "integer"
+            },
+            "end": {
+              "type": "integer"
+            },
+            "startFrm ": {
+              "type": "integer"
+            },
+            "endFrm": {
+              "type": "integer"
+            },
+            "totalResults": {
+              "type": "integer"
+            }
+          }
         },
-        "originalImgBase64Str ": {
-          "type": "string"
+        "currentIndex ": {
+          "type": "integer"
         },
-        "processedReceiptFileName ": {
-          "type": "string"
+        "beginIndex ": {
+          "type": "integer"
         },
-        "receiptChecksum ": {
-          "type": "string"
+        "endIndex ": {
+          "type": "integer"
+        },
+        "totalPages ": {
+          "type": "integer"
         }
       }
-    }
-    },
-    
+    },   
     "paygateTransactionDTOList": {
       "type": "object",
       "properties": {
