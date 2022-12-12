@@ -19,7 +19,7 @@ class SecretUtil {
     
     public Domain = "dev-build.radiumone.io/v3/uiapi";
     public ReceiptImgDomain = "dev-build.radiumone.io/vi";
-
+    public AuthToken_PATH = "/authenticate";
     //  Dashboard endPoints
     public TopCustomerCount_PATH = "/dashboard/topCustomerCount";
     
