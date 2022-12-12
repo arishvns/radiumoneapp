@@ -64,7 +64,6 @@ class MasterRouteV1 extends BaseRoutes {
                 receiptsControler.transactionList(req, res, next);
             })
 
-
         this.router.get('/digitalReceipt/transactionReceipt/' + ':trans_id',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transactionReceipt(req, res, next);
@@ -84,8 +83,7 @@ class MasterRouteV1 extends BaseRoutes {
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.TransactionUploadProcessReceipt(req, res, next);
             })
-            
-
+      
         this.router.get('/digitalReceipt/settlement',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.getDate(req, res, next);
@@ -100,6 +98,11 @@ class MasterRouteV1 extends BaseRoutes {
         this.router.get('/digitalPaymentGateway/transaction/',
             (req: Request, res: Response, next: NextFunction) => {
                 paymentGatewayControler.paymentGatewayTransaction(req, res, next);
+            })
+
+        this.router.get('/digitalPaymentGateway/paymentGatewayTransactionWithCustomQueryParams/'+ ':page',
+            (req: Request, res: Response, next: NextFunction) => {
+                paymentGatewayControler.paymentGatewayTransactionWithCustomQueryParams(req, res, next);
             })
 
         // Paynow routes 

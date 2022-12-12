@@ -14,6 +14,16 @@ class PaymentGatewayControler extends BaseController {
             return null;
         }
     }
+    public async paymentGatewayTransactionWithCustomQueryParams(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await paymentGatewayService.paymentGatewayTransactionWithCustomQueryParams(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
+
 
 }
 

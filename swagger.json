@@ -653,6 +653,184 @@
         }
       }
     },
+    "/digitalPaymentGateway/paymentGatewayTransactionWithCustomQueryParams/{page}": {
+      "get": {
+        "summary":  "To get all details of payment gateway transaction by selected dates with custom query parameters",
+        "description": "To get all details of payment gateway transaction by selected dates with custom query parameters",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Payment Gateway"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "branch_code",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "transaction_type",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "mid",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "tid",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "trace_no",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "batch_no",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "card_no",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "invoice_no",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "ref_no",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "default": "10"
+          },
+          {
+            "name": "approveCode",
+            "in": "query",
+            "required": false,
+            "allowEmptyValue": true,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "query",
+            "default": "true",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "responseCode",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "default": "10"
+          },
+          {
+            "name": "entryMode",
+            "in": "query",
+            "required": false,
+            "allowEmptyValue": true,
+            "type": "string"
+          },
+          {
+            "name": "time_range",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "default": "10"
+          },
+          {
+            "name": "transaction_date_range",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "12/12/2022%20-%2012/12/2022"
+          },
+          {
+            "name": "customField",
+            "in": "query",
+            "required": false,
+            "allowEmptyValue": true,
+            "type": "string"
+          },
+          {
+            "name": "selectedCustomFieldKey",
+            "in": "query",
+            "required": false,
+            "allowEmptyValue": true,
+            "type": "string"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "allowEmptyValue": true,
+            "type": "string"
+          }, 
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": true,
+            "allowEmptyValue": true,
+            "type": "string"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": false,
+            "allowEmptyValue": true,
+            "type": "string",
+            "default":"10"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/paymentGatewayTransactionWithCustomQueryParams"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/digitalPayNow/transaction/": {
       "get": {
         "summary": "To get all details of pay now transaction",
@@ -863,7 +1041,6 @@
         }
       }
     },
-
     "/digitalPreAuth/debitCardBin/{page}": {
       "get": {
         "summary": "To get all details of deleted debit cards",
@@ -925,7 +1102,6 @@
         }
       }
     },
-
     "/digitalLeadManagement/generateLead/{page}": {
       "get": {
         "summary": "To get all generated leads accordingly by date",
@@ -1500,6 +1676,93 @@
         }
       }
     },
+    "paymentGatewayTransactionWithCustomQueryParams": {
+      "type": "object",
+      "properties": {
+        "paygateTransactionDTOList ": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/paygateTransactionDTOList"
+        },
+        "inputFileName ": {
+          "type": "string"
+        },
+        "originalImgBase64Str ": {
+          "type": "string"
+        },
+        "processedReceiptFileName ": {
+          "type": "string"
+        },
+        "receiptChecksum ": {
+          "type": "string"
+        }
+      }
+    }
+    },
+    
+    "paygateTransactionDTOList": {
+      "type": "object",
+      "properties": {
+        "datetime ": {
+          "type": "string"
+        },
+        "mid": {
+          "type": "string"
+        },
+        "tid": {
+          "type": "string"
+        },
+        "transType": {
+          "type": "string"
+        },
+        "cardNo": {
+          "type": "string"
+        },
+        "cardType": {
+          "type": "string"
+        },
+        "authCode": {
+          "type": "string"
+        },
+        "baseAmount": {
+          "type": "string"
+        },
+        "dccAmount": {
+          "type": "string"
+        },
+        "invoiceNo": {
+          "type": "string"
+        },
+        "orderReferenceNo": {
+          "type": "string"
+        },
+        "traceNo": {
+          "type": "string"
+        },
+        "transId": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "entryMode": {
+          "type": "string"
+        },
+        "responseCode": {
+          "type": "string"
+        },
+        "paygateUuid": {
+          "type": "string"
+        },
+        "isReversed": {
+          "type": "string"
+        },
+        "addiMap": {
+          "type": "string"
+        }
+      }
+    },
     "payNowTransaction": {
       "type": "object",
       "properties": {
@@ -1880,7 +2143,6 @@
         }
       }
     },
-
     "topCustomerCountDTOListOfTopCustomerCardList": {
       "properties": {
         "cardNumberMask": {
