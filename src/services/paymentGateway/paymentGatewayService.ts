@@ -6,18 +6,25 @@ const key = 'RCClicence';
 import request from 'request';
 import { secretUtil } from '../../utils/secretutil';
 import { response } from 'express';
+import { authenticateService } from '../authenticate/authenticateServices';
 
 
 class PaymentGatewayService {
 
     public paymentGatewayTransaction = async (req?: any) => {
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
        try{
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PaymentGatewayTransaction_PATH;
+        console.log("Token:", token);
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -71,7 +78,6 @@ class PaymentGatewayService {
             return err;
         }
     }
-
 
 
 }

@@ -6,6 +6,7 @@ const key = 'RCClicence';
 import request from 'request';
 import { secretUtil } from '../../utils/secretutil';
 import { response } from 'express';
+import { authenticateService } from '../authenticate/authenticateServices';
 
 
 const iv = crypto.randomBytes(16);
@@ -13,14 +14,19 @@ const iv = crypto.randomBytes(16);
 class ReceiptsService {
 
     public transaction = async (req?: any) => {
-        var resObj = {};
+        debugger;
+        let token =  (authenticateService.authenticateToken().then(async (res)=>{
+            return await res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        }))
        try{
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.Transaction_PATH;
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -40,7 +46,7 @@ class ReceiptsService {
         return resData
 
         } catch (err) {
-            
+            return err;
         }
     }
     

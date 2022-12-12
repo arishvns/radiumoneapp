@@ -11,7 +11,7 @@ const iv = crypto.randomBytes(16);
 
 class AuthenticateService {
 
-    public authenticateToken = async (req: any) => {
+    public authenticateToken = async () => {
         var body = {"username":"nishant@techcompiler.com","password":"A8mo#1%anSce"};
         var resObj = {};
         try {
