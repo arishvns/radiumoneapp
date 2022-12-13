@@ -120,6 +120,11 @@ class MasterRouteV1 extends BaseRoutes {
                 payNowController.payNowTransactionWithQueryParams(req, res, next);
         })
 
+        this.router.get('/digitalPayNow/PayNowPaymentAdvice/'+ ':page',
+            (req: Request, res: Response, next: NextFunction) => {
+                payNowController.PayNowPaymentAdvice(req, res, next);
+        })
+
         this.router.get('/digitalPayNow/getCreateData/',
             (req: Request, res: Response, next: NextFunction) => {
                 payNowController.payNowGetCreateData(req, res, next);
@@ -128,9 +133,20 @@ class MasterRouteV1 extends BaseRoutes {
             (req: Request, res: Response, next: NextFunction) => {
                 payNowController.payNowbankstatement(req, res, next);
         })
+
+        this.router.get('/digitalPayNow/bankstatementWithQueryParams/'+ ':page',
+            (req: Request, res: Response, next: NextFunction) => {
+                payNowController.payNowbankstatementWithQueryParams(req, res, next);
+        })
+
         this.router.get('/digitalPayNow/getReportTypes/',
             (req: Request, res: Response, next: NextFunction) => {
                 payNowController.payNowgetReportTypes(req, res, next);
+        })
+
+        this.router.get('/digitalPayNow/getDataMasterAccount/',
+            (req: Request, res: Response, next: NextFunction) => {
+                payNowController.getDataMasterAccount(req, res, next);
         })
 
         //PreAuthorisation Route
@@ -143,6 +159,11 @@ class MasterRouteV1 extends BaseRoutes {
         this.router.get('/digitalPreAuth/deviceHealth/'+ ':page',
         (req: Request, res: Response, next: NextFunction) => {
             preAuthController.preAuthdeviceHealth(req, res, next);
+        })
+
+        this.router.get('/digitalPreAuth/deviceList/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            preAuthController.preAuthDeviceList(req, res, next);
         })
 
         this.router.get('/digitalPreAuth/debitCardBin/'+ ':page',

@@ -1134,6 +1134,215 @@
         }
       }
     },
+    "/digitalPayNow/PayNowPaymentAdvice/{page}": {
+      "get": {
+        "summary": "To get all details of pay now transaction advice accordingly by date",
+        "description": "To get all details of pay now transaction advice accordingly by date",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PayNow"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "date_range",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default":"01/12/2022-13/12/2022"
+          },
+          {
+            "name": "time_range",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "pay_now_ref",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "merchant_name",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default": "true"
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default": "10"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "payment_currency",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "settlement_currency",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "settlement_amount",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": true,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default":"true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PayNowPaymentAdvice"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalPayNow/bankstatementWithQueryParams/{page}": {
+      "get": {
+        "summary": "To get all details of bank statement transaction accordingly by date",
+        "description": "To get all details of bank statement transaction accordingly by date",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PayNow"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "date_range",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default":"01/12/2022-13/12/2022"
+          },
+          {
+            "name": "time_range",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default":"true"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default":"10"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BankstatementWithQueryParams"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/digitalPayNow/getCreateData/": {
       "get": {
         "summary": "To get all details of pay now transaction",
@@ -1224,6 +1433,36 @@
         }
       }
     },
+    "/digitalPayNow/getDataMasterAccount/": {
+      "get": {
+        "summary": "To get all details of master account",
+        "description":  "To get all details of master account",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PayNow"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/getDataMasterAccount"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/digitalPreAuth/inIt/": {
       "get": {
         "summary": "To get search results of pre-authorisation",
@@ -1302,6 +1541,67 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/PreAuthorisationInit"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalPreAuth/deviceList/{page}": {
+      "get": {
+        "summary": "To get all device list of local server",
+        "description": "To get all device list of local server",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PreAuthorisation"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default":"10"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": true,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PreAuthorisationDeviceList"
               }
             }
           },
@@ -1996,6 +2296,91 @@
         }
       }
     },
+    "BankstatementWithQueryParams": {
+      "type": "object",
+      "properties": {
+        "payNowBankStatementDTOList ": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/payNowBankStatementDTOList"
+          }
+        },
+        "isDeviceListEmpty":{
+          "type":"boolean"
+        },
+        "helperDTO ": {
+          "type": "object",
+          "properties": {
+            "current ": {
+              "type": "integer"
+            },
+            "begin": {
+              "type": "integer"
+            },
+            "end": {
+              "type": "integer"
+            },
+            "startFrm ": {
+              "type": "integer"
+            },
+            "endFrm": {
+              "type": "integer"
+            },
+            "totalResults": {
+              "type": "integer"
+            }
+          }
+        },
+        "currentIndex ": {
+          "type": "integer"
+        },
+        "beginIndex ": {
+          "type": "integer"
+        },
+        "endIndex ": {
+          "type": "integer"
+        },
+        "totalPages ": {
+          "type": "integer"
+        } 
+      }
+    },
+    "payNowBankStatementDTOList":{
+      "type":"object",
+      "properties":{
+        "fileDate":{
+          "type":"string"
+        },
+        "id":{
+          "type":"integer"
+        },
+        "mtType":{
+          "type":"string"
+        },
+        "status":{
+          "type":"integer"
+        },
+        "fileSize":{
+          "type":"string"
+        },
+        "fileName":{
+          "type":"string"
+        },
+        "fileTransferDatetime":{
+          "type":"integer"
+        },
+        "fileTransferStatus":{
+          "type":"integer"
+        },
+        "totalRecordsParsed":{
+          "type":"integer"
+        },
+        "totalStatements":{
+          "type":"integer"
+        }
+      }
+    },
     "paymentGatewayGetSettlement": {
       "type": "object",
       "properties": {
@@ -2067,8 +2452,7 @@
           "type": "integer"
         }
       }
-    }
-  },
+    },
   "paymentGatewayGetSettlementTxnSettlementDTOList": {
     "type": "object",
     "properties": {
@@ -2246,6 +2630,79 @@
       }
     }
   },
+  "PayNowPaymentAdvice": {
+    "type": "object",
+    "properties": {
+      "transactionDTOList ": {
+        "type": "array",
+        "items": []
+      },
+      "txnBatchMsgIdList ": {
+        "type": "array",
+        "items": []
+      },
+      "txnSettlementDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/definitions/txnSettlementDTOListOfSettlementList"
+        }
+      },
+      "txnSettlementEntityList ": {
+        "type": "array",
+        "items": []
+      },
+      "txnSettleHostNameEntityList ": {
+        "type": "array",
+        "items": []
+      },
+      "settleHostNameMap ": {
+        "type": "array",
+        "items": []
+      },
+      "helperDTO": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer"
+          },
+          "begin": {
+            "type": "integer"
+          },
+          "end": {
+            "type": "integer"
+          },
+          "startFrm": {
+            "type": "integer"
+          },
+          "endFrm": {
+            "type": "integer"
+          },
+          "totalResults": {
+            "type": "integer"
+          }
+        }
+      },
+      "currentIndex": {
+        "type": "integer"
+      },
+      "beginIndex": {
+        "type": "integer"
+      },
+      "endIndex": {
+        "type": "integer"
+      },
+      "totalPages": {
+        "type": "integer"
+      },
+      "receiptEmailLimit": {
+        "type": "integer"
+      },
+      "receiptPrintLimit": {
+        "type": "integer"
+      }
+    }
+  },
   "payNowGetCreateData": {
     "type": "object",
     "properties": {
@@ -2307,6 +2764,68 @@
       }
     }
   },
+  "getDataMasterAccount": {
+    "type": "object",
+    "properties": {
+      "currencyMap": {
+        "type": "object"
+      },
+      "purposeMap": {
+        "type": "object"
+      },
+      "id": {
+        "type": "integer"
+      }, 
+      "currency": {
+        "type": "string"
+      },
+      "accountNumber": {
+        "type": "string"
+      },
+      "accountName": {
+        "type": "string"
+      },
+      "uen": {
+        "type": "string"
+      },
+      "accountType": {
+        "type": "string"
+      },
+      "orgId": {
+        "type": "string"
+      },
+      "bicCode": {
+        "type": "string"
+      },
+      "purposeId": {
+        "type": "integer"
+      },
+      "updatedDatetime": {
+        "type": "string"
+      },
+      "createdDateTime": {
+        "type": "string"
+      },
+      "utcDatetime": {
+        "type": "string"
+      },
+      "state": {
+        "type": "integer"
+      },
+      "createdBy": {
+        "type": "string"
+      },
+      "createdByName": {
+        "type": "string"
+      },
+      "approveBy": {
+        "type": "string"
+      },
+      "approveByName": {
+        "type": "string"
+      }
+  }
+  },
   "PreAuthorisationInit": {
     "type": "object",
     "properties": {
@@ -2315,6 +2834,101 @@
       },
       "dateRange": {
         "type": "string"
+      }
+    }
+  },
+  "hotelDeviceDTOList":{
+    "type":"object",
+    "properties":{
+      "deviceId":{
+        "type":"integer"
+      },
+      "terminalId":{
+        "type":"string"
+      },
+      "terminalModel":{
+        "type":"string"
+      },
+      "hotelName":{
+        "type":"string"
+      },
+      "hotelAddress1":{
+        "type":"string"
+      },
+      "deviceLoc":{
+        "type":"string"
+      },
+      "softwareName":{
+        "type":"string"
+      },
+      "lastUpdatedDate":{
+        "type":"string"
+      },
+      "status":{
+        "type":"integer"
+      },
+      "qrCodeImage":{
+        "type":"string"
+      },
+      "paramDtoList":{
+        "type":"array",
+        "items":[]
+      },
+      "registrationKey":{
+        "type":"string"
+      },
+      "isQrExpired":{
+        "type":"boolean"
+      }
+    }
+  },
+  "PreAuthorisationDeviceList": {
+    "type": "object",
+    "properties": {
+      "helperDTO": {
+        "type": "object",
+          "$ref": "#/definitions/helperDTO"
+      },
+      "hotelDeviceDTOList": {
+        "type": "array",
+        "items":{
+          "$ref":"#/definitions/hotelDeviceDTOList"
+        }
+      },
+      "currentIndex":{
+        "type":"integer"
+      },
+      "beginIndex":{
+        "type":"integer"
+      },
+      "endIndex":{
+        "type":"integer"
+      },
+      "totalPages":{
+        "type":"integer"
+      },
+      "deletionPendingDays":{
+        "type":"integer"
+      },
+      "terminalModelDTOList":{
+        "type":"array",
+        "items":[]
+      },
+      "deviceParameterDTOList":{
+        "type":"array",
+        "items":[]
+      },
+      "merchantIdRequestDTOList":{
+        "type":"array",
+        "items":[]
+      },
+      "hotelDeviceDTO":{
+        "type":"object",
+        "properties":{
+          "isQrExpired":{
+            "type":"boolean"
+          }
+        }
       }
     }
   },
@@ -2463,18 +3077,8 @@
       }
     }
   },
-  "GenerateLead": {
+  "helperDTO":{
     "type": "object",
-    "properties": {
-      "leadList": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "$ref": "#/definitions/leadList"
-        }
-      },
-      "helperDTO": {
-        "type": "object",
         "properties": {
           "current": {
             "type": "integer"
@@ -2494,6 +3098,21 @@
           "totalResults": {
             "type": "integer"
           }
+  },
+  "GenerateLead": {
+    "type": "object",
+    "properties": {
+      "leadList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/definitions/leadList"
+        }
+      },
+      "helperDTO": {
+        "type": "object",
+          "$ref": "#/definitions/helperDTO"
+        }    
         }
       },
       "statusMaps": {

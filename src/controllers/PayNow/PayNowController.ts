@@ -24,6 +24,15 @@ class PayNowController extends BaseController {
         }
     }
 
+    public async PayNowPaymentAdvice(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await payNowService.PayNowPaymentAdvice(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
     public async payNowGetCreateData(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await payNowService.payNowGetCreateData();
@@ -40,10 +49,27 @@ class PayNowController extends BaseController {
             return null;
         }
     }
+    public async payNowbankstatementWithQueryParams(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await payNowService.payNowbankstatementWithQueryParams(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
     
     public async payNowgetReportTypes(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await payNowService.payNowgetReportTypes();
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    public async getDataMasterAccount(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await payNowService.getDataMasterAccount();
             return res.send(requestResult);
         } catch (error) {
             return null;

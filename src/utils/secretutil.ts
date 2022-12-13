@@ -61,12 +61,16 @@ class SecretUtil {
     public PayNowTransaction_PATH = "/main/paynow/transaction/"
     public PayNowGetCreateData_PATH = "/main/paynow/payment/getCreateData/"
     public PayNowBankStatement_PATH = "/main/paynow/bankstatement/"
+    public PayNowBankStatementWithQueryParams_PATH = "/main/paynow/bankstatement/"
     public PayNowGetReportTypes_PATH = "/main/paynow/reports/getReportTypes/"
+    public PayNowPaymentAdvice_PATH = "/main/paynow/payment/"
+    public PayNowMasterAccount_PATH= "/main/paynow/account/getData/"
 
     //PreAuthorisation Path 
     public preAuthInIt_PATH = "/preAuth/init/"
     public preAuthDeviceHealth_PATH = "/preAuth/device/health/"
     public preAuthDebitCardBin_PATH = "/config/bin/list/"
+    public preAuthLocalServer_PATH="/hotelServer/device/list/"
 
 
     //Lead Management Path 

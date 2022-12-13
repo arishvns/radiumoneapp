@@ -28,6 +28,15 @@ class PreAuthController extends BaseController {
         }
     }
 
+    public async preAuthDeviceList(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await preAuthService.preAuthDeviceList(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
     public async preAuthDebitCardBin(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await preAuthService.preAuthDebitCardBin(req);

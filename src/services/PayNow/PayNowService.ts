@@ -76,6 +76,42 @@ class PayNowService {
             return err;
         }
     }
+
+    public PayNowPaymentAdvice = async (req?: any) => {
+       try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PayNowBankStatement_PATH + req.params.page+ "?" + new URLSearchParams(req.query); 
+        let options = {
+            method: 'GET',
+            url: _url,
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": 'application/json'
+            },
+            strictSSL: false
+        }
+
+        let resData: any = await new Promise((resolve, reject) => {
+            request(options, (err, res) => {
+                if (err) return resolve(null);
+                try {
+                    resolve(JSON.parse(res.body));
+                }
+                catch (ex) {
+                    return resolve(null);
+                }
+            });
+        });
+        return resData
+
+        } catch (err) {
+            return err;
+        }
+    }
     
     public payNowGetCreateData = async (req?: any) => {
        try{
@@ -84,7 +120,7 @@ class PayNowService {
         }).catch((err)=>{
             return console.log("Error",err);
         })
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PayNowGetCreateData_PATH;
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PayNowGetCreateData_PATH ;
         let options = {
             method: 'GET',
             url: _url,
@@ -149,6 +185,42 @@ class PayNowService {
         }
     }
 
+    public payNowbankstatementWithQueryParams = async (req?: any) => {
+       try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PayNowBankStatementWithQueryParams_PATH + req.params.page+ "?" + new URLSearchParams(req.query);
+        let options = {
+            method: 'GET',
+            url: _url,
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": 'application/json'
+            },
+            strictSSL: false
+        }
+
+        let resData: any = await new Promise((resolve, reject) => {
+            request(options, (err, res) => {
+                if (err) return resolve(null);
+                try {
+                    resolve(JSON.parse(res.body));
+                }
+                catch (ex) {
+                    return resolve(null);
+                }
+            });
+        });
+        return resData
+
+        } catch (err) {
+            return err;
+        }
+    }
+
     public payNowgetReportTypes = async (req?: any) => {
        try{
         let token =  await authenticateService.authenticateToken().then( (res)=>{
@@ -183,6 +255,43 @@ class PayNowService {
             return err;
         }
     }
+
+    public getDataMasterAccount = async (req?: any) => {
+       try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PayNowMasterAccount_PATH;
+        let options = {
+            method: 'GET',
+            url: _url,
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": 'application/json'
+            },
+            strictSSL: false
+        }
+
+        let resData: any = await new Promise((resolve, reject) => {
+            request(options, (err, res) => {
+                if (err) return resolve(null);
+                try {
+                    resolve(JSON.parse(res.body));
+                }
+                catch (ex) {
+                    return resolve(null);
+                }
+            });
+        });
+        return resData
+        } catch (err) {
+            return err;
+        }
+    }
+
+
 
 }
 
