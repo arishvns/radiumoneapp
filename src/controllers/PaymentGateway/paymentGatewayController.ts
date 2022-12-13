@@ -14,6 +14,7 @@ class PaymentGatewayControler extends BaseController {
             return null;
         }
     }
+   
     public async paymentGatewayTransactionWithCustomQueryParams(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await paymentGatewayService.paymentGatewayTransactionWithCustomQueryParams(req);
@@ -23,6 +24,14 @@ class PaymentGatewayControler extends BaseController {
         }
     }
 
+    public async getSettlement(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await paymentGatewayService.getSettlement();
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
 
 
 }

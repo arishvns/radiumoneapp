@@ -14,13 +14,12 @@ const iv = crypto.randomBytes(16);
 class ReceiptsService {
 
     public transaction = async (req?: any) => {
-        debugger;
-        let token =  (authenticateService.authenticateToken().then(async (res)=>{
-            return await res.token;
+       try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
         }).catch((err)=>{
             return console.log("Error",err);
-        }))
-       try{
+        })
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.Transaction_PATH;
         let options = {
             method: 'GET',
@@ -51,15 +50,19 @@ class ReceiptsService {
     }
     
     public exportTransaction = async (req?: any,res?:any) => {
-    let resObj = {};
        try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.exportTransaction_PATH + "?" + new URLSearchParams(req.query);
         let options = {
             method: 'GET',
             url: _url,
            
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'arraybuffer',
             },
             strictSSL: false
@@ -84,14 +87,18 @@ class ReceiptsService {
     }
 
     public transactionList = async (req?: any) => {
-        var resObj = {};
        try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionList_PATH + req.params.page+ "?" + new URLSearchParams(req.query);
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -115,15 +122,19 @@ class ReceiptsService {
         }
     }
 
-    
     public transactionReceipt = async (req?: any) => {
        try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionReceipt_PATH + req.params.trans_id;
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -149,12 +160,17 @@ class ReceiptsService {
 
     public transactionReceiptImg = async (req?: any) => {
        try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
         let _url = secretUtil.ssl + "://" + secretUtil.ReceiptImgDomain + secretUtil.TransactionReceiptImg_PATH +  "=" + req.params.filename + "?" + new URLSearchParams(req.query);
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -180,12 +196,17 @@ class ReceiptsService {
 
     public getDate = async (req?: any) => {
        try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.GetDate_Path;
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -210,14 +231,18 @@ class ReceiptsService {
     }
 
     public settlementList = async (req?: any) => {
-        var resObj = {};
        try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.settlement_Path + req.params.page+ "?" + new URLSearchParams(req.query);
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -240,14 +265,18 @@ class ReceiptsService {
     }
 
     public TransactionUploadInit = async (req?: any) => {
-        var resObj = {};
        try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionUploadInit_PATH 
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -270,14 +299,18 @@ class ReceiptsService {
     }
 
     public TransactionUploadProcessReceipt = async (req?: any) => {
-        var resObj = {};
        try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionUploadProcessReceipt_PATH; 
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -298,8 +331,6 @@ class ReceiptsService {
         } catch (err) {           
         }
     }
-
-
 
 }
 

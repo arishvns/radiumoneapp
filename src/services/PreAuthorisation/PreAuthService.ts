@@ -1,17 +1,23 @@
 import request from 'request';
 import { secretUtil } from '../../utils/secretutil';
+import { authenticateService } from '../authenticate/authenticateServices';
 
 
 class PreAuthService {
 
     public preAuthInIt = async (req?: any) => {
         try {
+            let token =  await authenticateService.authenticateToken().then( (res)=>{
+                return res.token;
+            }).catch((err)=>{
+                return console.log("Error",err);
+            })
             let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.preAuthInIt_PATH;
             let options = {
                 method: 'GET',
                 url: _url,
                 headers: {
-                    Authorization: "Bearer " + secretUtil.token,
+                    Authorization: "Bearer " + token,
                     "Content-Type": 'application/json'
                 },
                 strictSSL: false
@@ -36,12 +42,17 @@ class PreAuthService {
 
     public preAuthdeviceHealth = async (req?: any) => {
         try {
+            let token =  await authenticateService.authenticateToken().then( (res)=>{
+                return res.token;
+            }).catch((err)=>{
+                return console.log("Error",err);
+            })
             let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.preAuthDeviceHealth_PATH + req.params.page + "?" + new URLSearchParams(req.query);
             let options = {
                 method: 'GET',
                 url: _url,
                 headers: {
-                    Authorization: "Bearer " + secretUtil.token,
+                    Authorization: "Bearer " + token,
                     "Content-Type": 'application/json'
                 },
                 strictSSL: false
@@ -66,12 +77,17 @@ class PreAuthService {
 
     public preAuthDebitCardBin = async (req?: any) => {
         try {
+            let token =  await authenticateService.authenticateToken().then( (res)=>{
+                return res.token;
+            }).catch((err)=>{
+                return console.log("Error",err);
+            })
             let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.preAuthDebitCardBin_PATH + req.params.page + "?" + new URLSearchParams(req.query);
             let options = {
                 method: 'GET',
                 url: _url,
                 headers: {
-                    Authorization: "Bearer " + secretUtil.token,
+                    Authorization: "Bearer " + token,
                     "Content-Type": 'application/json'
                 },
                 strictSSL: false

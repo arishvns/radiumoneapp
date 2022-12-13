@@ -1,7 +1,6 @@
 import { NextFunction, Response } from 'express';
 import { BaseController } from "../basecontroller";
 import { IFilteredRequest } from "../../interfaces";
-import { paymentGatewayService } from '../../services/paymentGateway/paymentGatewayService';
 import { payNowService } from '../../services/PayNow/PayNowService';
 
 
@@ -15,6 +14,16 @@ class PayNowController extends BaseController {
             return null;
         }
     }
+
+    public async payNowTransactionWithQueryParams(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await payNowService.payNowTransactionWithQueryParams(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
     public async payNowGetCreateData(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await payNowService.payNowGetCreateData();

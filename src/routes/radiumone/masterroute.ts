@@ -1,4 +1,4 @@
-import express, { NextFunction, request, Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { BaseRoutes } from "../baseroutes";
 import cores from "cors";
 import fs from 'fs'
@@ -7,11 +7,9 @@ import { dashboardControler } from '../../controllers/Dashboard/dashoardControll
 import { receiptsControler } from '../../controllers/Receipts/receiptsController';
 import { userControler } from '../../controllers/Users/userController';
 import { paymentGatewayControler } from "../../controllers/PaymentGateway/paymentGatewayController";
-import { payNowService } from "../../services/PayNow/PayNowService";
 import { payNowController } from "../../controllers/PayNow/PayNowController";
 import { preAuthController } from "../../controllers/PreAuthorisation/PreAuthController";
 import { leadManagementController } from "../../controllers/Lead-Management/GenerateLeadController";
-
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../../swagger.json');
@@ -105,12 +103,23 @@ class MasterRouteV1 extends BaseRoutes {
                 paymentGatewayControler.paymentGatewayTransactionWithCustomQueryParams(req, res, next);
             })
 
+        this.router.get('/digitalPaymentGateway/paymentGatewaygetSettlement/',
+            (req: Request, res: Response, next: NextFunction) => {
+                paymentGatewayControler.getSettlement(req, res, next);
+            })
+
         // Paynow routes 
         
         this.router.get('/digitalPayNow/transaction/',
             (req: Request, res: Response, next: NextFunction) => {
                 payNowController.payNowTransaction(req, res, next);
         })
+
+        this.router.get('/digitalPayNow/PayNowTransactionWithQueryParams/'+ ':page',
+            (req: Request, res: Response, next: NextFunction) => {
+                payNowController.payNowTransactionWithQueryParams(req, res, next);
+        })
+
         this.router.get('/digitalPayNow/getCreateData/',
             (req: Request, res: Response, next: NextFunction) => {
                 payNowController.payNowGetCreateData(req, res, next);

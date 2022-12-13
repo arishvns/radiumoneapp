@@ -11,13 +11,13 @@ import { authenticateService } from '../authenticate/authenticateServices';
 
 class PaymentGatewayService {
 
-    public paymentGatewayTransaction = async (req?: any) => {
+    public paymentGatewayTransaction = async (req?: any) => {  
+       try{
         let token =  await authenticateService.authenticateToken().then( (res)=>{
             return res.token;
         }).catch((err)=>{
             return console.log("Error",err);
         })
-       try{
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PaymentGatewayTransaction_PATH;
         console.log("Token:", token);
         let options = {
@@ -48,14 +48,19 @@ class PaymentGatewayService {
         }
     }
 
-    public paymentGatewayTransactionWithCustomQueryParams = async (req?: any) => {
+    public paymentGatewayTransactionWithCustomQueryParams = async (req?: any) => {    
        try{
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PaymentGatewayTransaction_PATH + req.params.page+ "?" + new URLSearchParams(req.query); ;
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PaymentGatewayTransaction_PATH + req.params.page+ "?" + new URLSearchParams(req.query); 
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -79,6 +84,41 @@ class PaymentGatewayService {
         }
     }
 
+    public getSettlement = async (req?: any) => {    
+       try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PaymentGatewayGetSettlementList_PATH + req.params.page+ "?" + new URLSearchParams(req.query); 
+        let options = {
+            method: 'GET',
+            url: _url,
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": 'application/json'
+            },
+            strictSSL: false
+        }
+
+        let resData: any = await new Promise((resolve, reject) => {
+            request(options, (err, res) => {
+                if (err) return resolve(null);
+                try {
+                    resolve(JSON.parse(res.body));
+                }
+                catch (ex) {
+                    return resolve(null);
+                }
+            });
+        });
+        return resData
+
+        } catch (err) {
+            return err;
+        }
+    }
 
 }
 

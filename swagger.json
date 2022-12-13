@@ -11,8 +11,8 @@
   "schemes": [
     "http"
   ],
-  "host": "40.87.100.33",
-  "basePath": "/api",                                       
+  "host": "localhost:3005",
+  "basePath": "/api",
   "paths": {
     "/dashboard/dashboardCard": {
       "get": {
@@ -655,7 +655,7 @@
     },
     "/digitalPaymentGateway/paymentGatewayTransactionWithCustomQueryParams/{page}": {
       "get": {
-        "summary":  "To get all details of payment gateway transaction by selected dates with custom query parameters",
+        "summary": "To get all details of payment gateway transaction by selected dates with custom query parameters",
         "description": "To get all details of payment gateway transaction by selected dates with custom query parameters",
         "produces": [
           "application/json"
@@ -781,7 +781,7 @@
             "in": "query",
             "required": false,
             "allowEmptyValue": true,
-            "type": "string"     
+            "type": "string"
           },
           {
             "name": "selectedCustomFieldKey",
@@ -796,12 +796,12 @@
             "required": false,
             "allowEmptyValue": true,
             "type": "string"
-          }, 
+          },
           {
             "name": "isDesc",
             "in": "query",
             "required": true,
-            "default":"true",
+            "default": "true",
             "allowEmptyValue": true,
             "type": "boolean"
           },
@@ -811,7 +811,7 @@
             "required": true,
             "allowEmptyValue": true,
             "type": "integer",
-            "default":"10"
+            "default": "10"
           }
         ],
         "responses": {
@@ -821,6 +821,123 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/paymentGatewayTransactionWithCustomQueryParams"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalPaymentGateway/paymentGatewaygetSettlement/{page}": {
+      "get": {
+        "summary": "To get all details of payment gateway settlement by selected dates with custom query parameters",
+        "description": "To get all details of payment gateway settlement by selected dates with custom query parameters",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Payment Gateway"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "mid",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "tid",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "branch_code",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "batch_num",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "host_name",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "soc_num",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "settlement_date_range",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default": "01/12/2022-13/12/2022"
+          },
+          {
+            "name": "time_range",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "10"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "allowEmptyValue": true,
+            "type": "string"
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": true,
+            "type": "boolean",
+            "allowEmptyValue": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/paymentGatewayGetSettlement"
               }
             }
           },
@@ -851,6 +968,160 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/payNowTransaction"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalPayNow/PayNowTransactionWithQueryParams/{page}": {
+      "get": {
+        "summary": "To get all details of pay now transaction by selecting custom parameters",
+        "description": "To get all details of pay now transaction by selecting custom parameters",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PayNow"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "trace_no",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "time_range",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": true,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default": "true"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "10"
+          },
+          {
+            "name": "merchant_id",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "terminal_id",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "trans_type",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "pay_now_ref",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "payer_account",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "trans_status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "response_code",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "date_range",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default": "01/12/2022-13/12/2022"
+          },
+          {
+            "name": "payment_date_range",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default": "01/12/2022-13/12/2022"
+          },
+          {
+            "name": "payment_status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/payNowTransactionWithQueryParams"
               }
             }
           },
@@ -1067,7 +1338,7 @@
             "required": true,
             "type": "integer",
             "allowEmptyValue": true,
-            "default":"10"
+            "default": "10"
           },
           {
             "name": "sort_property",
@@ -1686,7 +1957,7 @@
           "items": {
             "type": "object",
             "$ref": "#/definitions/paygateTransactionDTOList"
-        }
+          }
         },
         "helperDTO ": {
           "type": "object",
@@ -1724,587 +1995,23 @@
           "type": "integer"
         }
       }
-    },   
-    "paygateTransactionDTOList": {
-      "type": "object",
-      "properties": {
-        "datetime ": {
-          "type": "string"
-        },
-        "mid": {
-          "type": "string"
-        },
-        "tid": {
-          "type": "string"
-        },
-        "transType": {
-          "type": "string"
-        },
-        "cardNo": {
-          "type": "string"
-        },
-        "cardType": {
-          "type": "string"
-        },
-        "authCode": {
-          "type": "string"
-        },
-        "baseAmount": {
-          "type": "string"
-        },
-        "dccAmount": {
-          "type": "string"
-        },
-        "invoiceNo": {
-          "type": "string"
-        },
-        "orderReferenceNo": {
-          "type": "string"
-        },
-        "traceNo": {
-          "type": "string"
-        },
-        "transId": {
-          "type": "string"
-        },
-        "requestId": {
-          "type": "string"
-        },
-        "entryMode": {
-          "type": "string"
-        },
-        "responseCode": {
-          "type": "string"
-        },
-        "paygateUuid": {
-          "type": "string"
-        },
-        "isReversed": {
-          "type": "string"
-        },
-        "addiMap": {
-          "type": "string"
-        }
-      }
     },
-    "payNowTransaction": {
+    "paymentGatewayGetSettlement": {
       "type": "object",
       "properties": {
-        "branchCodeString ": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "dateRange": {
-          "type": "string"
-        },
-        "transactionTypeList": {
+        "transactionDTOList ": {
           "type": "array",
           "items": []
         },
-        "isDeviceListEmpty": {
-          "type": "boolean"
-        },
-        "currentIndex": {
-          "type": "integer"
-        },
-        "beginIndex": {
-          "type": "integer"
-        },
-        "endIndex": {
-          "type": "integer"
-        },
-        "totalPages": {
-          "type": "integer"
-        }
-      }
-    },
-    "payNowGetCreateData": {
-      "type": "object",
-      "properties": {
-        "currencyMap ": {
-          "type": "object",
-          "items": {
-            "type": "object"
-          }
-        }
-      }
-    },
-    "payNowbankstatement": {
-      "type": "object",
-      "properties": {
-        "branchCodeString ": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "dateRange": {
-          "type": "string"
-        },
-        "transactionTypeList": {
+        "txnBatchMsgIdList ": {
           "type": "array",
           "items": []
         },
-        "isDeviceListEmpty": {
-          "type": "boolean"
-        },
-        "currentIndex": {
-          "type": "integer"
-        },
-        "beginIndex": {
-          "type": "integer"
-        },
-        "endIndex": {
-          "type": "integer"
-        },
-        "totalPages": {
-          "type": "integer"
-        }
-      }
-    },
-    "payNowgetReportTypes": {
-      "type": "object",
-      "properties": {
-        "1": {
-          "type": "string"
-        },
-        "2": {
-          "type": "string"
-        },
-        "3": {
-          "type": "string"
-        },
-        "4": {
-          "type": "string"
-        }
-      }
-    },
-    "PreAuthorisationInit": {
-      "type": "object",
-      "properties": {
-        "maxExportRange": {
-          "type": "string"
-        },
-        "dateRange": {
-          "type": "string"
-        }
-      }
-    },
-    "binFileList": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "location": {
-          "type": "string"
-        },
-        "size": {
-          "type": "integer"
-        },
-        "type": {
-          "type": "string"
-        },
-        "status": {
-          "type": "integer"
-        },
-        "checksum": {
-          "type": "string"
-        },
-        "createdDateTime": {
-          "type": "string"
-        },
-        "progressPercentage": {
-          "type": "integer"
-        }
-      }
-    },
-    "leadList": {
-      "type": "object",
-      "properties": {
-        "leadId": {
-          "type": "integer"
-        },
-        "companyName": {
-          "type": "string"
-        },
-        "contactPerson": {
-          "type": "string"
-        },
-        "contactNumber": {
-          "type": "string"
-        },
-        "contactEmail": {
-          "type": "string"
-        },
-        "designation": {
-          "type": "string"
-        },
-        "myRmNumber": {
-          "type": "string"
-        },
-        "myRmEmail": {
-          "type": "string"
-        },
-        "accountNumber": {
-          "type": "string"
-        },
-        "assigned": {
-          "type": "string"
-        },
-        "status": {
-          "type": "integer"
-        },
-        "statusName": {
-          "type": "string"
-        },
-        "remark": {
-          "type": "string"
-        },
-        "field1": {
-          "type": "string"
-        },
-        "field2": {
-          "type": "string"
-        },
-        "field3": {
-          "type": "string"
-        },
-        "field4": {
-          "type": "string"
-        },
-        "field5": {
-          "type": "string"
-        },
-        "field6": {
-          "type": "string"
-        },
-        "field7": {
-          "type": "string"
-        },
-        "field8": {
-          "type": "string"
-        },
-        "field9": {
-          "type": "string"
-        },
-        "field10": {
-          "type": "string"
-        },
-        "field11": {
-          "type": "string"
-        },
-        "field12": {
-          "type": "string"
-        },
-        "field13": {
-          "type": "string"
-        },
-        "field14": {
-          "type": "string"
-        },
-        "field15": {
-          "type": "string"
-        },
-        "field16": {
-          "type": "string"
-        },
-        "field17": {
-          "type": "string"
-        },
-        "field18": {
-          "type": "string"
-        },
-        "field19": {
-          "type": "string"
-        },
-        "field20": {
-          "type": "string"
-        },
-        "lastUpdatedBy": {
-          "type": "string"
-        },
-        "lastUpdatedByName": {
-          "type": "string"
-        },
-        "lastUpdatedDateTime": {
-          "type": "string"
-        }
-      }
-    },
-    "GenerateLead": {
-      "type": "object",
-      "properties": {
-        "leadList": {
+        "txnSettlementDTOList ": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/leadList"
-          }
-        },
-        "helperDTO": {
-          "type": "object",
-          "properties": {
-            "current": {
-              "type": "integer"
-            },
-            "begin": {
-              "type": "integer"
-            },
-            "end": {
-              "type": "integer"
-            },
-            "startFrm": {
-              "type": "integer"
-            },
-            "endFrm": {
-              "type": "integer"
-            },
-            "totalResults": {
-              "type": "integer"
-            }
-          }
-        },
-        "statusMaps": {
-          "type": "object",
-          "properties": {
-            "8": {
-              "type": "integer"
-            },
-            "9": {
-              "type": "integer"
-            },
-            "10": {
-              "type": "integer"
-            },
-            "11": {
-              "type": "integer"
-            },
-            "12": {
-              "type": "integer"
-            },
-            "13": {
-              "type": "integer"
-            },
-            "14": {
-              "type": "integer"
-            }
-          }
-        },
-        "currentIndex": {
-          "type": "integer"
-        },
-        "beginIndex": {
-          "type": "integer"
-        },
-        "endIndex": {
-          "type": "integer"
-        },
-        "totalPages": {
-          "type": "integer"
-        },
-        "maxFieldNo": {
-          "type": "integer"
-        },
-        "binFileList": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/binFileList"
-          }
-        }
-      }
-    },
-    "DebitCardBin": {
-      "type": "object",
-      "properties": {
-        "helperDTO": {
-          "type": "object",
-          "properties": {
-            "current": {
-              "type": "integer"
-            },
-            "begin": {
-              "type": "integer"
-            },
-            "end": {
-              "type": "integer"
-            },
-            "startFrm": {
-              "type": "integer"
-            },
-            "endFrm": {
-              "type": "integer"
-            },
-            "totalResults": {
-              "type": "integer"
-            }
-          }
-        },
-        "currentIndex": {
-          "type": "integer"
-        },
-        "beginIndex": {
-          "type": "integer"
-        },
-        "endIndex": {
-          "type": "integer"
-        },
-        "totalPages": {
-          "type": "integer"
-        },
-        "binFileList": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/binFileList"
-          }
-        }
-      }
-    },
-    "topCustomerCountDTOListOfTopCustomerCardList": {
-      "properties": {
-        "cardNumberMask": {
-          "type": "string"
-        },
-        "count": {
-          "type": "string"
-        },
-        "day": {
-          "type": "string"
-        }
-      }
-    },
-    "transactionDTOListOftransactionList": {
-      "properties": {
-        "msg_id": {
-          "type": "string"
-        },
-        "datetime": {
-          "type": "string"
-        },
-        "mid": {
-          "type": "string"
-        },
-        "tid": {
-          "type": "string"
-        },
-        "trans_type": {
-          "type": "string"
-        },
-        "card_no": {
-          "type": "string"
-        },
-        "card_type": {
-          "type": "string"
-        },
-        "authCode": {
-          "type": "string"
-        },
-        "baseAmount": {
-          "type": "string"
-        },
-        "dccAmount": {
-          "type": "string"
-        },
-        "totalAmount": {
-          "type": "string"
-        },
-        "baseAmountCurrency": {
-          "type": "string"
-        },
-        "dccAmountCurrency": {
-          "type": "string"
-        },
-        "totalAmountCurrency": {
-          "type": "string"
-        },
-        "invoiceNo": {
-          "type": "string"
-        },
-        "orderReferenceNo": {
-          "type": "string"
-        },
-        "batchNo": {
-          "type": "string"
-        },
-        "isManualReceipt": {
-          "type": "integer"
-        },
-        "trans_id": {
-          "type": "string"
-        },
-        "orderNum": {
-          "type": "string"
-        }
-      }
-    },
-    "exportTransaction": {
-      "type": "object",
-      "properties": {
-        "trans_ids": {
-          "type": "integer"
-        },
-        "ismidempty": {
-          "type": "boolean"
-        }
-      }
-    },
-    "txnSettlementDTOListOfSettlementList": {
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "settleDateTime": {
-          "type": "string"
-        },
-        "tid": {
-          "type": "string"
-        },
-        "mid": {
-          "type": "string"
-        },
-        "batchNum": {
-          "type": "string"
-        },
-        "hostName": {
-          "type": "string"
-        },
-        "totalCnt": {
-          "type": "string"
-        },
-        "currency": {
-          "type": "string"
-        },
-        "totalAmt": {
-          "type": "string"
-        },
-        "isManualReceipt": {
-          "type": "string"
-        }
-      }
-    },
-    "settlementList": {
-      "type": "object",
-      "properties": {
-        "transactionDTOList": {
-          "type": "array",
-          "items": []
-        },
-        "txnBatchMsgIdList": {
-          "type": "array",
-          "items": []
-        },
-        "txnSettlementDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/txnSettlementDTOListOfSettlementList"
+            "$ref": "#/definitions/paymentGatewayGetSettlementTxnSettlementDTOList"
           }
         },
         "txnSettlementEntityList": {
@@ -2315,7 +2022,7 @@
           "type": "array",
           "items": []
         },
-        "settleHostNameMap": {
+        "settleHostNameMap ": {
           "type": "object"
         },
         "helperDTO": {
@@ -2341,485 +2048,1203 @@
             }
           }
         },
-        "currentIndex": {
+        "currentIndex ": {
           "type": "integer"
         },
-        "beginIndex": {
+        "beginIndex ": {
           "type": "integer"
         },
-        "endIndex": {
+        "endIndex ": {
           "type": "integer"
         },
-        "totalPages": {
+        "totalPages ": {
           "type": "integer"
         },
-        "receiptEmailLimit": {
+        "receiptEmailLimit ": {
           "type": "integer"
         },
-        "receiptPrintLimit": {
+        "receiptPrintLimit ": {
           "type": "integer"
         }
       }
-    },
-    "settlement": {
-      "type": "object",
-      "properties": {
-        "transactionDTOList": {
-          "type": "array",
-          "items": []
-        },
-        "txnBatchMsgIdList": {
-          "type": "array",
-          "items": []
-        },
-        "txnSettlementDTOList": {
-          "type": "array",
-          "items": []
-        },
-        "txnSettlementEntityList": {
-          "type": "array",
-          "items": []
-        },
-        "txnSettleHostNameEntityList": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/txnSettleHostNameEntityListOfSettlement"
+    }
+  },
+  "paymentGatewayGetSettlementTxnSettlementDTOList": {
+    "type": "object",
+    "properties": {
+      "id ": {
+        "type": "integer"
+      },
+      "settleDateTime": {
+        "type": "string"
+      },
+      "tid": {
+        "type": "string"
+      },
+      "mid": {
+        "type": "string"
+      },
+      "batchNum": {
+        "type": "string"
+      },
+      "hostName": {
+        "type": "string"
+      },
+      "totalCnt": {
+        "type": "integer"
+      },
+      "currency": {
+        "type": "string"
+      },
+      "totalAmt": {
+        "type": "string"
+      },
+      "isManualReceipt": {
+        "type": "integer"
+      }
+    }
+  },
+  "paygateTransactionDTOList": {
+    "type": "object",
+    "properties": {
+      "datetime ": {
+        "type": "string"
+      },
+      "mid": {
+        "type": "string"
+      },
+      "tid": {
+        "type": "string"
+      },
+      "transType": {
+        "type": "string"
+      },
+      "cardNo": {
+        "type": "string"
+      },
+      "cardType": {
+        "type": "string"
+      },
+      "authCode": {
+        "type": "string"
+      },
+      "baseAmount": {
+        "type": "string"
+      },
+      "dccAmount": {
+        "type": "string"
+      },
+      "invoiceNo": {
+        "type": "string"
+      },
+      "orderReferenceNo": {
+        "type": "string"
+      },
+      "traceNo": {
+        "type": "string"
+      },
+      "transId": {
+        "type": "string"
+      },
+      "requestId": {
+        "type": "string"
+      },
+      "entryMode": {
+        "type": "string"
+      },
+      "responseCode": {
+        "type": "string"
+      },
+      "paygateUuid": {
+        "type": "string"
+      },
+      "isReversed": {
+        "type": "string"
+      },
+      "addiMap": {
+        "type": "string"
+      }
+    }
+  },
+  "payNowTransaction": {
+    "type": "object",
+    "properties": {
+      "branchCodeString ": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "dateRange": {
+        "type": "string"
+      },
+      "transactionTypeList": {
+        "type": "array",
+        "items": []
+      },
+      "isDeviceListEmpty": {
+        "type": "boolean"
+      },
+      "currentIndex": {
+        "type": "integer"
+      },
+      "beginIndex": {
+        "type": "integer"
+      },
+      "endIndex": {
+        "type": "integer"
+      },
+      "totalPages": {
+        "type": "integer"
+      }
+    }
+  },
+  "payNowTransactionWithQueryParams": {
+    "type": "object",
+    "properties": {
+      "payNowTransactionDTOList ": {
+        "type": "array",
+        "items": []
+      },
+      "isDeviceListEmpty": {
+        "type": "boolean"
+      },
+      "helperDTO": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer"
+          },
+          "begin": {
+            "type": "integer"
+          },
+          "end": {
+            "type": "integer"
+          },
+          "startFrm": {
+            "type": "integer"
+          },
+          "endFrm": {
+            "type": "integer"
+          },
+          "totalResults": {
+            "type": "integer"
           }
-        },
-        "settleHostNameMap": {
+        }
+      },
+      "currentIndex": {
+        "type": "integer"
+      },
+      "beginIndex": {
+        "type": "integer"
+      },
+      "endIndex": {
+        "type": "integer"
+      },
+      "totalPages": {
+        "type": "integer"
+      }
+    }
+  },
+  "payNowGetCreateData": {
+    "type": "object",
+    "properties": {
+      "currencyMap ": {
+        "type": "object",
+        "items": {
           "type": "object"
-        },
-        "currentIndex": {
-          "type": "integer"
-        },
-        "beginIndex": {
-          "type": "integer"
-        },
-        "endIndex": {
-          "type": "integer"
-        },
-        "totalPages": {
-          "type": "integer"
-        },
-        "receiptEmailLimit": {
-          "type": "integer"
-        },
-        "receiptPrintLimit": {
-          "type": "integer"
-        },
-        "branchCodeString": {
-          "type": "array",
-          "items": []
-        },
-        "dateRange": {
+        }
+      }
+    }
+  },
+  "payNowbankstatement": {
+    "type": "object",
+    "properties": {
+      "branchCodeString ": {
+        "type": "array",
+        "items": {
           "type": "string"
-        },
-        "reseller": {
+        }
+      },
+      "dateRange": {
+        "type": "string"
+      },
+      "transactionTypeList": {
+        "type": "array",
+        "items": []
+      },
+      "isDeviceListEmpty": {
+        "type": "boolean"
+      },
+      "currentIndex": {
+        "type": "integer"
+      },
+      "beginIndex": {
+        "type": "integer"
+      },
+      "endIndex": {
+        "type": "integer"
+      },
+      "totalPages": {
+        "type": "integer"
+      }
+    }
+  },
+  "payNowgetReportTypes": {
+    "type": "object",
+    "properties": {
+      "1": {
+        "type": "string"
+      },
+      "2": {
+        "type": "string"
+      },
+      "3": {
+        "type": "string"
+      },
+      "4": {
+        "type": "string"
+      }
+    }
+  },
+  "PreAuthorisationInit": {
+    "type": "object",
+    "properties": {
+      "maxExportRange": {
+        "type": "string"
+      },
+      "dateRange": {
+        "type": "string"
+      }
+    }
+  },
+  "binFileList": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string"
+      },
+      "location": {
+        "type": "string"
+      },
+      "size": {
+        "type": "integer"
+      },
+      "type": {
+        "type": "string"
+      },
+      "status": {
+        "type": "integer"
+      },
+      "checksum": {
+        "type": "string"
+      },
+      "createdDateTime": {
+        "type": "string"
+      },
+      "progressPercentage": {
+        "type": "integer"
+      }
+    }
+  },
+  "leadList": {
+    "type": "object",
+    "properties": {
+      "leadId": {
+        "type": "integer"
+      },
+      "companyName": {
+        "type": "string"
+      },
+      "contactPerson": {
+        "type": "string"
+      },
+      "contactNumber": {
+        "type": "string"
+      },
+      "contactEmail": {
+        "type": "string"
+      },
+      "designation": {
+        "type": "string"
+      },
+      "myRmNumber": {
+        "type": "string"
+      },
+      "myRmEmail": {
+        "type": "string"
+      },
+      "accountNumber": {
+        "type": "string"
+      },
+      "assigned": {
+        "type": "string"
+      },
+      "status": {
+        "type": "integer"
+      },
+      "statusName": {
+        "type": "string"
+      },
+      "remark": {
+        "type": "string"
+      },
+      "field1": {
+        "type": "string"
+      },
+      "field2": {
+        "type": "string"
+      },
+      "field3": {
+        "type": "string"
+      },
+      "field4": {
+        "type": "string"
+      },
+      "field5": {
+        "type": "string"
+      },
+      "field6": {
+        "type": "string"
+      },
+      "field7": {
+        "type": "string"
+      },
+      "field8": {
+        "type": "string"
+      },
+      "field9": {
+        "type": "string"
+      },
+      "field10": {
+        "type": "string"
+      },
+      "field11": {
+        "type": "string"
+      },
+      "field12": {
+        "type": "string"
+      },
+      "field13": {
+        "type": "string"
+      },
+      "field14": {
+        "type": "string"
+      },
+      "field15": {
+        "type": "string"
+      },
+      "field16": {
+        "type": "string"
+      },
+      "field17": {
+        "type": "string"
+      },
+      "field18": {
+        "type": "string"
+      },
+      "field19": {
+        "type": "string"
+      },
+      "field20": {
+        "type": "string"
+      },
+      "lastUpdatedBy": {
+        "type": "string"
+      },
+      "lastUpdatedByName": {
+        "type": "string"
+      },
+      "lastUpdatedDateTime": {
+        "type": "string"
+      }
+    }
+  },
+  "GenerateLead": {
+    "type": "object",
+    "properties": {
+      "leadList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/definitions/leadList"
+        }
+      },
+      "helperDTO": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer"
+          },
+          "begin": {
+            "type": "integer"
+          },
+          "end": {
+            "type": "integer"
+          },
+          "startFrm": {
+            "type": "integer"
+          },
+          "endFrm": {
+            "type": "integer"
+          },
+          "totalResults": {
+            "type": "integer"
+          }
+        }
+      },
+      "statusMaps": {
+        "type": "object",
+        "properties": {
+          "8": {
+            "type": "integer"
+          },
+          "9": {
+            "type": "integer"
+          },
+          "10": {
+            "type": "integer"
+          },
+          "11": {
+            "type": "integer"
+          },
+          "12": {
+            "type": "integer"
+          },
+          "13": {
+            "type": "integer"
+          },
+          "14": {
+            "type": "integer"
+          }
+        }
+      },
+      "currentIndex": {
+        "type": "integer"
+      },
+      "beginIndex": {
+        "type": "integer"
+      },
+      "endIndex": {
+        "type": "integer"
+      },
+      "totalPages": {
+        "type": "integer"
+      },
+      "maxFieldNo": {
+        "type": "integer"
+      },
+      "binFileList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/definitions/binFileList"
+        }
+      }
+    }
+  },
+  "DebitCardBin": {
+    "type": "object",
+    "properties": {
+      "helperDTO": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer"
+          },
+          "begin": {
+            "type": "integer"
+          },
+          "end": {
+            "type": "integer"
+          },
+          "startFrm": {
+            "type": "integer"
+          },
+          "endFrm": {
+            "type": "integer"
+          },
+          "totalResults": {
+            "type": "integer"
+          }
+        }
+      },
+      "currentIndex": {
+        "type": "integer"
+      },
+      "beginIndex": {
+        "type": "integer"
+      },
+      "endIndex": {
+        "type": "integer"
+      },
+      "totalPages": {
+        "type": "integer"
+      },
+      "binFileList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/definitions/binFileList"
+        }
+      }
+    }
+  },
+  "topCustomerCountDTOListOfTopCustomerCardList": {
+    "properties": {
+      "cardNumberMask": {
+        "type": "string"
+      },
+      "count": {
+        "type": "string"
+      },
+      "day": {
+        "type": "string"
+      }
+    }
+  },
+  "transactionDTOListOftransactionList": {
+    "properties": {
+      "msg_id": {
+        "type": "string"
+      },
+      "datetime": {
+        "type": "string"
+      },
+      "mid": {
+        "type": "string"
+      },
+      "tid": {
+        "type": "string"
+      },
+      "trans_type": {
+        "type": "string"
+      },
+      "card_no": {
+        "type": "string"
+      },
+      "card_type": {
+        "type": "string"
+      },
+      "authCode": {
+        "type": "string"
+      },
+      "baseAmount": {
+        "type": "string"
+      },
+      "dccAmount": {
+        "type": "string"
+      },
+      "totalAmount": {
+        "type": "string"
+      },
+      "baseAmountCurrency": {
+        "type": "string"
+      },
+      "dccAmountCurrency": {
+        "type": "string"
+      },
+      "totalAmountCurrency": {
+        "type": "string"
+      },
+      "invoiceNo": {
+        "type": "string"
+      },
+      "orderReferenceNo": {
+        "type": "string"
+      },
+      "batchNo": {
+        "type": "string"
+      },
+      "isManualReceipt": {
+        "type": "integer"
+      },
+      "trans_id": {
+        "type": "string"
+      },
+      "orderNum": {
+        "type": "string"
+      }
+    }
+  },
+  "exportTransaction": {
+    "type": "object",
+    "properties": {
+      "trans_ids": {
+        "type": "integer"
+      },
+      "ismidempty": {
+        "type": "boolean"
+      }
+    }
+  },
+  "txnSettlementDTOListOfSettlementList": {
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "settleDateTime": {
+        "type": "string"
+      },
+      "tid": {
+        "type": "string"
+      },
+      "mid": {
+        "type": "string"
+      },
+      "batchNum": {
+        "type": "string"
+      },
+      "hostName": {
+        "type": "string"
+      },
+      "totalCnt": {
+        "type": "string"
+      },
+      "currency": {
+        "type": "string"
+      },
+      "totalAmt": {
+        "type": "string"
+      },
+      "isManualReceipt": {
+        "type": "string"
+      }
+    }
+  },
+  "settlementList": {
+    "type": "object",
+    "properties": {
+      "transactionDTOList": {
+        "type": "array",
+        "items": []
+      },
+      "txnBatchMsgIdList": {
+        "type": "array",
+        "items": []
+      },
+      "txnSettlementDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/definitions/txnSettlementDTOListOfSettlementList"
+        }
+      },
+      "txnSettlementEntityList": {
+        "type": "array",
+        "items": []
+      },
+      "txnSettleHostNameEntityList": {
+        "type": "array",
+        "items": []
+      },
+      "settleHostNameMap": {
+        "type": "object"
+      },
+      "helperDTO": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer"
+          },
+          "begin": {
+            "type": "integer"
+          },
+          "end": {
+            "type": "integer"
+          },
+          "startFrm": {
+            "type": "integer"
+          },
+          "endFrm": {
+            "type": "integer"
+          },
+          "totalResults": {
+            "type": "integer"
+          }
+        }
+      },
+      "currentIndex": {
+        "type": "integer"
+      },
+      "beginIndex": {
+        "type": "integer"
+      },
+      "endIndex": {
+        "type": "integer"
+      },
+      "totalPages": {
+        "type": "integer"
+      },
+      "receiptEmailLimit": {
+        "type": "integer"
+      },
+      "receiptPrintLimit": {
+        "type": "integer"
+      }
+    }
+  },
+  "settlement": {
+    "type": "object",
+    "properties": {
+      "transactionDTOList": {
+        "type": "array",
+        "items": []
+      },
+      "txnBatchMsgIdList": {
+        "type": "array",
+        "items": []
+      },
+      "txnSettlementDTOList": {
+        "type": "array",
+        "items": []
+      },
+      "txnSettlementEntityList": {
+        "type": "array",
+        "items": []
+      },
+      "txnSettleHostNameEntityList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/definitions/txnSettleHostNameEntityListOfSettlement"
+        }
+      },
+      "settleHostNameMap": {
+        "type": "object"
+      },
+      "currentIndex": {
+        "type": "integer"
+      },
+      "beginIndex": {
+        "type": "integer"
+      },
+      "endIndex": {
+        "type": "integer"
+      },
+      "totalPages": {
+        "type": "integer"
+      },
+      "receiptEmailLimit": {
+        "type": "integer"
+      },
+      "receiptPrintLimit": {
+        "type": "integer"
+      },
+      "branchCodeString": {
+        "type": "array",
+        "items": []
+      },
+      "dateRange": {
+        "type": "string"
+      },
+      "reseller": {
+        "type": "string"
+      }
+    }
+  },
+  "txnSettleHostNameEntityListOfSettlement": {
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "hostName": {
+        "type": "string"
+      },
+      "createdOn": {
+        "type": "string"
+      }
+    }
+  },
+  "topCustomerCountResponse": {
+    "type": "object",
+    "properties": {
+      "topCustomerCountDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "topCustomerCardTypeDTOList": {
+        "type": "string"
+      },
+      "branchCodeTransactionAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "branchCodeSettlementAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "cardTransactionAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "cardOriginWithPercentageDTOList": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "generalStatsList": {
+        "type": "array",
+        "items": {
           "type": "string"
         }
       }
-    },
-    "txnSettleHostNameEntityListOfSettlement": {
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "hostName": {
-          "type": "string"
-        },
-        "createdOn": {
-          "type": "string"
+    }
+  },
+  "resellerResponse": {
+    "type": "object",
+    "properties": {
+      "reseller": {
+        "type": "string"
+      },
+      "currencyCode3": {
+        "type": "string"
+      },
+      "topCustomerCountDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "topCustomerAmtDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "topCustomerCardTypeDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "branchCodeTransactionAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "branchCodeSettlementAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "cardTransactionAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "cardOriginWithPercentageDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "generalStatsList": {
+        "type": "array",
+        "items": {
+          "type": "object"
         }
       }
-    },
-    "topCustomerCountResponse": {
-      "type": "object",
-      "properties": {
-        "topCustomerCountDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "topCustomerCardTypeDTOList": {
-          "type": "string"
-        },
-        "branchCodeTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "branchCodeSettlementAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "cardTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "cardOriginWithPercentageDTOList": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "generalStatsList": {
-          "type": "array",
-          "items": {
+    }
+  },
+  "topCustomerAmtResponse": {
+    "type": "object",
+    "properties": {
+      "topCustomerCountDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "topCustomerAmtDTOList": {
+        "type": "object",
+        "properties": {
+          "error": {
             "type": "string"
           }
         }
-      }
-    },
-    "resellerResponse": {
-      "type": "object",
-      "properties": {
-        "reseller": {
-          "type": "string"
-        },
-        "currencyCode3": {
-          "type": "string"
-        },
-        "topCustomerCountDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "topCustomerAmtDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "topCustomerCardTypeDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "branchCodeTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "branchCodeSettlementAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "cardTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "cardOriginWithPercentageDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "generalStatsList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
+      },
+      "topCustomerCardTypeDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "branchCodeTransactionAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "branchCodeSettlementAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "cardTransactionAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "generalStatsList": {
+        "type": "array",
+        "items": {
+          "type": "object"
         }
       }
-    },
-    "topCustomerAmtResponse": {
-      "type": "object",
-      "properties": {
-        "topCustomerCountDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "topCustomerAmtDTOList": {
+    }
+  },
+  "generalStatsResponse": {
+    "type": "object",
+    "properties": {
+      "currencyCode3": {
+        "type": "string"
+      },
+      "topCustomerCountDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "topCustomerAmtDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "topCustomerCardTypeDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "branchCodeTransactionAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "branchCodeSettlementAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "cardTransactionAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "cardOriginWithPercentageDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "generalStatsList": {
+        "type": "array",
+        "items": {
           "type": "object",
           "properties": {
-            "error": {
+            "cardAmountTotal": {
+              "type": "string"
+            },
+            "descripiton": {
+              "type": "string"
+            },
+            "newCardNumberPercent": {
+              "type": "string"
+            },
+            "returnCardNumberPercent": {
+              "type": "string"
+            },
+            "newCardNumbers": {
+              "type": "string"
+            },
+            "returnCardNumbers": {
               "type": "string"
             }
           }
-        },
-        "topCustomerCardTypeDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "branchCodeTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "branchCodeSettlementAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "cardTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "generalStatsList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
         }
       }
-    },
-    "generalStatsResponse": {
-      "type": "object",
-      "properties": {
-        "currencyCode3": {
-          "type": "string"
-        },
-        "topCustomerCountDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "topCustomerAmtDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "topCustomerCardTypeDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "branchCodeTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "branchCodeSettlementAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "cardTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "cardOriginWithPercentageDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "generalStatsList": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "cardAmountTotal": {
-                "type": "string"
-              },
-              "descripiton": {
-                "type": "string"
-              },
-              "newCardNumberPercent": {
-                "type": "string"
-              },
-              "returnCardNumberPercent": {
-                "type": "string"
-              },
-              "newCardNumbers": {
-                "type": "string"
-              },
-              "returnCardNumbers": {
-                "type": "string"
-              }
-            }
-          }
+    }
+  },
+  "generalDayAndWeekCountStatsResponse": {
+    "type": "object",
+    "properties": {
+      "currencyCode3": {
+        "type": "string"
+      },
+      "topCustomerCountDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
         }
-      }
-    },
-    "generalDayAndWeekCountStatsResponse": {
-      "type": "object",
-      "properties": {
-        "currencyCode3": {
-          "type": "string"
-        },
-        "topCustomerCountDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "topCustomerAmtDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "topCustomerCardTypeDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "branchCodeTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "branchCodeSettlementAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "cardTransactionAnalyticsDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "cardOriginWithPercentageDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "generalStatsList": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "cardAmountTotal": {
-                "type": "string"
-              },
-              "descripiton": {
-                "type": "string"
-              },
-              "newCardNumberPercent": {
-                "type": "string"
-              },
-              "returnCardNumberPercent": {
-                "type": "string"
-              },
-              "newCardNumbers": {
-                "type": "string"
-              },
-              "returnCardNumbers": {
-                "type": "string"
-              }
-            }
-          }
+      },
+      "topCustomerAmtDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
         }
-      }
-    },
-    "todosResponse": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "task": {
-          "type": "string"
-        },
-        "assignee": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
+      },
+      "topCustomerCardTypeDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
         }
-      }
-    },
-    "addNewUser": {
-      "type": "object",
-      "properties": {
-        "emailAddress": {
-          "type": "string"
-        },
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
-          "type": "string"
-        },
-        "phoneNo": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "userRole": {
-          "type": "integer"
-        },
-        "branchCodeSelected": {
-          "type": "string"
-        },
-        "parentId": {
-          "type": "integer"
-        },
-        "userType": {
-          "type": "string"
-        },
-        "roleSelected": {
-          "type": "string"
-        },
-        "acquirerSelected": {
-          "type": "string"
-        },
-        "selectedCountry": {
-          "type": "string"
-        },
-        "selectedTimezone": {
-          "type": "string"
-        },
-        "selectedLanguage": {
-          "type": "string"
-        },
-        "generatePassword": {
-          "type": "integer"
-        },
-        "userAddons": {
+      },
+      "branchCodeTransactionAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "branchCodeSettlementAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "cardTransactionAnalyticsDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "cardOriginWithPercentageDTOList": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "generalStatsList": {
+        "type": "array",
+        "items": {
+          "type": "object",
           "properties": {
-            "user.profile.image": {
+            "cardAmountTotal": {
+              "type": "string"
+            },
+            "descripiton": {
+              "type": "string"
+            },
+            "newCardNumberPercent": {
+              "type": "string"
+            },
+            "returnCardNumberPercent": {
+              "type": "string"
+            },
+            "newCardNumbers": {
+              "type": "string"
+            },
+            "returnCardNumbers": {
               "type": "string"
             }
           }
         }
       }
-    },
-    "InvalidResponse": {
-      "type": "object",
-      "properties": {
-        "statusCode": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
+    }
+  },
+  "todosResponse": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "task": {
+        "type": "string"
+      },
+      "assignee": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string"
+      }
+    }
+  },
+  "addNewUser": {
+    "type": "object",
+    "properties": {
+      "emailAddress": {
+        "type": "string"
+      },
+      "firstName": {
+        "type": "string"
+      },
+      "lastName": {
+        "type": "string"
+      },
+      "phoneNo": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "userRole": {
+        "type": "integer"
+      },
+      "branchCodeSelected": {
+        "type": "string"
+      },
+      "parentId": {
+        "type": "integer"
+      },
+      "userType": {
+        "type": "string"
+      },
+      "roleSelected": {
+        "type": "string"
+      },
+      "acquirerSelected": {
+        "type": "string"
+      },
+      "selectedCountry": {
+        "type": "string"
+      },
+      "selectedTimezone": {
+        "type": "string"
+      },
+      "selectedLanguage": {
+        "type": "string"
+      },
+      "generatePassword": {
+        "type": "integer"
+      },
+      "userAddons": {
+        "properties": {
+          "user.profile.image": {
+            "type": "string"
+          }
         }
+      }
+    }
+  },
+  "InvalidResponse": {
+    "type": "object",
+    "properties": {
+      "statusCode": {
+        "type": "string"
+      },
+      "message": {
+        "type": "string"
       }
     }
   }

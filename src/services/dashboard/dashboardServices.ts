@@ -5,21 +5,26 @@ import path from "path";
 const key = 'RCClicence';
 import request from 'request';
 import { secretUtil } from '../../utils/secretutil';
+import { authenticateService } from '../authenticate/authenticateServices';
 
 
 const iv = crypto.randomBytes(16);
 
 class DashboardService {
 
-    public allDashboardApi = async (path: any) => {
-        var resObj = {};
+    public allDashboardApi = async (path: any) => {    
        try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + path;
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -44,14 +49,18 @@ class DashboardService {
     }
 
     public allDefaultApi = async (path: any) => {
-        var resObj = {};
        try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return console.log("Error",err);
+        })
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + path;
         let options = {
             method: 'GET',
             url: _url,
             headers: {
-                Authorization: "Bearer " + secretUtil.token,
+                Authorization: "Bearer " + token,
                 "Content-Type": 'application/json'
             },
             strictSSL: false
@@ -74,6 +83,7 @@ class DashboardService {
             
         }
     }
+
     public dashboardCard = async () => {
         let object={
             "currencyCode": "SGD",
@@ -125,6 +135,7 @@ class DashboardService {
         }
         return object;        
     }
+    
     public topcustomercardlist = async () => {
         let object={
             "topCustomerCountDTOList": [
