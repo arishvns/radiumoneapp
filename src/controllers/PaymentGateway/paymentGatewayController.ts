@@ -26,7 +26,7 @@ class PaymentGatewayControler extends BaseController {
 
     public async getSettlement(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
-            const requestResult = await paymentGatewayService.getSettlement();
+            const requestResult = await paymentGatewayService.getSettlement(req);
             return res.send(requestResult);
         } catch (error) {
             return null;

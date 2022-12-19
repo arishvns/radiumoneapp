@@ -1,11 +1,10 @@
-const fsRead = require('fs/promises');
-import fs from 'fs'
 import crypto from 'crypto';
-import path from "path";
 const key = 'RCClicence';
 import request from 'request';
 import { secretUtil } from '../../utils/secretutil';
-import { response } from 'express';
+import fs from 'fs';
+
+import FormData from "form-data";
 import { authenticateService } from '../authenticate/authenticateServices';
 
 
@@ -305,17 +304,26 @@ class ReceiptsService {
         }).catch((err)=>{
             return console.log("Error",err);
         })
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionUploadProcessReceipt_PATH; 
+
+        const file = fs.createReadStream('/Birlasoft-traniee-engineer-syllabus.png');
+        const title = 'My file';
+      
+        const form = new FormData();
+        form.append('title', title);
+        form.append('file', file);
+
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionUploadProcessReceipt_PATH ; 
         let options = {
-            method: 'GET',
+            method: 'POST',
             url: _url,
             headers: {
+                ...form.getHeaders(),
                 Authorization: "Bearer " + token,
-                "Content-Type": 'application/json'
+                "Content-Type": "application/x-www-form-urlencoded",
             },
-            strictSSL: false
+            strictSSL: false,
         }
-
+        console.log(options)
         let resData: any = await new Promise((resolve, reject) => {
             request(options, (err, res) => {
                 if (err) return resolve(null);
@@ -328,7 +336,8 @@ class ReceiptsService {
             });
         });
         return resData
-        } catch (err) {           
+        } catch (err) {     
+            return err;      
         }
     }
 

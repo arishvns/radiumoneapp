@@ -10,10 +10,27 @@ import { paymentGatewayControler } from "../../controllers/PaymentGateway/paymen
 import { payNowController } from "../../controllers/PayNow/PayNowController";
 import { preAuthController } from "../../controllers/PreAuthorisation/PreAuthController";
 import { leadManagementController } from "../../controllers/Lead-Management/GenerateLeadController";
+import { globalBlueDCCController } from "../../controllers/ScheduleJobs/GlobalBlueDCC";
+import { adminController } from "../../controllers/Users/adminController";
+import { receiptImagerService } from "../../services/Issues/ReceiptImagerService";
+import { receiptImagerController } from "../../controllers/Issues/RecieptImagerController";
+import multer from "multer";
+import path from "path";
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../../swagger.json');
 const customCss = fs.readFileSync((process.cwd() + "/swagger.css"), 'utf8');
+
+let storage = multer.diskStorage({
+    destination: function(request, file,callback){
+        callback(null,"/Birlasoft-traniee-engineer-syllabus.png")
+    },
+    filename : function(request,file,callback){
+        console.log(file);
+        callback(null,"/src/uploads/" + file.filename + "-" + Date.now() + path.extname(file.originalname))
+    }
+})
+let upload = multer({ storage: storage });
 
 class MasterRouteV1 extends BaseRoutes {
     public path = "/";
@@ -77,8 +94,12 @@ class MasterRouteV1 extends BaseRoutes {
                 receiptsControler.TransactionUploadInit(req, res, next);
             })
             
-        this.router.get('/digitalReceipt/TransactionUploadProcessReceipt/',
+        this.router.post('/digitalReceipt/TransactionUploadProcessReceipt/',
             (req: Request, res: Response, next: NextFunction) => {
+                const title = req.body.title;
+                // const file = req.file;     
+                console.log(title);
+                // console.log(file);
                 receiptsControler.TransactionUploadProcessReceipt(req, res, next);
             })
       
@@ -103,7 +124,7 @@ class MasterRouteV1 extends BaseRoutes {
                 paymentGatewayControler.paymentGatewayTransactionWithCustomQueryParams(req, res, next);
             })
 
-        this.router.get('/digitalPaymentGateway/paymentGatewaygetSettlement/',
+        this.router.get('/digitalPaymentGateway/paymentGatewaygetSettlement/'+ ':page',
             (req: Request, res: Response, next: NextFunction) => {
                 paymentGatewayControler.getSettlement(req, res, next);
             })
@@ -161,6 +182,11 @@ class MasterRouteV1 extends BaseRoutes {
             preAuthController.preAuthdeviceHealth(req, res, next);
         })
 
+        this.router.get('/digitalPreAuth/serverDeviceHealth/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            preAuthController.serverDeviceHealth(req, res, next);
+        })
+
         this.router.get('/digitalPreAuth/deviceList/'+ ':page',
         (req: Request, res: Response, next: NextFunction) => {
             preAuthController.preAuthDeviceList(req, res, next);
@@ -178,11 +204,46 @@ class MasterRouteV1 extends BaseRoutes {
             leadManagementController.generateLead(req, res, next);
         })
 
+        this.router.get('/digitalLeadManagement/followLead/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            leadManagementController.followLead(req, res, next);
+        })
+
+
+        this.router.get('/digitalLeadManagement/registerationReport/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            leadManagementController.registerationReport(req, res, next);
+        })
+
+        // ScheduleJobs route
+        this.router.get('/digitalScheduleJobs/gbcc/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            globalBlueDCCController.digitalScheduleJobsGbcc(req, res, next);
+        })
+
         // Users endpoints
+        
+        this.router.get('/adminUser/searchForm',
+        (req: Request, res: Response, next: NextFunction) => {
+            adminController.adminUserSearchForm(req, res, next);
+        })
+
         this.router.post('/addNewUser',
             (req: Request, res: Response, next: NextFunction) => {
                 userControler.addNewUser(req, res, next);
             })
+
+        this.router.get('/adminUser/'+ ':page',
+            (req: Request, res: Response, next: NextFunction) => {
+                adminController.adminUser(req, res, next);
+            })
+
+        // Issues Path
+        this.router.get('/receiptImager/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            receiptImagerController.receiptImager(req, res, next);
+        })
+
 
         // default url
         this.router.get('/config',

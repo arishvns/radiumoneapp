@@ -71,13 +71,23 @@ class SecretUtil {
     public preAuthDeviceHealth_PATH = "/preAuth/device/health/"
     public preAuthDebitCardBin_PATH = "/config/bin/list/"
     public preAuthLocalServer_PATH="/hotelServer/device/list/"
-
+    public preAuthServerHealth_PATH="/preAuth/device/health/details/"
+    public preAuthFollowLead_PATH= "/main/leadManagement/followLead/"
+    public preAuthRegisterationReport_PATH= "/report/init/list/"
 
     //Lead Management Path 
     public generateLead_PATH= "/main/leadManagement/generateLead/"
-    
+
+    // ScheduleJobs Path 
+    public gbcc_PATH= "/main/admin/dailyrun/gdbcc/"
+
+    // Receipt Imager Path
+    public ReceiptImager_PATH = "/drs/issues/imager/getAll/"
+
     //  Users endPoints
     public AddNewUser_PATH = "/main/admin/user/addNewUser";
+    public AdminUser_PATH= "/main/admin/user/";
+    public SearchForm_PATH = "/main/admin/user/searchForm"
 
     // Default url 
     public Config_PATH = "/config"

@@ -5,6 +5,8 @@ import * as swagger from 'swagger-express-ts';
 import { SwaggerDefinitionConstant } from 'swagger-express-ts';
 import { appAPI } from './routes/apiroutes';
 import { secretUtil } from './utils/secretutil';
+let multer = require('multer');
+let upload = multer();
 
 /**
  * @description Express server application class.
@@ -42,8 +44,8 @@ class App {
   private defineRoutes(): void {
 
     // API Base path
-    this.server.use(bodyParser.urlencoded({ extended: false }));
     this.server.use(bodyParser.json());
+    this.server.use(bodyParser.urlencoded({ extended: true }));
     this.server.use(appAPI.path, appAPI.routerinstance);
 
     // fallback invalid route
