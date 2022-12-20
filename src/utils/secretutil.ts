@@ -54,7 +54,7 @@ class SecretUtil {
 
     //Payment Gateway paths 
     public PaymentGatewayTransaction_PATH = "/main/paygate/transaction/"
-    public PaymentGatewayGetSettlementList_PATH= "/merchant/settlement/getSettlementList/"
+    public PaymentGatewayGetSettlementList_PATH= "/paygate/settlement/getSettlementList/"
     // public PaymentGatewayTransactionWithQueryParameters_PATH = "/main/paygate/transaction/"
 
     // PayNow Paths 

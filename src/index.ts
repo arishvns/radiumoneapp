@@ -43,8 +43,10 @@ class App {
   private defineRoutes(): void {
 
     // API Base path
+    this.server.use(bodyParser.urlencoded({
+      extended: true
+    }));
     this.server.use(bodyParser.json());
-    this.server.use(bodyParser.urlencoded({ extended: true }));
     this.server.use(appAPI.path, appAPI.routerinstance);
 
     // fallback invalid route
