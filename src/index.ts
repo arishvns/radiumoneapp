@@ -5,8 +5,7 @@ import * as swagger from 'swagger-express-ts';
 import { SwaggerDefinitionConstant } from 'swagger-express-ts';
 import { appAPI } from './routes/apiroutes';
 import { secretUtil } from './utils/secretutil';
-let multer = require('multer');
-let upload = multer();
+
 
 /**
  * @description Express server application class.
