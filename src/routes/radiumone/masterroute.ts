@@ -14,23 +14,12 @@ import { globalBlueDCCController } from "../../controllers/ScheduleJobs/GlobalBl
 import { adminController } from "../../controllers/Users/adminController";
 import { receiptImagerService } from "../../services/Issues/ReceiptImagerService";
 import { receiptImagerController } from "../../controllers/Issues/RecieptImagerController";
-import multer from "multer";
-import path from "path";
+
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../../swagger.json');
 const customCss = fs.readFileSync((process.cwd() + "/swagger.css"), 'utf8');
 
-let storage = multer.diskStorage({
-    destination: function(request, file,callback){
-        callback(null,"/Birlasoft-traniee-engineer-syllabus.png")
-    },
-    filename : function(request,file,callback){
-        console.log(file);
-        callback(null,"/src/uploads/" + file.filename + "-" + Date.now() + path.extname(file.originalname))
-    }
-})
-let upload = multer({ storage: storage });
 
 class MasterRouteV1 extends BaseRoutes {
     public path = "/";
@@ -96,10 +85,6 @@ class MasterRouteV1 extends BaseRoutes {
             
         this.router.post('/digitalReceipt/TransactionUploadProcessReceipt/',
             (req: Request, res: Response, next: NextFunction) => {
-                const title = req.body.title;
-                // const file = req.file;     
-                console.log(title);
-                // console.log(file);
                 receiptsControler.TransactionUploadProcessReceipt(req, res, next);
             })
       
