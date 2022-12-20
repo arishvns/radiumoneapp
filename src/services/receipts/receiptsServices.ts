@@ -3,9 +3,8 @@ const key = 'RCClicence';
 import request from 'request';
 import { secretUtil } from '../../utils/secretutil';
 import fs from 'fs';
-
-import FormData from "form-data";
 import { authenticateService } from '../authenticate/authenticateServices';
+var request = require("request");
 
 
 const iv = crypto.randomBytes(16);
@@ -31,7 +30,7 @@ class ReceiptsService {
         }
 
         let resData: any = await new Promise((resolve, reject) => {
-            request(options, (err, res) => {
+            request(options, (err: any, res: { body: string; }) => {
                 if (err) return resolve(null);
                 try {
                     resolve(JSON.parse(res.body));
@@ -68,7 +67,7 @@ class ReceiptsService {
         }
 
         let resData: any = await new Promise((resolve, reject) => {
-            request(options, (err, res) => {
+            request(options, (err: any, res: { body: unknown; }) => {
                 if (err) return resolve(null);
                 try {
                     resolve((res.body));
@@ -104,7 +103,7 @@ class ReceiptsService {
         }
 
         let resData: any = await new Promise((resolve, reject) => {
-            request(options, (err, res) => {
+            request(options, (err: any, res: { body: string; }) => {
                 if (err) return resolve(null);
                 try {
                     resolve(JSON.parse(res.body));
@@ -140,7 +139,7 @@ class ReceiptsService {
         }
 
         let resData: any = await new Promise((resolve, reject) => {
-            request(options, (err, res) => {
+            request(options, (err: any, res: { body: string; }) => {
                 if (err) return resolve(null);
                 try {
                     resolve(JSON.parse(res.body));
@@ -176,7 +175,7 @@ class ReceiptsService {
         }
 
         let resData: any = await new Promise((resolve, reject) => {
-            request(options, (err, res) => {
+            request(options, (err: any, res: { body: unknown; }) => {
                 if (err) return resolve(null);
                 try {
                     resolve(res.body);
@@ -212,7 +211,7 @@ class ReceiptsService {
         }
 
         let resData: any = await new Promise((resolve, reject) => {
-            request(options, (err, res) => {
+            request(options, (err: any, res: { body: string; }) => {
                 if (err) return resolve(null);
                 try {
                     resolve(JSON.parse(res.body));
@@ -248,7 +247,7 @@ class ReceiptsService {
         }
 
         let resData: any = await new Promise((resolve, reject) => {
-            request(options, (err, res) => {
+            request(options, (err: any, res: { body: string; }) => {
                 if (err) return resolve(null);
                 try {
                     resolve(JSON.parse(res.body));
@@ -263,7 +262,7 @@ class ReceiptsService {
         }
     }
 
-    public TransactionUploadInit = async (req?: any) => {
+    public TransactionUploadInit = async (req?: any,response?:any) => {
        try{
         let token =  await authenticateService.authenticateToken().then( (res)=>{
             return res.token;
@@ -282,7 +281,7 @@ class ReceiptsService {
         }
 
         let resData: any = await new Promise((resolve, reject) => {
-            request(options, (err, res) => {
+            request(options, (err: any, res: { body: string; }) => {
                 if (err) return resolve(null);
                 try {
                     resolve(JSON.parse(res.body));
@@ -304,39 +303,60 @@ class ReceiptsService {
         }).catch((err)=>{
             return console.log("Error",err);
         })
-
-        const file = fs.createReadStream('/Birlasoft-traniee-engineer-syllabus.png');
-        const title = 'My file';
-      
-        const form = new FormData();
-        form.append('title', title);
-        form.append('file', file);
+        let file = req.files.singleFileInfo;
+        let x = await new Promise((resolve, reject) => {
+            file.mv(process.cwd() + "/src/uploads/" + file.name, (err: any) => {
+                if (err) {
+                    resolve(false);
+                }
+                else {
+                    resolve(true);
+                }
+            })
+        });
+        if (!x) {
+            return { ack: '2', msg: "Unexpected error occured! Please try again" }
+        }
 
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionUploadProcessReceipt_PATH ; 
+
+        let filePath = (process.cwd() + "\\src\\uploads\\" + file.name);
+
+        var formData = {
+            name: 'singleFileInfo',
+            singleFileInfoFile: {
+                value: fs.createReadStream(filePath),
+                options: {
+                    filename: file.name,
+                    contentType: 'image/png'
+                }
+            }
+        };
+
         let options = {
             method: 'POST',
             url: _url,
+            formData: formData,
             headers: {
-                ...form.getHeaders(),
-                Authorization: "Bearer " + token,
-                "Content-Type": "application/x-www-form-urlencoded",
+                    'Cache-Control': 'no-cache',
+                    authorization: "Bearer " + token,
+                    'Content-type':'application/x-www-form-urlencoded'
             },
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity,
             strictSSL: false,
         }
-        console.log(options)
+        
         let resData: any = await new Promise((resolve, reject) => {
-            request(options, (err, res) => {
-                if (err) return resolve(null);
-                try {
-                    resolve(JSON.parse(res.body));
+            request(options, (err: any, res: any) => {
+                if (err) {
+                    resolve('null')
                 }
-                catch (ex) {
-                    return resolve(null);
-                }
+                resolve(JSON.parse(res.body));
             });
-        });
+        });  
         return resData
-        } catch (err) {     
+        } catch (err) {
             return err;      
         }
     }

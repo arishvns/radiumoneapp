@@ -11,7 +11,7 @@
   "schemes": [
     "http"
   ],
-  "host": "40.87.100.33",
+  "host": "localhost:3005",
   "basePath": "/api",
   "paths": {
     "/dashboard/dashboardCard": {
@@ -395,21 +395,10 @@
         "tags": [
           "Digital Receipt"
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "image/png": {
-              "schema": {
-                "type": "string",
-                "format": "binary"
-              }
-            }
-          }
-        },
         "parameters": [
           {
             "in": "formData",
-            "name": "requestBody",
+            "name": "singleFileInfo",
             "description": "Upload file",
             "required": true,
             "type": "file"

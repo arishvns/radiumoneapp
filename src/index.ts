@@ -7,6 +7,9 @@ import { appAPI } from './routes/apiroutes';
 import { secretUtil } from './utils/secretutil';
 
 
+const fileUpload = require('express-fileupload');
+
+
 /**
  * @description Express server application class.
  */
@@ -43,11 +46,12 @@ class App {
   private defineRoutes(): void {
 
     // API Base path
-    this.server.use(bodyParser.urlencoded({
-      extended: true
-    }));
-    this.server.use(bodyParser.json());
+    this.server.use(express.urlencoded({ extended: true }));
+    this.server.use(express.json());
+
+    this.server.use(fileUpload()); 
     this.server.use(appAPI.path, appAPI.routerinstance);
+
 
     // fallback invalid route
     this.server.use((req: Request, res: Response, next: NextFunction) => {
