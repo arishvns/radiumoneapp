@@ -47,7 +47,7 @@ class SecretUtil {
     public TransactionReceiptImg_PATH = "/receipt/img/retKey";
     public TransactionUploadInit_PATH= "/receipt/manual/upload/init";
     public TransactionUploadProcessReceipt_PATH ="/receipt/manual/upload/process/receipt";
-
+    public TransactionUploadReceiptCardTransTypeList_Path = "/uploadreceipts/cards";
     public exportTransaction_PATH = "/main/merchant/transaction/export/excel/"
     public GetDate_Path = "/merchant/settlement/getDate";
     public settlement_Path = "/merchant/settlement/getSettlementList/";
@@ -80,6 +80,11 @@ class SecretUtil {
 
     // ScheduleJobs Path 
     public gbcc_PATH= "/main/admin/dailyrun/gdbcc/"
+
+    // Configuration Path
+    public ConfigMerchant_Path = "/main/admin/merchants/"
+    public ConfigBranchCode_Path = "/main/admin/merchants/branch_code/"
+    public ConfigPaymentAccountGetInItData_Path = "/main/config/payment/account/getInitData/"
 
     // Receipt Imager Path
     public ReceiptImager_PATH = "/drs/issues/imager/getAll/"

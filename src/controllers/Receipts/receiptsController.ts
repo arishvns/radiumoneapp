@@ -79,6 +79,16 @@ class ReceiptsControler extends BaseController {
             return null;
         }
     }
+
+    public async TransactionUploadReceiptCards(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await receiptsService.TransactionUploadReceiptCards(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
     public async TransactionUploadProcessReceipt(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await receiptsService.TransactionUploadProcessReceipt(req);

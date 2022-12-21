@@ -382,6 +382,36 @@
         }
       }
     },
+    "/digitalReceipt/TransactionUploadInit/": {
+      "get": {
+        "summary": "Get get info of manual uplaod receipt.Basically,it tell about the receipt image size",
+        "description": "Get get info of manual uplaod receipt.Basically,it tell about the receipt image size",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Digital Receipt"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TransactionUploadInit"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/digitalReceipt/TransactionUploadProcessReceipt/": {
       "post": {
         "summary": "To get info of uplaod image receipt processing under find receipts",
@@ -411,6 +441,36 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/TransactionUploadProcessReceipt"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalReceipt/TransactionUploadReceiptCards/ ": {
+      "get": {
+        "summary": "Get get info of manual uplaod receipt cards",
+        "description": "Get get info of manual uplaod receipt cards",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Digital Receipt"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
               }
             }
           },
@@ -1995,6 +2055,159 @@
         }
       }
     },
+    "/digitalConfiguration/merchant/{page}": {
+      "get": {
+        "summary": "To get all info of merchants under configuration",
+        "description": "To get all info of merchants under configuration",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "DigitalConfiguration"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "10"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default":"true"
+          },
+          {
+            "name": "instanceDefaultCountry",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default":"SG"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/digitalConfiguration"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalConfiguration/branchCode/{page}": {
+      "get": {
+        "summary": "To get all branch codes under configuration",
+        "description": "To get all branch codes under configuration",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "DigitalConfiguration"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default": "undefined"
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default":"true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/digitalConfigurationBranchCode"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalConfiguration/getInitData/": {
+      "get": {
+        "summary": "To get all data of payment account under configuration",
+        "description": "To get all data of payment account under configuration",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "DigitalConfiguration"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/digitalConfigurationGetInitData"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/adminUser/{page}": {
       "get": {
         "summary": "Get all details of admin user with custom paramters",
@@ -2632,10 +2845,13 @@
     "TransactionUploadInit": {
       "type": "object",
       "properties": {
-        "maxExportRange ": {
+        "maxSize ": {
           "type": "string"
         },
-        "dateRange ": {
+        "minDPI ": {
+          "type": "string"
+        },
+        "recDPI ": {
           "type": "string"
         }
       }
@@ -2643,12 +2859,6 @@
     "TransactionUploadProcessReceipt": {
       "type": "object",
       "properties": {
-        "finalOutputBase64Str ": {
-          "type": "string"
-        },
-        "inputFileName ": {
-          "type": "string"
-        },
         "originalImgBase64Str ": {
           "type": "string"
         },
@@ -3624,6 +3834,302 @@
         },
         "totalPages": {
           "type": "integer"
+        }
+      }
+    },
+    "digitalConfiguration": {
+      "type": "object",
+      "properties": {
+        "merchantList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/merchantList"
+          }
+        },
+        "isMerchantEmpty": {
+          "type": "boolean"
+        },
+        "helperDTO": {
+          "type": "object",
+          "$ref": "#/definitions/helperDTO"
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "countryStatesMap":{
+          "type":"object",
+          "$ref": "#/definitions/countryStatesMap"
+          },
+        "stateCitiesMap":{
+          "type":"object",
+            "$ref": "#/definitions/stateCitiesMap"
+        }
+      }
+    },
+    "digitalConfigurationBranchCode":{
+      "type":"object",
+      "properties":{
+        "branchCodeList":{
+          "type":"array",
+          "items":{
+            "$ref":"#/definitions/branchCodeList"
+          }
+        },
+        "isBranchCodeEmpty":{
+          "type":"boolean"
+        },
+        "helperDTO":{
+          "type":"object",
+          "$ref":"#/definitions/helperDTO"
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        }
+    }
+    },
+    "digitalConfigurationGetInitData":{
+      "type":"object",
+      "properties":{
+        "id":{
+          "type":"string"
+        },
+        "accountNumber":{
+          "type":"integer"
+        },
+        "beneficiaryName":{
+          "type":"string"
+        },
+        "bankId":{
+          "type":"string"
+        },
+        "bankName":{
+          "type":"string"
+        },
+        "merchantCount":{
+          "type":"integer"
+        },
+        "country": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "bicCode": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "bankList":{
+          "type":"array",
+          "items":{
+            "$ref":"#/definitions/bankList"
+          }
+        },
+        "countryMap":{
+          "type":"object"
+        },
+        "currencyList":{
+          "type":"array",
+          "items":{
+            "$ref":"#/definitions/currencyList"
+          }
+        },
+        "merchantEmailDtoList":{
+          "type":"string"
+        },
+        "selectedMerchantIds": {
+          "type": "string"
+        },
+        "utcDatetime": {
+          "type": "string"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "selectMID": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+    }
+    },
+    "bankList":{
+      "type":"object",
+      "properties":{
+        "id":{
+          "type":"integer"
+        },
+        "bankName":{
+          "type":"string"
+        },
+        "bicCode":{
+          "type":"string"
+        },
+        "accountNoRegex":{
+          "type":"string"
+        },
+        "currency":{
+          "type":"string"
+        },
+        "country":{
+          "type":"string"
+        }
+      }
+    },
+    "currencyList":{
+      "type":"object",
+      "properties":{
+        "id":{
+          "type":"integer"
+        },
+        "currencyCode2":{
+          "type":"string"
+        },
+        "currencyCode3":{
+          "type":"string"
+        },
+        "decimalSeparator":{
+          "type":"string"
+        },
+        "description":{
+          "type":"string"
+        },
+        "symbol":{
+          "type":"string"
+        },
+        "numericCode":{
+          "type":"string"
+        }
+      }
+    },
+    "branchCodeList":{
+      "type":"object",
+      "properties":{
+        "branchCodeId":{
+          "type":"integer"
+        },
+        "branchCode":{
+          "type":"string"
+        },
+        "acquirerId":{
+          "type":"integer"
+        },
+        "acquirerName":{
+          "type":"string"
+        },
+        "merchantName":{
+          "type":"string"
+        },
+        "merchantAddress":{
+          "type":"string"
+        }
+
+      }
+    },
+    "countryStatesMap":{
+      "type":"object",
+      "properties":{
+        "3186":{
+          "type":"string"
+        }
+      }
+    },
+    "stateCitiesMap":{
+      "type":"object",
+      "properties":{
+        "37541":{
+          "type":"string"
+        }
+      }
+    },
+    "merchantList":{
+      "type":"object",
+      "properties": {
+          "merchantIdID": {
+            "type": "integer"
+          },
+          "merchantName": {
+                "type": "string"
+              },
+          "merchantCode": {
+            "type": "string"
+          },
+          "address1": {
+            "type": "string"
+          },
+          "address2": {
+            "type": "string"
+          },
+          "address3": {
+                "type": "string"
+              },
+          "postalCode": {
+            "type": "string"
+          },
+          "createdBy": {
+            "type": "integer"
+          },
+          "merchantMidDTOS":{
+            "type":"array",
+            "items": {
+              "$ref": "#/definitions/merchantMidDTOS"
+            }
+          },
+          "categoryCode": {
+            "type": "string"
+          },
+          "category": {
+                "type": "string"
+              },
+          "connectedDevices": {
+            "type": "integer"
+          },
+          "selectedCity": {
+            "type": "integer"
+          },
+          "selectedState": {
+            "type": "integer"
+          },
+          "selectedStateName": {
+            "type": "string"
+              },
+          "selectedCityName": {
+            "type": "string"
+          }
+    }
+    },
+    "merchantMidDTOS":{
+      "type":"object",
+      "properties":{
+        "id":{
+          "type":"integer"
+        },
+        "merchantId":{
+          "type":"string"
+        },
+        "referencedByPayNowDevice":{
+          "type":"boolean"
         }
       }
     },

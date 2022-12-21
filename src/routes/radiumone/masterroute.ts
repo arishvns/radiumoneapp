@@ -14,11 +14,13 @@ import { globalBlueDCCController } from "../../controllers/ScheduleJobs/GlobalBl
 import { adminController } from "../../controllers/Users/adminController";
 import { receiptImagerService } from "../../services/Issues/ReceiptImagerService";
 import { receiptImagerController } from "../../controllers/Issues/RecieptImagerController";
-
+import { configurationController } from "../../controllers/Configuration/ConfigController";
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../../swagger.json');
 const customCss = fs.readFileSync((process.cwd() + "/swagger.css"), 'utf8');
+
+
 
 
 class MasterRouteV1 extends BaseRoutes {
@@ -27,6 +29,8 @@ class MasterRouteV1 extends BaseRoutes {
         super();
         this._configure();
     }
+
+    
     /**
      * @description Connect routes to their matching controller endpoints.
      */
@@ -87,6 +91,11 @@ class MasterRouteV1 extends BaseRoutes {
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.TransactionUploadProcessReceipt(req, res, next);
             })
+        
+        this.router.get('/digitalReceipt/TransactionUploadReceiptCards/',
+        (req: Request, res: Response, next: NextFunction) => {
+            receiptsControler.TransactionUploadReceiptCards(req, res, next);
+        })
       
         this.router.get('/digitalReceipt/settlement',
             (req: Request, res: Response, next: NextFunction) => {
@@ -204,6 +213,22 @@ class MasterRouteV1 extends BaseRoutes {
         this.router.get('/digitalScheduleJobs/gbcc/'+ ':page',
         (req: Request, res: Response, next: NextFunction) => {
             globalBlueDCCController.digitalScheduleJobsGbcc(req, res, next);
+        })
+
+        // Configuration route
+        this.router.get('/digitalConfiguration/merchant/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.merchant(req, res, next);
+        })
+
+        this.router.get('/digitalConfiguration/branchCode/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.branchCode(req, res, next);
+        })
+
+        this.router.get('/digitalConfiguration/getInitData/',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.getInitData(req, res, next);
         })
 
         // Users endpoints
