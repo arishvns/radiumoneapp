@@ -5,9 +5,7 @@ import * as swagger from 'swagger-express-ts';
 import { SwaggerDefinitionConstant } from 'swagger-express-ts';
 import { appAPI } from './routes/apiroutes';
 import { secretUtil } from './utils/secretutil';
-
-
-
+import fileUpload from 'express-fileupload';
 
 
 /**
@@ -49,6 +47,7 @@ class App {
     this.server.use(express.urlencoded({ extended: true }));
     this.server.use(express.json());
 
+    this.server.use(fileUpload()); 
     this.server.use(appAPI.path, appAPI.routerinstance);
 
 
