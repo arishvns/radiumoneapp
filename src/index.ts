@@ -7,7 +7,7 @@ import { appAPI } from './routes/apiroutes';
 import { secretUtil } from './utils/secretutil';
 
 
-const fileUpload = require('express-fileupload');
+
 
 
 /**
@@ -49,7 +49,6 @@ class App {
     this.server.use(express.urlencoded({ extended: true }));
     this.server.use(express.json());
 
-    this.server.use(fileUpload()); 
     this.server.use(appAPI.path, appAPI.routerinstance);
 
 
