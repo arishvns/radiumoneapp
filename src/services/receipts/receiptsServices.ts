@@ -305,7 +305,7 @@ class ReceiptsService {
         })
         let file = req.files.singleFileInfo;
         let x = await new Promise((resolve, reject) => {
-            file.mv(process.cwd() + "/src/uploads/" + file.name, (err: any) => {
+            file.mv(process.cwd() + "\\src\\uploads\\" + file.name, (err: any) => {
                 if (err) {
                     resolve(false);
                 }
