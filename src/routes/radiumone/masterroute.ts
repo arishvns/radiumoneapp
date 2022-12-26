@@ -231,6 +231,11 @@ class MasterRouteV1 extends BaseRoutes {
             configurationController.getInitData(req, res, next);
         })
 
+        this.router.get('/digitalConfiguration/paymentAccount/',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.paymentAccount(req, res, next);
+        })
+
         // Users endpoints
         
         this.router.get('/adminUser/searchForm',

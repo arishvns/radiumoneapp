@@ -85,6 +85,7 @@ class SecretUtil {
     public ConfigMerchant_Path = "/main/admin/merchants/"
     public ConfigBranchCode_Path = "/main/admin/merchants/branch_code/"
     public ConfigPaymentAccountGetInItData_Path = "/main/config/payment/account/getInitData/"
+    public ConfigPaymentAccount_Path = "/main/config/payment/account/"
 
     // Receipt Imager Path
     public ReceiptImager_PATH = "/drs/issues/imager/getAll/"

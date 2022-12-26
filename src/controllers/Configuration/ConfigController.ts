@@ -34,6 +34,15 @@ class ConfigurationController extends BaseController {
         }
     }
 
+    public async paymentAccount(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await configurationService.paymentAccount(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
 }
 
 export const configurationController = new ConfigurationController();

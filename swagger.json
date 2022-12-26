@@ -11,7 +11,7 @@
   "schemes": [
     "http"
   ],
-  "host": "40.87.100.33",
+  "host": "localhost:3005",
   "basePath": "/api",
   "paths": {
     "/dashboard/dashboardCard": {
@@ -1232,16 +1232,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "allowEmptyValue": true,
-            "default": "true"
+            "allowEmptyValue": true
           },
           {
             "name": "amount",
             "in": "query",
             "required": false,
             "type": "string",
-            "allowEmptyValue": true,
-            "default": "10"
+            "allowEmptyValue": true
           },
           {
             "name": "status",
@@ -1285,6 +1283,14 @@
             "type": "boolean",
             "allowEmptyValue": true,
             "default": "true"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default": "10"
           }
         ],
         "responses": {
