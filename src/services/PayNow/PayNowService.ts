@@ -84,7 +84,7 @@ class PayNowService {
         }).catch((err)=>{
             return console.log("Error",err);
         })
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PayNowBankStatement_PATH + req.params.page+ "?" + new URLSearchParams(req.query); 
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.PayNowPaymentAdvice_PATH + req.params.page+ "?" + new URLSearchParams(req.query); 
         let options = {
             method: 'GET',
             url: _url,
