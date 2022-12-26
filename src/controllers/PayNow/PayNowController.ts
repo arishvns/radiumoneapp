@@ -67,6 +67,15 @@ class PayNowController extends BaseController {
         }
     }
 
+    public async payNowGetReportTypesOnSearch(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await payNowService.payNowGetReportTypesOnSearch(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
     public async getDataMasterAccount(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await payNowService.getDataMasterAccount();

@@ -116,7 +116,7 @@ class ReceiptsService {
         return resData
 
         } catch (err) {
-            
+            return err; 
         }
     }
 
@@ -498,7 +498,7 @@ class ReceiptsService {
 
         let filePath = (process.cwd() + "\\src\\uploads\\" + file.name);
 
-        var formData = {
+        let formData = {
             name: 'singleFileInfo',
             singleFileInfoFile: {
                 value: fs.createReadStream(filePath),

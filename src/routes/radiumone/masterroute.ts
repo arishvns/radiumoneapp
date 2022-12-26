@@ -159,6 +159,11 @@ class MasterRouteV1 extends BaseRoutes {
                 payNowController.payNowgetReportTypes(req, res, next);
         })
 
+        this.router.get('/digitalPayNow/getReportTypesOnSearch/'+ ':page',
+            (req: Request, res: Response, next: NextFunction) => {
+                payNowController.payNowGetReportTypesOnSearch(req, res, next);
+        })
+
         this.router.get('/digitalPayNow/getDataMasterAccount/',
             (req: Request, res: Response, next: NextFunction) => {
                 payNowController.getDataMasterAccount(req, res, next);
@@ -231,7 +236,7 @@ class MasterRouteV1 extends BaseRoutes {
             configurationController.getInitData(req, res, next);
         })
 
-        this.router.get('/digitalConfiguration/paymentAccount/',
+        this.router.get('/digitalConfiguration/paymentAccount/'+ ':page',
         (req: Request, res: Response, next: NextFunction) => {
             configurationController.paymentAccount(req, res, next);
         })

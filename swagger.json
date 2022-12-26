@@ -18,6 +18,7 @@
       "get": {
         "summary": "Get all details of this week transaction voulme/today's transaction volume,new customers & carbon footprint cards.",
         "description": "Get all details of this week transaction voulme/today's transaction volume,new customers & carbon footprint cards.",
+        "operationId": "Get all details of this week transaction voulme/today's transaction volume,new customers & carbon footprint cards",
         "produces": [
           "application/json"
         ],
@@ -48,6 +49,7 @@
       "get": {
         "summary": "Get all details of transaction/settlement analytic card.",
         "description": "Get all details of transaction/settlement analytic card.",
+        "operationId": "Get all details of transaction/settlement analytic card",
         "produces": [
           "application/json"
         ],
@@ -78,6 +80,7 @@
       "get": {
         "summary": "Get all details of top customers by receipt count,receipt amount & best performing cards.",
         "description": "Get all details of top customers by receipt count,receipt amount & best performing cards.",
+        "operationId": "Get all details of top customers by receipt count,receipt amount & best performing cards",
         "produces": [
           "application/json"
         ],
@@ -108,6 +111,7 @@
       "get": {
         "summary": "To get filter parameters to refine transaction records",
         "description": "To get filter parameters to refine transaction records",
+        "operationId": "To get filter parameters to refine transaction records",
         "produces": [
           "application/json"
         ],
@@ -138,9 +142,7 @@
       "get": {
         "summary": "Get all the transaction list by current date",
         "description": "Get all the transaction list by current date",
-        "produces": [
-          "application/json"
-        ],
+        "operationId": "Get all the transaction list by current date - application/json",
         "tags": [
           "Digital Receipt"
         ],
@@ -303,6 +305,7 @@
       "get": {
         "summary": "Get transaction receipt by selected transaction id",
         "description": "Get transaction receipt by selected transaction id",
+        "operationId": "Get transaction receipt by selected transaction id",
         "produces": [
           "application/json"
         ],
@@ -341,6 +344,7 @@
       "get": {
         "summary": "Get transaction receipt image",
         "description": "Get transaction receipt image",
+        "operationId": "Get transaction receipt image",
         "produces": [
           "application/json"
         ],
@@ -352,8 +356,8 @@
             "name": "filename",
             "in": "path",
             "type": "string",
-            "default": "1f8b0800000000000000358b4b0ec23010c5ae82f4b6f9cc9ba469e712dc21a5082a5501d1c0f9290bbcb32553852aaa62490702cbf5137f1ea951181993fcb169b2a3781ba7795ea478493e9b1fc493f9d8c3b3dd80f3badf6beba71080feaa6daf97be3e1a6032964216a0bdb70dc84e5d72fc0241fdaadb81000000",
-            "required": true
+            "required": true,
+            "default": "1f8b0800000000000000358b4b0ec23010c5ae82f4b6f9cc9ba469e712dc21a5082a5501d1c0f9290bbcb32553852aaa62490702cbf5137f1ea951181993fcb169b2a3781ba7795ea478493e9b1fc493f9d8c3b3dd80f3badf6beba71080feaa6daf97be3e1a6032964216a0bdb70dc84e5d72fc0241fdaadb81000000"
           },
           {
             "name": "encryptSwitch",
@@ -382,10 +386,11 @@
         }
       }
     },
-    "/digitalReceipt/TransactionUploadInit/": {
+    "/digitalReceipt/TransactionUploadInit": {
       "get": {
         "summary": "Get get info of manual uplaod receipt.Basically,it tell about the receipt image size",
         "description": "Get get info of manual uplaod receipt.Basically,it tell about the receipt image size",
+        "operationId": "Get get info of manual uplaod receipt.Basically,it tell about the receipt image size",
         "produces": [
           "application/json"
         ],
@@ -393,6 +398,9 @@
           "Digital Receipt"
         ],
         "parameters": [],
+        "x-google-backend": {
+          "address": "http://techomni.in/api/digitalReceipt/TransactionUploadInit"
+        },
         "responses": {
           "200": {
             "description": "successful operation",
@@ -412,10 +420,11 @@
         }
       }
     },
-    "/digitalReceipt/TransactionUploadProcessReceipt/": {
+    "/digitalReceipt/TransactionUploadProcessReceipt": {
       "post": {
         "summary": "To get info of uplaod image receipt processing under find receipts",
         "description": "To get info of uplaod image receipt processing under find receipts",
+        "operationId": "To get info of uplaod image receipt processing under find receipts",
         "consumes": [
           "multipart/form-data"
         ],
@@ -453,10 +462,11 @@
         }
       }
     },
-    "/digitalReceipt/TransactionUploadReceiptCards/ ": {
+    "/digitalReceipt/TransactionUploadReceiptCards": {
       "get": {
-        "summary": "Get get info of manual uplaod receipt cards",
-        "description": "Get get info of manual uplaod receipt cards",
+        "summary": "Get info of manual uplaod receipt cards",
+        "description": "Get info of manual uplaod receipt cards",
+        "operationId": "Get info of manual uplaod receipt cards",
         "produces": [
           "application/json"
         ],
@@ -483,10 +493,11 @@
         }
       }
     },
-    "/digitalReceipt/exportTransaction/": {
+    "/digitalReceipt/exportTransaction": {
       "get": {
         "summary": "Export transaction details by selected dates",
         "description": "Export transaction details by selected dates",
+        "operationId": "Export transaction details by selected dates",
         "produces": [
           "application/json",
           "text/plain",
@@ -534,6 +545,7 @@
       "get": {
         "summary": "To get filter parameters to refine settlement records",
         "description": "To get filter parameters to refine settlement records",
+        "operationId": "To get filter parameters to refine settlement records",
         "produces": [
           "application/json"
         ],
@@ -564,6 +576,7 @@
       "get": {
         "summary": "Get all the settlement list by putting date range",
         "description": "Get all the settlement list by putting date range",
+        "operationId": "Get all the settlement list by putting date range",
         "produces": [
           "application/json"
         ],
@@ -675,10 +688,11 @@
         }
       }
     },
-    "/digitalPaymentGateway/transaction/": {
+    "/digitalPaymentGateway/transaction": {
       "get": {
         "summary": "To get all details of payment gateway transaction by selected dates",
         "description": "To get all details of payment gateway transaction by selected dates",
+        "operationId": "To get all details of payment gateway transaction by selected dates",
         "produces": [
           "application/json"
         ],
@@ -709,6 +723,7 @@
       "get": {
         "summary": "To get all details of payment gateway transaction by selected dates with custom query parameters",
         "description": "To get all details of payment gateway transaction by selected dates with custom query parameters",
+        "operationId": "To get all details of payment gateway transaction by selected dates with custom query parameters",
         "produces": [
           "application/json"
         ],
@@ -889,6 +904,7 @@
       "get": {
         "summary": "To get all details of payment gateway settlement by selected dates with custom query parameters",
         "description": "To get all details of payment gateway settlement by selected dates with custom query parameters",
+        "operationId": "To get all details of payment gateway settlement by selected dates with custom query parameters",
         "produces": [
           "application/json"
         ],
@@ -943,7 +959,7 @@
             "in": "query",
             "required": true,
             "type": "string",
-            "default":"undefined"
+            "default": "undefined"
           },
           {
             "name": "settlement_date_range",
@@ -981,7 +997,7 @@
             "required": true,
             "type": "boolean",
             "allowEmptyValue": true,
-            "default":"true"
+            "default": "true"
           }
         ],
         "responses": {
@@ -1003,10 +1019,11 @@
         }
       }
     },
-    "/digitalPayNow/transaction/": {
+    "/digitalPayNow/transaction": {
       "get": {
         "summary": "To get all details of pay now transaction",
         "description": "To get all details of pay now transaction",
+        "operationId": "To get all details of pay now transaction",
         "produces": [
           "application/json"
         ],
@@ -1037,6 +1054,7 @@
       "get": {
         "summary": "To get all details of pay now transaction by selecting custom parameters",
         "description": "To get all details of pay now transaction by selecting custom parameters",
+        "operationId": "To get all details of pay now transaction by selecting custom parameters",
         "produces": [
           "application/json"
         ],
@@ -1191,6 +1209,7 @@
       "get": {
         "summary": "To get all details of pay now transaction advice accordingly by date",
         "description": "To get all details of pay now transaction advice accordingly by date",
+        "operationId": "To get all details of pay now transaction advice accordingly by date",
         "produces": [
           "application/json"
         ],
@@ -1211,7 +1230,7 @@
             "required": true,
             "type": "string",
             "allowEmptyValue": true,
-            "default": "01/12/2022-13/12/2022"
+            "default": "01/12/2018-13/12/2022"
           },
           {
             "name": "time_range",
@@ -1316,6 +1335,7 @@
       "get": {
         "summary": "To get all details of bank statement transaction accordingly by date",
         "description": "To get all details of bank statement transaction accordingly by date",
+        "operationId": "To get all details of bank statement transaction accordingly by date",
         "produces": [
           "application/json"
         ],
@@ -1402,10 +1422,11 @@
         }
       }
     },
-    "/digitalPayNow/getCreateData/": {
+    "/digitalPayNow/getCreateData": {
       "get": {
         "summary": "To get all details of pay now transaction",
         "description": "To get all details of pay now transaction",
+        "operationId": "To get all details of pay now transactions",
         "produces": [
           "application/json"
         ],
@@ -1432,10 +1453,11 @@
         }
       }
     },
-    "/digitalPayNow/bankstatement/": {
+    "/digitalPayNow/bankstatement": {
       "get": {
         "summary": "To get all details of bank statement transaction",
         "description": "To get all details of bank statement transaction",
+        "operationId": "To get all details of bank statement transaction",
         "produces": [
           "application/json"
         ],
@@ -1462,10 +1484,11 @@
         }
       }
     },
-    "/digitalPayNow/getReportTypes/": {
+    "/digitalPayNow/getReportTypes": {
       "get": {
         "summary": "To get all details of report types",
         "description": "To get all details of report types",
+        "operationId": "To get all details of report types",
         "produces": [
           "application/json"
         ],
@@ -1492,10 +1515,81 @@
         }
       }
     },
-    "/digitalPayNow/getDataMasterAccount/": {
+    "/digitalPayNow/getReportTypesOnSearch/{page}": {
+      "get": {
+        "summary": "To get all details of specific report types on search",
+        "description": "To get all details of specific report types on search",
+        "operationId": "To get all details of specific report types on search",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PayNow"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "10"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default": "true"
+          },
+          {
+            "name": "report_type",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "2"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/payNowgetReportTypes"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalPayNow/getDataMasterAccount": {
       "get": {
         "summary": "To get all details of master account",
         "description": "To get all details of master account",
+        "operationId": "To get all details of master account",
         "produces": [
           "application/json"
         ],
@@ -1522,10 +1616,11 @@
         }
       }
     },
-    "/digitalPreAuth/inIt/": {
+    "/digitalPreAuth/inIt": {
       "get": {
         "summary": "To get search results of pre-authorisation",
         "description": "To get search results of pre-authorisation",
+        "operationId": "To get search results of pre-authorisation",
         "produces": [
           "application/json"
         ],
@@ -1556,6 +1651,7 @@
       "get": {
         "summary": "To get all details of local device health",
         "description": "To get all details of local device health",
+        "operationId": "To get all details of local device health",
         "produces": [
           "application/json"
         ],
@@ -1616,6 +1712,7 @@
       "get": {
         "summary": "To get all server device health",
         "description": "To get all server device health",
+        "operationId": "To get all server device health",
         "produces": [
           "application/json"
         ],
@@ -1675,6 +1772,7 @@
       "get": {
         "summary": "To get all device list of local server",
         "description": "To get all device list of local server",
+        "operationId": "To get all device list of local server",
         "produces": [
           "application/json"
         ],
@@ -1736,6 +1834,7 @@
       "get": {
         "summary": "To get all details of deleted debit cards",
         "description": "To get all details of deleted debit cards",
+        "operationId": "To get all details of deleted debit cards",
         "produces": [
           "application/json"
         ],
@@ -1797,6 +1896,7 @@
       "get": {
         "summary": "To get all generated leads accordingly by date",
         "description": "To get all generated leads accordingly by date",
+        "operationId": "To get all generated leads accordingly by date",
         "produces": [
           "application/json"
         ],
@@ -1866,6 +1966,7 @@
       "get": {
         "summary": "To get all follow leads accordingly by date",
         "description": "To get all follow leads accordingly by date",
+        "operationId": "To get all follow leads accordingly by date",
         "produces": [
           "application/json"
         ],
@@ -1935,6 +2036,7 @@
       "get": {
         "summary": "To get all registerationReport accordingly by date",
         "description": "To get all registerationReport accordingly by date",
+        "operationId": "To get all registerationReport accordingly by date",
         "produces": [
           "application/json"
         ],
@@ -2004,6 +2106,7 @@
       "get": {
         "summary": "To get all details of global blue DCC under Schedule Jobs",
         "description": "To get all details of global blue DCC under Schedule Jobs",
+        "operationId": "To get all details of global blue DCC under Schedule Jobs",
         "produces": [
           "application/json"
         ],
@@ -2065,6 +2168,7 @@
       "get": {
         "summary": "To get all info of merchants under configuration",
         "description": "To get all info of merchants under configuration",
+        "operationId": "To get all info of merchants under configuration",
         "produces": [
           "application/json"
         ],
@@ -2100,7 +2204,7 @@
             "required": false,
             "type": "boolean",
             "allowEmptyValue": true,
-            "default":"true"
+            "default": "true"
           },
           {
             "name": "instanceDefaultCountry",
@@ -2108,7 +2212,7 @@
             "required": false,
             "type": "string",
             "allowEmptyValue": true,
-            "default":"SG"
+            "default": "SG"
           }
         ],
         "responses": {
@@ -2134,6 +2238,7 @@
       "get": {
         "summary": "To get all branch codes under configuration",
         "description": "To get all branch codes under configuration",
+        "operationId": "To get all branch codes under configuration",
         "produces": [
           "application/json"
         ],
@@ -2162,7 +2267,7 @@
             "required": false,
             "type": "boolean",
             "allowEmptyValue": true,
-            "default":"true"
+            "default": "true"
           }
         ],
         "responses": {
@@ -2184,10 +2289,11 @@
         }
       }
     },
-    "/digitalConfiguration/getInitData/": {
+    "/digitalConfiguration/getInitData": {
       "get": {
-        "summary": "To get all data of payment account under configuration",
-        "description": "To get all data of payment account under configuration",
+        "summary": "To get all intial data of payment account under configuration",
+        "description": "To get all intial data of payment account under configuration",
+        "operationId": "To get all intial data of payment account under configuration",
         "produces": [
           "application/json"
         ],
@@ -2214,10 +2320,73 @@
         }
       }
     },
+    "/digitalConfiguration/paymentAccount/{page}": {
+      "get": {
+        "summary": "To get all data of specific payment account under configuration",
+        "description": "To get all data of specific payment account under configuration",
+        "operationId": "To get all data of specific payment account under configuration",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "DigitalConfiguration"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "10"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/paymentAccountPaymentAccount"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/adminUser/{page}": {
       "get": {
         "summary": "Get all details of admin user with custom paramters",
         "description": "Get all details of admin user with custom paramters",
+        "operationId": "Get all details of admin user with custom paramters",
         "produces": [
           "application/json"
         ],
@@ -2282,6 +2451,7 @@
       "get": {
         "summary": "To get results of AdminUser SearchForm",
         "description": "To get results of AdminUser SearchForm",
+        "operationId": "To get results of AdminUser SearchForm",
         "produces": [
           "application/json"
         ],
@@ -2312,6 +2482,7 @@
       "get": {
         "summary": "Get all receipt imager",
         "description": "Get all receipt imager",
+        "operationId": "Get all receipt imager",
         "produces": [
           "application/json"
         ],
@@ -2376,6 +2547,7 @@
       "post": {
         "summary": "Save the task",
         "description": "Save the task",
+        "operationId": "Save the task",
         "produces": [
           "application/json"
         ],
@@ -2392,7 +2564,6 @@
               "type": "object",
               "properties": {
                 "addNewUser": {
-                  "type": "object",
                   "$ref": "#/definitions/addNewUser"
                 }
               }
@@ -2422,6 +2593,7 @@
       "get": {
         "summary": "Get footer version",
         "description": "Get footer version",
+        "operationId": "Get footer version",
         "produces": [
           "application/json"
         ],
@@ -2449,6 +2621,7 @@
       "get": {
         "summary": "Get URL path",
         "description": "Get URL path",
+        "operationId": "Get URL path",
         "produces": [
           "application/json"
         ],
@@ -3272,63 +3445,19 @@
     "PayNowPaymentAdvice": {
       "type": "object",
       "properties": {
-        "transactionDTOList ": {
+        "payNowPaymentDTOList ": {
           "type": "array",
           "items": {
-            "type": "object"
+            "$ref": "#/definitions/payNowPaymentDTOList"
           }
         },
-        "txnBatchMsgIdList ": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "txnSettlementDTOList": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/txnSettlementDTOListOfSettlementList"
-          }
-        },
-        "txnSettlementEntityList ": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "txnSettleHostNameEntityList ": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "settleHostNameMap ": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
+        "isDeviceListEmpty": {
+          "type": "boolean"
         },
         "helperDTO": {
-          "type": "object",
-          "properties": {
-            "current": {
-              "type": "integer"
-            },
-            "begin": {
-              "type": "integer"
-            },
-            "end": {
-              "type": "integer"
-            },
-            "startFrm": {
-              "type": "integer"
-            },
-            "endFrm": {
-              "type": "integer"
-            },
-            "totalResults": {
-              "type": "integer"
-            }
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/helperDTO"
           }
         },
         "currentIndex": {
@@ -3342,11 +3471,40 @@
         },
         "totalPages": {
           "type": "integer"
+        }
+      }
+    },
+    "payNowPaymentDTOList": {
+      "type": "object",
+      "properties": {
+        "createdDatetime": {
+          "type": "string"
         },
-        "receiptEmailLimit": {
+        "paymentId": {
+          "type": "string"
+        },
+        "merchantName": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "settlementAmount": {
+          "type": "string"
+        },
+        "status": {
           "type": "integer"
         },
-        "receiptPrintLimit": {
+        "state": {
+          "type": "string"
+        },
+        "errorReason": {
+          "type": "string"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "fileSize": {
           "type": "integer"
         }
       }
@@ -3826,7 +3984,6 @@
           }
         },
         "helperDTO": {
-          "type": "object",
           "$ref": "#/definitions/helperDTO"
         },
         "currentIndex": {
@@ -3847,17 +4004,12 @@
       "type": "object",
       "properties": {
         "merchantList": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/merchantList"
-          }
+          "$ref": "#/definitions/merchantList"
         },
         "isMerchantEmpty": {
           "type": "boolean"
         },
         "helperDTO": {
-          "type": "object",
           "$ref": "#/definitions/helperDTO"
         },
         "currentIndex": {
@@ -3872,31 +4024,28 @@
         "totalPages": {
           "type": "integer"
         },
-        "countryStatesMap":{
-          "type":"object",
+        "countryStatesMap": {
           "$ref": "#/definitions/countryStatesMap"
-          },
-        "stateCitiesMap":{
-          "type":"object",
-            "$ref": "#/definitions/stateCitiesMap"
+        },
+        "stateCitiesMap": {
+          "$ref": "#/definitions/stateCitiesMap"
         }
       }
     },
-    "digitalConfigurationBranchCode":{
-      "type":"object",
-      "properties":{
-        "branchCodeList":{
-          "type":"array",
-          "items":{
-            "$ref":"#/definitions/branchCodeList"
+    "digitalConfigurationBranchCode": {
+      "type": "object",
+      "properties": {
+        "branchCodeList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/branchCodeList"
           }
         },
-        "isBranchCodeEmpty":{
-          "type":"boolean"
+        "isBranchCodeEmpty": {
+          "type": "boolean"
         },
-        "helperDTO":{
-          "type":"object",
-          "$ref":"#/definitions/helperDTO"
+        "helperDTO": {
+          "$ref": "#/definitions/helperDTO"
         },
         "currentIndex": {
           "type": "integer"
@@ -3910,28 +4059,28 @@
         "totalPages": {
           "type": "integer"
         }
-    }
+      }
     },
-    "digitalConfigurationGetInitData":{
-      "type":"object",
-      "properties":{
-        "id":{
-          "type":"string"
+    "digitalConfigurationGetInitData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
         },
-        "accountNumber":{
-          "type":"integer"
+        "accountNumber": {
+          "type": "integer"
         },
-        "beneficiaryName":{
-          "type":"string"
+        "beneficiaryName": {
+          "type": "string"
         },
-        "bankId":{
-          "type":"string"
+        "bankId": {
+          "type": "string"
         },
-        "bankName":{
-          "type":"string"
+        "bankName": {
+          "type": "string"
         },
-        "merchantCount":{
-          "type":"integer"
+        "merchantCount": {
+          "type": "integer"
         },
         "country": {
           "type": "string"
@@ -3945,23 +4094,23 @@
         "totalPages": {
           "type": "integer"
         },
-        "bankList":{
-          "type":"array",
-          "items":{
-            "$ref":"#/definitions/bankList"
+        "bankList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/bankList"
           }
         },
-        "countryMap":{
-          "type":"object"
+        "countryMap": {
+          "type": "object"
         },
-        "currencyList":{
-          "type":"array",
-          "items":{
-            "$ref":"#/definitions/currencyList"
+        "currencyList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/currencyList"
           }
         },
-        "merchantEmailDtoList":{
-          "type":"string"
+        "merchantEmailDtoList": {
+          "type": "string"
         },
         "selectedMerchantIds": {
           "type": "string"
@@ -3978,164 +4127,256 @@
         "status": {
           "type": "string"
         }
-    }
-    },
-    "bankList":{
-      "type":"object",
-      "properties":{
-        "id":{
-          "type":"integer"
-        },
-        "bankName":{
-          "type":"string"
-        },
-        "bicCode":{
-          "type":"string"
-        },
-        "accountNoRegex":{
-          "type":"string"
-        },
-        "currency":{
-          "type":"string"
-        },
-        "country":{
-          "type":"string"
-        }
       }
     },
-    "currencyList":{
-      "type":"object",
-      "properties":{
-        "id":{
-          "type":"integer"
-        },
-        "currencyCode2":{
-          "type":"string"
-        },
-        "currencyCode3":{
-          "type":"string"
-        },
-        "decimalSeparator":{
-          "type":"string"
-        },
-        "description":{
-          "type":"string"
-        },
-        "symbol":{
-          "type":"string"
-        },
-        "numericCode":{
-          "type":"string"
-        }
-      }
-    },
-    "branchCodeList":{
-      "type":"object",
-      "properties":{
-        "branchCodeId":{
-          "type":"integer"
-        },
-        "branchCode":{
-          "type":"string"
-        },
-        "acquirerId":{
-          "type":"integer"
-        },
-        "acquirerName":{
-          "type":"string"
-        },
-        "merchantName":{
-          "type":"string"
-        },
-        "merchantAddress":{
-          "type":"string"
-        }
-
-      }
-    },
-    "countryStatesMap":{
-      "type":"object",
-      "properties":{
-        "3186":{
-          "type":"string"
-        }
-      }
-    },
-    "stateCitiesMap":{
-      "type":"object",
-      "properties":{
-        "37541":{
-          "type":"string"
-        }
-      }
-    },
-    "merchantList":{
-      "type":"object",
+    "paymentAccountPaymentAccount": {
+      "type": "object",
       "properties": {
-          "merchantIdID": {
-            "type": "integer"
-          },
-          "merchantName": {
-                "type": "string"
-              },
-          "merchantCode": {
-            "type": "string"
-          },
-          "address1": {
-            "type": "string"
-          },
-          "address2": {
-            "type": "string"
-          },
-          "address3": {
-                "type": "string"
-              },
-          "postalCode": {
-            "type": "string"
-          },
-          "createdBy": {
-            "type": "integer"
-          },
-          "merchantMidDTOS":{
-            "type":"array",
-            "items": {
-              "$ref": "#/definitions/merchantMidDTOS"
-            }
-          },
-          "categoryCode": {
-            "type": "string"
-          },
-          "category": {
-                "type": "string"
-              },
-          "connectedDevices": {
-            "type": "integer"
-          },
-          "selectedCity": {
-            "type": "integer"
-          },
-          "selectedState": {
-            "type": "integer"
-          },
-          "selectedStateName": {
-            "type": "string"
-              },
-          "selectedCityName": {
-            "type": "string"
+        "paymentAccountList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/paymentAccountList"
           }
-    }
+        },
+        "helperDTO": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/helperDTO"
+          }
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        }
+      }
     },
-    "merchantMidDTOS":{
-      "type":"object",
-      "properties":{
-        "id":{
-          "type":"integer"
+    "paymentAccountList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
         },
-        "merchantId":{
-          "type":"string"
+        "accountNumber": {
+          "type": "integer"
         },
-        "referencedByPayNowDevice":{
-          "type":"boolean"
+        "beneficiaryName": {
+          "type": "string"
+        },
+        "bankId": {
+          "type": "integer"
+        },
+        "bankName": {
+          "type": "string"
+        },
+        "merchantCount": {
+          "type": "integer"
+        },
+        "country": {
+          "type": "string"
+        },
+        "bicCode": {
+          "type": "string"
+        },
+        "merchantEmailDtoList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "selectedMerchantIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/selectedMerchantIds"
+          }
+        },
+        "status": {
+          "type": "integer"
+        }
+      }
+    },
+    "selectedMerchantIds": {
+      "type": "object",
+      "properties": {
+        "merchantIdID": {
+          "type": "integer"
+        },
+        "merchantName": {
+          "type": "string"
+        },
+        "address1": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "merchantMidList": {
+          "type": "string"
+        }
+      }
+    },
+    "bankList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "bankName": {
+          "type": "string"
+        },
+        "bicCode": {
+          "type": "string"
+        },
+        "accountNoRegex": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    },
+    "currencyList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "currencyCode2": {
+          "type": "string"
+        },
+        "currencyCode3": {
+          "type": "string"
+        },
+        "decimalSeparator": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "numericCode": {
+          "type": "string"
+        }
+      }
+    },
+    "branchCodeList": {
+      "type": "object",
+      "properties": {
+        "branchCodeId": {
+          "type": "integer"
+        },
+        "branchCode": {
+          "type": "string"
+        },
+        "acquirerId": {
+          "type": "integer"
+        },
+        "acquirerName": {
+          "type": "string"
+        },
+        "merchantName": {
+          "type": "string"
+        },
+        "merchantAddress": {
+          "type": "string"
+        }
+      }
+    },
+    "countryStatesMap": {
+      "type": "object",
+      "properties": {
+        "3186": {
+          "type": "string"
+        }
+      }
+    },
+    "stateCitiesMap": {
+      "type": "object",
+      "properties": {
+        "37541": {
+          "type": "string"
+        }
+      }
+    },
+    "merchantList": {
+      "type": "object",
+      "properties": {
+        "merchantIdID": {
+          "type": "integer"
+        },
+        "merchantName": {
+          "type": "string"
+        },
+        "merchantCode": {
+          "type": "string"
+        },
+        "address1": {
+          "type": "string"
+        },
+        "address2": {
+          "type": "string"
+        },
+        "address3": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "createdBy": {
+          "type": "integer"
+        },
+        "merchantMidDTOS": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/merchantMidDTOS"
+          }
+        },
+        "categoryCode": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "connectedDevices": {
+          "type": "integer"
+        },
+        "selectedCity": {
+          "type": "integer"
+        },
+        "selectedState": {
+          "type": "integer"
+        },
+        "selectedStateName": {
+          "type": "string"
+        },
+        "selectedCityName": {
+          "type": "string"
+        }
+      }
+    },
+    "merchantMidDTOS": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "merchantId": {
+          "type": "string"
+        },
+        "referencedByPayNowDevice": {
+          "type": "boolean"
         }
       }
     },
@@ -4143,11 +4384,9 @@
       "type": "object",
       "properties": {
         "helperDTO": {
-          "type": "object",
           "$ref": "#/definitions/helperDTO"
         },
         "userList": {
-          "type": "object",
           "$ref": "#/definitions/userList"
         },
         "currentIndex": {
@@ -4263,11 +4502,7 @@
           }
         },
         "mapUserRoleEntityList": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/mapUserRoleEntityList"
-          }
+          "$ref": "#/definitions/mapUserRoleEntityList"
         }
       }
     },
@@ -4721,11 +4956,7 @@
           }
         },
         "txnSettlementDTOList": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/txnSettlementDTOListOfSettlementList"
-          }
+          "$ref": "#/definitions/txnSettlementDTOListOfSettlementList"
         },
         "txnSettlementEntityList": {
           "type": "array",

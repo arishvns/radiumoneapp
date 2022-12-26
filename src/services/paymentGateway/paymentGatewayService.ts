@@ -113,8 +113,7 @@ class PaymentGatewayService {
                 }
             });
         });
-        return resData
-
+        return resData;
         } catch (err) {
             return err;
         }

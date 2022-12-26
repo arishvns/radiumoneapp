@@ -63,6 +63,7 @@ class SecretUtil {
     public PayNowBankStatement_PATH = "/main/paynow/bankstatement/"
     public PayNowBankStatementWithQueryParams_PATH = "/main/paynow/bankstatement/"
     public PayNowGetReportTypes_PATH = "/main/paynow/reports/getReportTypes/"
+    public PayNowGetReportTypesOnSearch_PATH = "/main/paynow/reports/"
     public PayNowPaymentAdvice_PATH = "/main/paynow/payment/"
     public PayNowMasterAccount_PATH= "/main/paynow/account/getData/"
 
