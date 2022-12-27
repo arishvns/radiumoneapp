@@ -1585,6 +1585,115 @@
         }
       }
     },
+    "/digitalPayNow/getReportTypesOnSearchFilter/{page}": {
+      "get": {
+        "summary": "To get all details of specific report types by filter on search",
+        "description": "To get all details of specific report types by filter on search",
+        "operationId": "To get all details of specific report types by filter on search",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PayNow"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "file_name",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "file_size",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "generate_status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "transfer_status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "date_range",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default":"27/09/2022-27/12/2022"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "10"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default": "true"
+          },
+          {
+            "name": "report_type",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "2"
+          }
+        ],
+        "x-google-backend": {
+          "address": "http://techomni.in/api/digitalPayNow/getReportTypesOnSearchFilter/{page}"
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/payNowGetReportTypesOnSearchFilter"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/digitalPayNow/getDataMasterAccount": {
       "get": {
         "summary": "To get all details of master account",
@@ -3569,6 +3678,36 @@
         },
         "4": {
           "type": "string"
+        }
+      }
+    },
+    "payNowGetReportTypesOnSearchFilter": {
+      "type": "object",
+      "properties": {
+        "payNowReportsRequestDTOList": {
+          "type": "array",
+          "items": {
+            "type":"object"
+          }
+        },
+        "isDeviceListEmpty": {
+          "type": "boolean"
+        },
+        "helperDTO": {
+          "type": "object",
+          "$ref": "#/definitions/helperDTO"
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
         }
       }
     },

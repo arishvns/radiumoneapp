@@ -64,8 +64,10 @@ class SecretUtil {
     public PayNowBankStatementWithQueryParams_PATH = "/main/paynow/bankstatement/"
     public PayNowGetReportTypes_PATH = "/main/paynow/reports/getReportTypes/"
     public PayNowGetReportTypesOnSearch_PATH = "/main/paynow/reports/"
+    public PayNowGetReportTypesOnSearchFilter_PATH = "/main/paynow/reports/"
     public PayNowPaymentAdvice_PATH = "/main/paynow/payment/"
     public PayNowMasterAccount_PATH= "/main/paynow/account/getData/"
+
 
     //PreAuthorisation Path 
     public preAuthInIt_PATH = "/preAuth/init/"
@@ -87,6 +89,7 @@ class SecretUtil {
     public ConfigBranchCode_Path = "/main/admin/merchants/branch_code/"
     public ConfigPaymentAccountGetInItData_Path = "/main/config/payment/account/getInitData/"
     public ConfigPaymentAccount_Path = "/main/config/payment/account/"
+    
 
     // Receipt Imager Path
     public ReceiptImager_PATH = "/drs/issues/imager/getAll/"
