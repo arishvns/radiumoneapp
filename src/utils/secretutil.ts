@@ -67,6 +67,7 @@ class SecretUtil {
     public PayNowGetReportTypesOnSearchFilter_PATH = "/main/paynow/reports/"
     public PayNowPaymentAdvice_PATH = "/main/paynow/payment/"
     public PayNowMasterAccount_PATH= "/main/paynow/account/getData/"
+   
 
 
     //PreAuthorisation Path 
@@ -89,7 +90,10 @@ class SecretUtil {
     public ConfigBranchCode_Path = "/main/admin/merchants/branch_code/"
     public ConfigPaymentAccountGetInItData_Path = "/main/config/payment/account/getInitData/"
     public ConfigPaymentAccount_Path = "/main/config/payment/account/"
-    
+    public ConfigDevice_Path = "/configuration/devices/"
+    public ConfigSearchDeviceOnFilter_Path = "/configuration/devices/"
+    public ConfigAcquirerGroup_Path = "/main/admin/acquirers/"
+    public ConfigAdditional_Path = "/main/admin/paygate/additionals"
 
     // Receipt Imager Path
     public ReceiptImager_PATH = "/drs/issues/imager/getAll/"

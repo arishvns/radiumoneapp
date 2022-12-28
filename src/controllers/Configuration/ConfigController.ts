@@ -43,6 +43,42 @@ class ConfigurationController extends BaseController {
         }
     }
 
+    public async devices(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await configurationService.devices(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    public async searchDevicesOnFilter(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await configurationService.searchDevicesOnFilter(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    public async acquirerGroup(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await configurationService.acquirerGroup(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    public async additionals(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await configurationService.additionals(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
 }
 
 export const configurationController = new ConfigurationController();

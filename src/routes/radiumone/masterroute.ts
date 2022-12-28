@@ -246,6 +246,26 @@ class MasterRouteV1 extends BaseRoutes {
             configurationController.paymentAccount(req, res, next);
         })
 
+        this.router.get('/digitalConfiguration/devices/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.devices(req, res, next);
+        })
+
+        this.router.get('/digitalConfiguration/searchDevicesOnFilter/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.searchDevicesOnFilter(req, res, next);
+        })
+
+        this.router.get('/digitalConfiguration/acquirerGroup/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.acquirerGroup(req, res, next);
+        })
+        
+        this.router.get('/digitalConfiguration/additionals/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.additionals(req, res, next);
+        })
+
         // Users endpoints
         
         this.router.get('/adminUser/searchForm',
