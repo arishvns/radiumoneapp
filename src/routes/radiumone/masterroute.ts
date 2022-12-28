@@ -181,6 +181,11 @@ class MasterRouteV1 extends BaseRoutes {
             preAuthController.preAuthInIt(req, res, next);
         })
 
+        this.router.get('/digitalPreAuth/filterList/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            preAuthController.preAuthFilterList(req, res, next);
+        })
+
         this.router.get('/digitalPreAuth/deviceHealth/'+ ':page',
         (req: Request, res: Response, next: NextFunction) => {
             preAuthController.preAuthdeviceHealth(req, res, next);

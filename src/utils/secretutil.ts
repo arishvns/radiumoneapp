@@ -71,6 +71,7 @@ class SecretUtil {
 
     //PreAuthorisation Path 
     public preAuthInIt_PATH = "/preAuth/init/"
+    public preAuthFilterList_PATH = "/preAuth/list/"
     public preAuthDeviceHealth_PATH = "/preAuth/device/health/"
     public preAuthDebitCardBin_PATH = "/config/bin/list/"
     public preAuthDebitCardBinActivate_Path = "/config/bin/activate/"

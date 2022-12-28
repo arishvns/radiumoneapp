@@ -1756,6 +1756,168 @@
         }
       }
     },
+    "/digitalPreAuth/filterList/{page}": {
+      "get": {
+        "summary": "To get search results by custom filters of pre-authorisation",
+        "description": "To get search results by custom filters of pre-authorisation",
+        "operationId": "To get search results by custom filters of pre-authorisation",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PreAuthorisation"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "timeRange",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "txnStatus",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "history",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default":"0"
+          },
+          {
+            "name": "authAmt",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "transactedAmt",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "mid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "tid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "cardHolderName",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "cardType",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "cardNumber",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "cardExpiry",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "approvalCode",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "aging",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "preAuth_date_range",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default":"28/09/2018-28/12/2022"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default":"10"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PreAuthorisationFilterList"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/digitalPreAuth/deviceHealth/{page}": {
       "get": {
         "summary": "To get all details of local device health",
@@ -3637,6 +3799,89 @@
         }
       }
     },
+    "cardTypeMap": {
+      "type": "object",
+      "properties": {
+        "1": {
+          "type": "string"
+        },
+        "UNIONPAY": {
+          "type": "string"
+        },
+        "AMEX": {
+          "type": "string"
+        },
+        "WCD-VISA": {
+          "type": "string"
+        },
+        "DISCOVER": {
+          "type": "string"
+        },
+        "WCD-MC": {
+          "type": "string"
+        },
+        "MC": {
+          "type": "string"
+        },
+        "MASTERCARD": {
+          "type": "string"
+        },
+        "LOYALTY MASTERCARD": {
+          "type": "string"
+        },
+        "Visa Credit Card": {
+          "type": "string"
+        },
+        "Chuan": {
+          "type": "string"
+        },
+        "LOYALTY VISA": {
+          "type": "string"
+        },
+        "CUP": {
+          "type": "string"
+        },
+        "test": {
+          "type": "string"
+        },
+        "Card Type": {
+          "type": "string"
+        },
+        "JCB": {
+          "type": "string"
+        },
+        "VISA": {
+          "type": "string"
+        },
+        "UOB card test SGD": {
+          "type": "string"
+        },
+        "MASTERCARD OFFUS": {
+          "type": "string"
+        },
+        "BER": {
+          "type": "string"
+        },
+        "PAYNOW": {
+          "type": "string"
+        },
+        "WCD-Master Card": {
+          "type": "string"
+        },
+        "VI": {
+          "type": "string"
+        },
+        "VISA OFFUS": {
+          "type": "string"
+        },
+        "ALIPAY": {
+          "type": "string"
+        },
+        "WCD-BER": {
+          "type": "string"
+        }
+      }
+    },
     "transactionList": {
       "type": "object",
       "properties": {
@@ -3741,6 +3986,147 @@
         },
         "recDPI ": {
           "type": "string"
+        }
+      }
+    },
+    "PreAuthorisationFilterList": {
+      "type": "object",
+      "properties": {
+        "helperDTO": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/helperDTO"
+          }
+        },
+        "currentIndex ": {
+          "type": "integer"
+        },
+        "beginIndex ": {
+          "type": "integer"
+        },
+        "endIndex ": {
+          "type": "integer"
+        },
+        "totalPages ": {
+          "type": "integer"
+        },
+        "preAuthList ": {
+          "type": "array",
+          "items":{
+            "type":"object"
+          }
+        },
+        "cardList ": {
+          "type": "array",
+          "items":{
+            "type":"object"
+          }
+        },
+        "bankCardDTOList ": {
+          "type": "array",
+          "items":{
+            "type":"object"
+          }
+        },
+        "txnStatusDTOList ": {
+          "type": "array",
+          "items":{
+            "$ref":"#/definitions/txnStatusDTOList"
+          }
+        },
+        "cardTypeMap": {
+          "type": "object",
+          "properties": {
+            "1": {
+              "type": "string"
+            },
+            "UNIONPAY": {
+              "type": "string"
+            },
+            "AMEX": {
+              "type": "string"
+            },
+            "WCD-VISA": {
+              "type": "string"
+            },
+            "DISCOVER": {
+              "type": "string"
+            },
+            "WCD-MC": {
+              "type": "string"
+            },
+            "MC": {
+              "type": "string"
+            },
+            "MASTERCARD": {
+              "type": "string"
+            },
+            "LOYALTY MASTERCARD": {
+              "type": "string"
+            },
+            "Visa Credit Card": {
+              "type": "string"
+            },
+            "Chuan": {
+              "type": "string"
+            },
+            "LOYALTY VISA": {
+              "type": "string"
+            },
+            "CUP": {
+              "type": "string"
+            },
+            "test": {
+              "type": "string"
+            },
+            "Card Type": {
+              "type": "string"
+            },
+            "JCB": {
+              "type": "string"
+            },
+            "VISA": {
+              "type": "string"
+            },
+            "UOB card test SGD": {
+              "type": "string"
+            },
+            "MASTERCARD OFFUS": {
+              "type": "string"
+            },
+            "BER": {
+              "type": "string"
+            },
+            "PAYNOW": {
+              "type": "string"
+            },
+            "WCD-Master Card": {
+              "type": "string"
+            },
+            "VI": {
+              "type": "string"
+            },
+            "VISA OFFUS": {
+              "type": "string"
+            },
+            "ALIPAY": {
+              "type": "string"
+            },
+            "WCD-BER": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "txnStatusDTOList":{
+      "type":"object",
+      "properties":{
+        "statusId":{
+          "type":"integer"
+        },
+        "statusName":{
+          "type":"string"
         }
       }
     },
@@ -4179,6 +4565,29 @@
           "type": "integer"
         },
         "totalPages": {
+          "type": "integer"
+        }
+      }
+    },
+    "helperDTO": {
+      "type": "object",
+      "properties": {
+        "current": {
+          "type": "integer"
+        },
+        "begin": {
+          "type": "integer"
+        },
+        "end": {
+          "type": "integer"
+        },
+        "startFrm": {
+          "type": "integer"
+        },
+        "endFrm": {
+          "type": "integer"
+        },
+        "totalResults": {
           "type": "integer"
         }
       }

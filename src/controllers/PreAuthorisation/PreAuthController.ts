@@ -19,6 +19,15 @@ class PreAuthController extends BaseController {
         }
     }
 
+    public async preAuthFilterList(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await preAuthService.preAuthFilterList(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
     public async preAuthdeviceHealth(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await preAuthService.preAuthdeviceHealth();
