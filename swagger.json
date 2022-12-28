@@ -1988,6 +1988,21 @@
             "default": "1"
           },
           {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "0"
+          },
+          {
             "name": "pageLength",
             "in": "query",
             "required": true,
@@ -2118,6 +2133,28 @@
             "required": true,
             "type": "integer",
             "default": "1"
+          },
+          {
+            "name": "companyName",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "contactEmail",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": true,
+            "default":"4"
           },
           {
             "name": "pageLength",
@@ -2751,11 +2788,132 @@
         }
       }
     },
+    "/digitalConfiguration/receiptLogo": {
+      "get": {
+        "summary": "To get details of receipt logo",
+        "description": "To get details of receipt logo",
+        "operationId": "To get details of receipt logo",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "DigitalConfiguration"
+        ],
+        "parameters": [],
+        "x-google-backend": {
+          "address": "http://techomni.in/api/digitalConfiguration/receiptLogo"
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/digitalConfigurationReceiptLogo"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/digitalConfiguration/additionals/{page}": {
       "get": {
         "summary": "To get knowledge about all paygate additionals",
         "description": "To get knowledge about all paygate additionals",
         "operationId": "To get knowledge about all paygate additionals",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "DigitalConfiguration"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "attrName",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true         
+          },
+          {
+            "name": "attrKey",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "acquirerGroupId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "1"
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "allowEmptyValue": true,
+            "default": "10"
+          },
+          {
+            "name": "sort_property",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "isDesc",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true,
+            "default": "true"
+          }
+        ],
+        "x-google-backend": {
+          "address": "http://techomni.in/api/digitalConfiguration/additionals/{page}"
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/digitalConfigurationAdditionals"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalConfiguration/softwareSetup/{page}": {
+      "get": {
+        "summary": "To get all software versions & it's details",
+        "description": "To get all software versions & it's details",
+        "operationId": "To get all software versions & it's details",
         "produces": [
           "application/json"
         ],
@@ -2795,7 +2953,7 @@
           }
         ],
         "x-google-backend": {
-          "address": "http://techomni.in/api/digitalConfiguration/additionals/{page}"
+          "address": "http://techomni.in/api/digitalConfiguration/softwareSetup/{page}"
         },
         "responses": {
           "200": {
@@ -2803,8 +2961,47 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/digitalConfigurationAdditionals"
+                "$ref": "#/definitions/digitalConfigurationSoftwareSetup"
               }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalConfiguration/authExpirySearch": {
+      "get": {
+        "summary": "To get all detail of merchant list on key-up event ",
+        "description": "To get all detail of merchant list on key-up event ",
+        "operationId": "To get all detail of merchant list on key-up event ",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "DigitalConfiguration"
+        ],
+        "parameters": [
+          {
+            "name": "merchantName",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": true
+          }
+        ],
+        "x-google-backend": {
+          "address": "http://techomni.in/api/digitalConfiguration/authExpirySearch/"
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/todosResponse"
             }
           },
           "400": {
@@ -4685,6 +4882,7 @@
         }
       }
     },
+    
     "acquirerList":{
       "type":"object",
       "properties":{
@@ -4750,6 +4948,116 @@
         "totalPages": {
           "type": "integer"
         }
+      }
+    },
+    "digitalConfigurationReceiptLogo":{
+      "type":"object",
+      "properties":{
+        "receiptLogoDTOList":{
+          "type":"array",
+          "items":{
+            "$ref":"#/definitions/receiptLogoDTOList"
+          }
+        },
+        "helperDTO": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/helperDTO"
+          }
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        }
+      }
+    },
+    "digitalConfigurationSoftwareSetup":{
+      "type":"object",
+      "properties":{
+        "softwareList":{
+          "type":"array",
+          "items":{
+            "$ref":"#/definitions/softwareList"
+          }
+        },
+        "isSoftwareEmpty":{
+          "type":"boolean"
+        },
+        "helperDTO": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/helperDTO"
+          }
+        },
+        "currentIndex": {
+          "type": "integer"
+        },
+        "beginIndex": {
+          "type": "integer"
+        },
+        "endIndex": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        }
+      }
+    },
+    "softwareList":{
+      "type":"object",
+      "properties":{
+        "id":{
+          "type":"integer"
+        },
+        "name":{
+          "type":"string"
+        },
+        "softwareVersion":{
+          "type":"string"
+        },
+        "terminalModel":{
+          "type":"string"
+        },
+        "status":{
+          "type":"integer"
+        }
+      }
+    },
+    "receiptLogoDTOList":{
+      "type":"object",
+      "properties":{
+        "id":{
+          "type":"integer"
+        },
+        "filename":{
+          "type":"string"
+        },
+        "description":{
+          "type":"string"
+        },
+        "filesize":{
+          "type":"integer"
+        },
+        "receiptBlob":{
+          "type":"string"
+        },
+        "logoFormat":{
+          "type":"string"
+        },
+        "logoHeight":{
+          "type":"integer"
+        },
+        "createdDateTime":{
+          "type":"string"
+        } 
       }
     },
     "paygateAcquirerList":{

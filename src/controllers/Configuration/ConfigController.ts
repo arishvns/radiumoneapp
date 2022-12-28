@@ -79,6 +79,33 @@ class ConfigurationController extends BaseController {
         }
     }
 
+    public async softwareSetup(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await configurationService.softwareSetup(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    public async receiptLogo(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await configurationService.receiptLogo(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    public async authExpirySearch(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await configurationService.authExpirySearch(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
 }
 
 export const configurationController = new ConfigurationController();

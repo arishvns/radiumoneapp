@@ -93,7 +93,10 @@ class SecretUtil {
     public ConfigDevice_Path = "/configuration/devices/"
     public ConfigSearchDeviceOnFilter_Path = "/configuration/devices/"
     public ConfigAcquirerGroup_Path = "/main/admin/acquirers/"
-    public ConfigAdditional_Path = "/main/admin/paygate/additionals"
+    public ConfigAdditional_Path = "/main/admin/paygate/additionals/"
+    public ConfigReceiptLogo_Path = "/config/receiptLogo/list/1"
+    public ConfigSoftwareSetup_Path = "/main/admin/software/list/"
+    public ConfigAuthExpirySearch_Path = "/authExpiry/search"
 
     // Receipt Imager Path
     public ReceiptImager_PATH = "/drs/issues/imager/getAll/"

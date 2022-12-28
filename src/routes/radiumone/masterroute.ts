@@ -266,6 +266,22 @@ class MasterRouteV1 extends BaseRoutes {
             configurationController.additionals(req, res, next);
         })
 
+        this.router.get('/digitalConfiguration/receiptLogo/',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.receiptLogo(req, res, next);
+        })
+
+
+        this.router.get('/digitalConfiguration/softwareSetup/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.softwareSetup(req, res, next);
+        })
+        
+        this.router.get('/digitalConfiguration/authExpirySearch',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.authExpirySearch(req, res, next);
+        })
+
         // Users endpoints
         
         this.router.get('/adminUser/searchForm',

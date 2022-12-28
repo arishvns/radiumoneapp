@@ -46,7 +46,7 @@ class LeadManagementService {
         let token =  await authenticateService.authenticateToken().then( (res)=>{
             return res.token;
         }).catch((err)=>{
-            return console.log("Error",err);
+            return (err);
         })
         let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.preAuthFollowLead_PATH + req.params.page+ "?" + new URLSearchParams(req.query);
         let options = {
@@ -70,7 +70,6 @@ class LeadManagementService {
                 }
             });
         });
-        console.log(resData);
         return resData
         } catch (err) {
             return err;

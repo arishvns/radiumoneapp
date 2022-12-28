@@ -265,7 +265,115 @@ class ConfigurationService {
             }).catch((err) => {
                 return console.log("Error", err);
             })
-            let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.ConfigAdditional_Path + req.params.page + "?" + new URLSearchParams(req.query);;
+            
+            let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.ConfigAdditional_Path + req.params.page + "?" + new URLSearchParams(req.query);
+            let options = {
+                method: 'GET',
+                url: _url,
+                headers: {
+                    Authorization: "Bearer " + token,
+                    "Content-Type": 'application/json'
+                },
+                strictSSL: false
+            }
+
+            let resData: any = await new Promise((resolve, reject) => {
+                request(options, (err, res) => {
+                    if (err) return resolve(null);
+                    try {
+                        resolve(JSON.parse(res.body));
+                    }
+                    catch (ex) {
+                        return resolve(null);
+                    }
+                });
+            });
+            return resData
+        } catch (err) {
+            return err;
+        }
+    }
+
+    public softwareSetup = async (req?: any) => {
+        try {
+            let token = await authenticateService.authenticateToken().then((res) => {
+                return res.token;
+            }).catch((err) => {
+                return console.log("Error", err);
+            })
+
+            let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.ConfigSoftwareSetup_Path + req.params.page + "?" + new URLSearchParams(req.query);
+            let options = {
+                method: 'GET',
+                url: _url,
+                headers: {
+                    Authorization: "Bearer " + token,
+                    "Content-Type": 'application/json'
+                },
+                strictSSL: false
+            }
+
+            let resData: any = await new Promise((resolve, reject) => {
+                request(options, (err, res) => {
+                    if (err) return resolve(null);
+                    try {
+                        resolve(JSON.parse(res.body));
+                    }
+                    catch (ex) {
+                        return resolve(null);
+                    }
+                });
+            });
+            return resData
+        } catch (err) {
+            return err;
+        }
+    }
+
+    public authExpirySearch = async (req?: any) => {
+        try {
+            let token = await authenticateService.authenticateToken().then((res) => {
+                return res.token;
+            }).catch((err) => {
+                return console.log("Error", err);
+            })
+
+            let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.ConfigAuthExpirySearch_Path + "?" + new URLSearchParams(req.query);
+            let options = {
+                method: 'GET',
+                url: _url,
+                headers: {
+                    Authorization: "Bearer " + token,
+                    "Content-Type": 'application/json'
+                },
+                strictSSL: false
+            }
+
+            let resData: any = await new Promise((resolve, reject) => {
+                request(options, (err, res) => {
+                    if (err) return resolve(null);
+                    try {
+                        resolve(JSON.parse(res.body));
+                    }
+                    catch (ex) {
+                        return resolve(null);
+                    }
+                });
+            });
+            return resData
+        } catch (err) {
+            return err;
+        }
+    }
+
+    public receiptLogo = async (req?: any) => {
+        try {
+            let token = await authenticateService.authenticateToken().then((res) => {
+                return res.token;
+            }).catch((err) => {
+                return console.log("Error", err);
+            })
+            let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.ConfigReceiptLogo_Path;
             let options = {
                 method: 'GET',
                 url: _url,
