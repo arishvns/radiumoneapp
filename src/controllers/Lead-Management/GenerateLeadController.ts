@@ -28,6 +28,15 @@ class LeadManagementController extends BaseController {
         }
     }
 
+    public async editFollowLead(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await leadManagementService.editFollowLead(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
     public async registerationReport(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await leadManagementService.registerationReport(req);

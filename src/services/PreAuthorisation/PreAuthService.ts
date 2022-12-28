@@ -180,6 +180,41 @@ class PreAuthService {
         }
     }
 
+    public preAuthDebitCardBinActivate = async (req?: any) => {
+        try {
+            let token =  await authenticateService.authenticateToken().then( (res)=>{
+                return res.token;
+            }).catch((err)=>{
+                return console.log("Error",err);
+            })
+            let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.preAuthDebitCardBinActivate_Path + req.params.id;
+            let options = {
+                method: 'GET',
+                url: _url,
+                headers: {
+                    Authorization: "Bearer " + token,
+                    "Content-Type": 'application/json'
+                },
+                strictSSL: false
+            }
+
+            let resData: any = await new Promise((resolve, reject) => {
+                request(options, (err, res) => {
+                    if (err) return resolve(null);
+                    try {
+                        resolve(JSON.parse(res.body));
+                    }
+                    catch (ex) {
+                        return resolve(null);
+                    }
+                });
+            });
+            return resData
+        } catch (err) {
+            return err;
+        }
+    }
+
 }
 
 export const preAuthService = new PreAuthService();

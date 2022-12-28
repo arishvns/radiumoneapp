@@ -2045,6 +2045,45 @@
         }
       }
     },
+    "/digitalPreAuth/debitCardBinActivate/{id}": {
+      "get": {
+        "summary": "It basically turn on status active/inactive",
+        "description": "It basically turn on status active/inactive",
+        "operationId": "It basically turn on status active/inactive",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PreAuthorisation"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DebitCardBin"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/digitalLeadManagement/generateLead/{page}": {
       "get": {
         "summary": "To get all generated leads accordingly by date",
@@ -2195,6 +2234,45 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/FollowLead"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/digitalLeadManagement/editFollowLead/{id}": {
+      "get": {
+        "summary": "To get edit info of follow lead by specific id",
+        "description": "To get edit info of follow lead by specific id",
+        "operationId": "To get edit info of follow lead by specific id",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "DigitalLeadManagement"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "default": "102"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EditFollowLead"
               }
             }
           },
@@ -4521,7 +4599,7 @@
         "statusMaps": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/statusMaps"
+            "$ref": "#/definitions/statusMaps1"
           }
         },
         "helperDTO": {
@@ -4545,6 +4623,126 @@
         "maxFieldNo": {
           "type": "integer"
         }
+      }
+    },
+    "EditFollowLead":{
+      "type": "object",
+      "properties": {
+        "leadId": {
+          "type": "integer"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "contactPerson": {
+          "type": "string"
+        },
+        "contactNumber": {
+          "type": "string"
+        },
+        "contactEmail": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "myRmNumber": {
+          "type": "string"
+        },
+        "myRmEmail": {
+          "type": "string"
+        },
+        "accountNumber": {
+          "type": "string"
+        },
+        "assigned": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "statusName": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "field1": {
+          "type": "string"
+        },
+        "field2": {
+          "type": "string"
+        },
+        "field3": {
+          "type": "string"
+        },
+        "field4": {
+          "type": "string"
+        },
+        "field5": {
+          "type": "string"
+        },
+        "field6": {
+          "type": "string"
+        },
+        "field7": {
+          "type": "string"
+        },
+        "field8": {
+          "type": "string"
+        },
+        "field9": {
+          "type": "string"
+        },
+        "field10": {
+          "type": "string"
+        },
+        "field11": {
+          "type": "string"
+        },
+        "field12": {
+          "type": "string"
+        },
+        "field13": {
+          "type": "string"
+        },
+        "field14": {
+          "type": "string"
+        },
+        "field15": {
+          "type": "string"
+        },
+        "field16": {
+          "type": "string"
+        },
+        "field17": {
+          "type": "string"
+        },
+        "field18": {
+          "type": "string"
+        },
+        "field19": {
+          "type": "string"
+        },
+        "field20": {
+          "type": "string"
+        },
+        "lastUpdatedBy": {
+          "type": "string"
+        },
+        "lastUpdatedByName": {
+          "type": "string"
+        },
+        "lastUpdatedDateTime": {
+          "type": "string"
+        }
+      },
+      "statusMaps": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/statusMaps1"
+        }
+      }
       }
     },
     "RegisterationReport": {
@@ -4881,8 +5079,7 @@
           }
         }
       }
-    },
-    
+    },  
     "acquirerList":{
       "type":"object",
       "properties":{
@@ -5577,7 +5774,7 @@
         }
       }
     },
-    "statusMaps": {
+    "statusMaps1": {
       "type": "object",
       "properties": {
         "1": {
@@ -5786,7 +5983,7 @@
             "$ref": "#/definitions/helperDTO"
           }
         },
-        "statusMaps": {
+        "statusMaps2": {
           "type": "object",
           "properties": {
             "8": {
@@ -6534,4 +6731,3 @@
       }
     }
   }
-}

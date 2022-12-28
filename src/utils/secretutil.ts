@@ -69,19 +69,20 @@ class SecretUtil {
     public PayNowMasterAccount_PATH= "/main/paynow/account/getData/"
    
 
-
     //PreAuthorisation Path 
     public preAuthInIt_PATH = "/preAuth/init/"
     public preAuthDeviceHealth_PATH = "/preAuth/device/health/"
     public preAuthDebitCardBin_PATH = "/config/bin/list/"
+    public preAuthDebitCardBinActivate_Path = "/config/bin/activate/"
     public preAuthLocalServer_PATH="/hotelServer/device/list/"
     public preAuthServerHealth_PATH="/preAuth/device/health/details/"
-    public preAuthFollowLead_PATH= "/main/leadManagement/followLead/"
-    public preAuthRegisterationReport_PATH= "/report/init/list/"
-
+    
     //Lead Management Path 
-    public generateLead_PATH= "/main/leadManagement/generateLead/"
-
+    public LeadMngGenerateLead_PATH= "/main/leadManagement/generateLead/"
+    public LeadMngFollowLead_PATH= "/main/leadManagement/followLead/"
+    public LeadMngEditFollowLead_Path = "/main/leadManagement/generateLead/edit/"
+    public LeadMngRegisterationReport_PATH= "/report/init/list/"
+    
     // ScheduleJobs Path 
     public gbcc_PATH= "/main/admin/dailyrun/gdbcc/"
 
