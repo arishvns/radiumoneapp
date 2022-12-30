@@ -2222,7 +2222,7 @@
           {
             "in": "formData",
             "name": "singleFileInfo",
-            "description": "Upload file",
+            "description": "Must be in .sql, .sqlite, zip file extension. File size must be below 10MB (megabyte).",
             "required": true,
             "type": "file"
           }
