@@ -64,6 +64,15 @@ class PreAuthController extends BaseController {
         }
     }
 
+    public async preAuthDebitCardBinUpload(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await preAuthService.preAuthDebitCardBinUpload(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
     public async preAuthDebitCardBinActivate(req: IFilteredRequest, res: Response, next: NextFunction) {
         try {
             const requestResult = await preAuthService.preAuthDebitCardBinActivate(req);
@@ -73,12 +82,6 @@ class PreAuthController extends BaseController {
         }
     }
 
-
-   
-
-
-   
 }
-
 
 export const preAuthController = new PreAuthController();

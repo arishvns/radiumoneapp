@@ -206,6 +206,11 @@ class MasterRouteV1 extends BaseRoutes {
             preAuthController.preAuthDebitCardBin(req, res, next);
         })
 
+        this.router.post('/digitalPreAuth/debitCardBinUpload/',
+        (req: Request, res: Response, next: NextFunction) => {
+            preAuthController.preAuthDebitCardBinUpload(req, res, next);
+        })
+
         this.router.get('/digitalPreAuth/debitCardBinActivate/'+ ':id',
         (req: Request, res: Response, next: NextFunction) => {
             preAuthController.preAuthDebitCardBinActivate(req, res, next);
@@ -226,6 +231,11 @@ class MasterRouteV1 extends BaseRoutes {
         this.router.get('/digitalLeadManagement/editFollowLead/'+ ':id',
         (req: Request, res: Response, next: NextFunction) => {
             leadManagementController.editFollowLead(req, res, next);
+        })
+
+        this.router.put('/digitalLeadManagement/updateFollowLead',
+        (req: Request, res: Response, next: NextFunction) => {
+            leadManagementController.updateFollowLead(req, res, next);
         })
 
 

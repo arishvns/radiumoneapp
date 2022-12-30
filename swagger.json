@@ -422,9 +422,9 @@
     },
     "/digitalReceipt/TransactionUploadProcessReceipt": {
       "post": {
-        "summary": "To get info of uplaod image receipt processing under find receipts",
-        "description": "To get info of uplaod image receipt processing under find receipts",
-        "operationId": "To get info of uplaod image receipt processing under find receipts",
+        "summary": "To get info of upload image receipt processing under find receipts",
+        "description": "To get info of upload image receipt processing under find receipts",
+        "operationId": "To get info of upload image receipt processing under find receipts",
         "consumes": [
           "multipart/form-data"
         ],
@@ -1638,7 +1638,7 @@
             "required": false,
             "type": "string",
             "allowEmptyValue": true,
-            "default":"27/09/2022-27/12/2022"
+            "default": "27/09/2022-27/12/2022"
           },
           {
             "name": "pageLength",
@@ -1795,7 +1795,7 @@
             "required": false,
             "type": "integer",
             "allowEmptyValue": true,
-            "default":"0"
+            "default": "0"
           },
           {
             "name": "authAmt",
@@ -1873,7 +1873,7 @@
             "required": false,
             "type": "string",
             "allowEmptyValue": true,
-            "default":"28/09/2018-28/12/2022"
+            "default": "28/09/2018-28/12/2022"
           },
           {
             "name": "pageLength",
@@ -1881,7 +1881,7 @@
             "required": false,
             "type": "integer",
             "allowEmptyValue": true,
-            "default":"10"
+            "default": "10"
           },
           {
             "name": "sort_property",
@@ -2207,6 +2207,45 @@
         }
       }
     },
+    "/digitalPreAuth/debitCardBinUpload/": {
+      "post": {
+        "summary": "To get info of upload image under debit card bin upload",
+        "description": "To get info of upload image under debit card bin upload",
+        "operationId": "To get info of upload image under debit card bin upload",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "PreAuthorisation"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "singleFileInfo",
+            "description": "Upload file",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DebitCardBinUpload"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     "/digitalPreAuth/debitCardBinActivate/{id}": {
       "get": {
         "summary": "It basically turn on status active/inactive",
@@ -2355,7 +2394,7 @@
             "required": false,
             "type": "string",
             "allowEmptyValue": true,
-            "default":"4"
+            "default": "4"
           },
           {
             "name": "pageLength",
@@ -2447,11 +2486,11 @@
         }
       }
     },
-    "/digitalLeadManagement/registerationReport/{page}": {
-      "get": {
-        "summary": "To get all registerationReport accordingly by date",
-        "description": "To get all registerationReport accordingly by date",
-        "operationId": "To get all registerationReport accordingly by date",
+    "/digitalLeadManagement/updateFollowLead": {
+      "put": {
+        "summary": "To get status of update follow lead",
+        "description": "To get status of update follow lead",
+        "operationId": "To get status of update follow lead",
         "produces": [
           "application/json"
         ],
@@ -2460,42 +2499,106 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
-          },
-          {
-            "name": "reportType",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "default": "3",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "pageLength",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "5"
-          },
-          {
-            "name": "sortProperty",
-            "in": "query",
-            "required": false,
+            "in": "formData",
+            "name": "accountNumber",
             "type": "string",
-            "allowEmptyValue": true
+            "required": false
           },
           {
-            "name": "isDesc",
-            "in": "query",
-            "required": false,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "false"
+            "in": "formData",
+            "name": "assigned",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "companyName",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "companyUen",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "contactEmail",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "contactNumber",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "contactPerson",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "designation",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "field1",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "field2",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "field3",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "leadId",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "myRmEmail",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "myRmName",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "myRmNumber",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "remark",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "status",
+            "type": "string",
+            "required": true
           }
         ],
         "responses": {
@@ -2504,7 +2607,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/RegisterationReport"
+                "$ref": "#/definitions/updateFollowLead"
               }
             }
           },
@@ -2515,1002 +2618,1072 @@
             }
           }
         }
-      }
-    },
-    "/digitalScheduleJobs/gbcc/{page}": {
-      "get": {
-        "summary": "To get all details of global blue DCC under Schedule Jobs",
-        "description": "To get all details of global blue DCC under Schedule Jobs",
-        "operationId": "To get all details of global blue DCC under Schedule Jobs",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalScheduleJobs"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
-          },
-          {
-            "name": "pageLength",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "10"
-          },
-          {
-            "name": "isDesc",
-            "in": "query",
-            "required": true,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "true"
-          },
-          {
-            "name": "sort_property",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "allowEmptyValue": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/gbcc"
+      },
+      "/digitalLeadManagement/registerationReport/{page}": {
+        "get": {
+          "summary": "To get all registerationReport accordingly by date",
+          "description": "To get all registerationReport accordingly by date",
+          "operationId": "To get all registerationReport accordingly by date",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalLeadManagement"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "reportType",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "default": "3",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "pageLength",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "5"
+            },
+            {
+              "name": "sortProperty",
+              "in": "query",
+              "required": false,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": false,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "false"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/RegisterationReport"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/digitalConfiguration/merchant/{page}": {
-      "get": {
-        "summary": "To get all info of merchants under configuration",
-        "description": "To get all info of merchants under configuration",
-        "operationId": "To get all info of merchants under configuration",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalConfiguration"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
-          },
-          {
-            "name": "pageLength",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "10"
-          },
-          {
-            "name": "sort_property",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "isDesc",
-            "in": "query",
-            "required": false,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "true"
-          },
-          {
-            "name": "instanceDefaultCountry",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "allowEmptyValue": true,
-            "default": "SG"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/digitalConfiguration"
+      },
+      "/digitalScheduleJobs/gbcc/{page}": {
+        "get": {
+          "summary": "To get all details of global blue DCC under Schedule Jobs",
+          "description": "To get all details of global blue DCC under Schedule Jobs",
+          "operationId": "To get all details of global blue DCC under Schedule Jobs",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalScheduleJobs"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "pageLength",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "10"
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": true,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "true"
+            },
+            {
+              "name": "sort_property",
+              "in": "query",
+              "required": false,
+              "type": "string",
+              "allowEmptyValue": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/gbcc"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/digitalConfiguration/branchCode/{page}": {
-      "get": {
-        "summary": "To get all branch codes under configuration",
-        "description": "To get all branch codes under configuration",
-        "operationId": "To get all branch codes under configuration",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalConfiguration"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
-          },
-          {
-            "name": "sort_property",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true,
-            "default": "undefined"
-          },
-          {
-            "name": "isDesc",
-            "in": "query",
-            "required": false,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "true"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/digitalConfigurationBranchCode"
+      },
+      "/digitalConfiguration/merchant/{page}": {
+        "get": {
+          "summary": "To get all info of merchants under configuration",
+          "description": "To get all info of merchants under configuration",
+          "operationId": "To get all info of merchants under configuration",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalConfiguration"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "pageLength",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "10"
+            },
+            {
+              "name": "sort_property",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": false,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "true"
+            },
+            {
+              "name": "instanceDefaultCountry",
+              "in": "query",
+              "required": false,
+              "type": "string",
+              "allowEmptyValue": true,
+              "default": "SG"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/digitalConfiguration"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/digitalConfiguration/getInitData": {
-      "get": {
-        "summary": "To get all intial data of payment account under configuration",
-        "description": "To get all intial data of payment account under configuration",
-        "operationId": "To get all intial data of payment account under configuration",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalConfiguration"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/digitalConfigurationGetInitData"
+      },
+      "/digitalConfiguration/branchCode/{page}": {
+        "get": {
+          "summary": "To get all branch codes under configuration",
+          "description": "To get all branch codes under configuration",
+          "operationId": "To get all branch codes under configuration",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalConfiguration"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "sort_property",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true,
+              "default": "undefined"
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": false,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "true"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/digitalConfigurationBranchCode"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/digitalConfiguration/paymentAccount/{page}": {
-      "get": {
-        "summary": "To get all data of specific payment account under configuration",
-        "description": "To get all data of specific payment account under configuration",
-        "operationId": "To get all data of specific payment account under configuration",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalConfiguration"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
-          },
-          {
-            "name": "pageLength",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "10"
-          },
-          {
-            "name": "sort_property",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "isDesc",
-            "in": "query",
-            "required": false,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "true"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/paymentAccountPaymentAccount"
+      },
+      "/digitalConfiguration/getInitData": {
+        "get": {
+          "summary": "To get all intial data of payment account under configuration",
+          "description": "To get all intial data of payment account under configuration",
+          "operationId": "To get all intial data of payment account under configuration",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalConfiguration"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/digitalConfigurationGetInitData"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/digitalConfiguration/devices/{page}": {
-      "get": {
-        "summary": "To get all data of device list & merchant which use them",
-        "description": "To get all data of device list & merchant which use them",
-        "operationId": "To get all data of device list & merchant which use them",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalConfiguration"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
-          },
-          {
-            "name": "pageLength",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "10"
-          },
-          {
-            "name": "sort_property",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "isDesc",
-            "in": "query",
-            "required": false,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "true"
-          }
-        ],
-        "x-google-backend": {
-          "address": "http://techomni.in/api/digitalConfiguration/devices/{page}"
-        },
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/digitalConfigurationDevices"
+      },
+      "/digitalConfiguration/paymentAccount/{page}": {
+        "get": {
+          "summary": "To get all data of specific payment account under configuration",
+          "description": "To get all data of specific payment account under configuration",
+          "operationId": "To get all data of specific payment account under configuration",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalConfiguration"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "pageLength",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "10"
+            },
+            {
+              "name": "sort_property",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": false,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "true"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/paymentAccountPaymentAccount"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/digitalConfiguration/searchDevicesOnFilter/{page}": {
-      "get": {
-        "summary": "To get all data of device list & merchant on search filter by multiple paramters",
-        "description": "To get all data of device list & merchant on search filter by multiple paramters",
-        "operationId": "To get all data of device list & merchant on search filter by multiple paramters",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalConfiguration"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
+      },
+      "/digitalConfiguration/devices/{page}": {
+        "get": {
+          "summary": "To get all data of device list & merchant which use them",
+          "description": "To get all data of device list & merchant which use them",
+          "operationId": "To get all data of device list & merchant which use them",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalConfiguration"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "pageLength",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "10"
+            },
+            {
+              "name": "sort_property",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": false,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "true"
+            }
+          ],
+          "x-google-backend": {
+            "address": "http://techomni.in/api/digitalConfiguration/devices/{page}"
           },
-          {
-            "name": "deviceName",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "merchantName",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "bankMid",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "bankTid",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "allowEmptyValue": true         
-          },
-          {
-            "name": "pageLength",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "10"
-          },
-          {
-            "name": "sort_property",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "isDesc",
-            "in": "query",
-            "required": false,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "true"
-          }
-        ],
-        "x-google-backend": {
-          "address": "http://techomni.in/api/digitalConfiguration/devices/{page}"
-        },
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/digitalConfigurationDevices"
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/digitalConfigurationDevices"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/digitalConfiguration/acquirerGroup/{page}": {
-      "get": {
-        "summary": "To get knowledge about all acquirerGroup",
-        "description": "To get knowledge about all acquirerGroup",
-        "operationId": "To get knowledge about all acquirerGroup",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalConfiguration"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
+      },
+      "/digitalConfiguration/searchDevicesOnFilter/{page}": {
+        "get": {
+          "summary": "To get all data of device list & merchant on search filter by multiple paramters",
+          "description": "To get all data of device list & merchant on search filter by multiple paramters",
+          "operationId": "To get all data of device list & merchant on search filter by multiple paramters",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalConfiguration"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "deviceName",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "merchantName",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "bankMid",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "bankTid",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "pageLength",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "10"
+            },
+            {
+              "name": "sort_property",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": false,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "true"
+            }
+          ],
+          "x-google-backend": {
+            "address": "http://techomni.in/api/digitalConfiguration/devices/{page}"
           },
-          {
-            "name": "pageLength",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "10"
-          },
-          {
-            "name": "sort_property",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "isDesc",
-            "in": "query",
-            "required": false,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "true"
-          },
-          {
-            "name": "instanceDefaultCountry",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "allowEmptyValue": true,
-            "default": "SG"
-          }
-        ],
-        "x-google-backend": {
-          "address": "http://techomni.in/api/digitalConfiguration/devices/{page}"
-        },
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/digitalConfigurationAcquirerGroup"
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/digitalConfigurationDevices"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/digitalConfiguration/receiptLogo": {
-      "get": {
-        "summary": "To get details of receipt logo",
-        "description": "To get details of receipt logo",
-        "operationId": "To get details of receipt logo",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalConfiguration"
-        ],
-        "parameters": [],
-        "x-google-backend": {
-          "address": "http://techomni.in/api/digitalConfiguration/receiptLogo"
-        },
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/digitalConfigurationReceiptLogo"
+      },
+      "/digitalConfiguration/acquirerGroup/{page}": {
+        "get": {
+          "summary": "To get knowledge about all acquirerGroup",
+          "description": "To get knowledge about all acquirerGroup",
+          "operationId": "To get knowledge about all acquirerGroup",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalConfiguration"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "pageLength",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "10"
+            },
+            {
+              "name": "sort_property",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": false,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "true"
+            },
+            {
+              "name": "instanceDefaultCountry",
+              "in": "query",
+              "required": false,
+              "type": "string",
+              "allowEmptyValue": true,
+              "default": "SG"
+            }
+          ],
+          "x-google-backend": {
+            "address": "http://techomni.in/api/digitalConfiguration/devices/{page}"
+          },
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/digitalConfigurationAcquirerGroup"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/digitalConfiguration/additionals/{page}": {
-      "get": {
-        "summary": "To get knowledge about all paygate additionals",
-        "description": "To get knowledge about all paygate additionals",
-        "operationId": "To get knowledge about all paygate additionals",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalConfiguration"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
+      },
+      "/digitalConfiguration/receiptLogo": {
+        "get": {
+          "summary": "To get details of receipt logo",
+          "description": "To get details of receipt logo",
+          "operationId": "To get details of receipt logo",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalConfiguration"
+          ],
+          "parameters": [],
+          "x-google-backend": {
+            "address": "http://techomni.in/api/digitalConfiguration/receiptLogo"
           },
-          {
-            "name": "attrName",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true         
-          },
-          {
-            "name": "attrKey",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "acquirerGroupId",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "1"
-          },
-          {
-            "name": "pageLength",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "10"
-          },
-          {
-            "name": "sort_property",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "isDesc",
-            "in": "query",
-            "required": false,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "true"
-          }
-        ],
-        "x-google-backend": {
-          "address": "http://techomni.in/api/digitalConfiguration/additionals/{page}"
-        },
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/digitalConfigurationAdditionals"
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/digitalConfigurationReceiptLogo"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/digitalConfiguration/softwareSetup/{page}": {
-      "get": {
-        "summary": "To get all software versions & it's details",
-        "description": "To get all software versions & it's details",
-        "operationId": "To get all software versions & it's details",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalConfiguration"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
+      },
+      "/digitalConfiguration/additionals/{page}": {
+        "get": {
+          "summary": "To get knowledge about all paygate additionals",
+          "description": "To get knowledge about all paygate additionals",
+          "operationId": "To get knowledge about all paygate additionals",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalConfiguration"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "attrName",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "attrKey",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "acquirerGroupId",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "1"
+            },
+            {
+              "name": "pageLength",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "10"
+            },
+            {
+              "name": "sort_property",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": false,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "true"
+            }
+          ],
+          "x-google-backend": {
+            "address": "http://techomni.in/api/digitalConfiguration/additionals/{page}"
           },
-          {
-            "name": "pageLength",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "10"
-          },
-          {
-            "name": "sort_property",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "isDesc",
-            "in": "query",
-            "required": false,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "true"
-          }
-        ],
-        "x-google-backend": {
-          "address": "http://techomni.in/api/digitalConfiguration/softwareSetup/{page}"
-        },
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/digitalConfigurationSoftwareSetup"
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/digitalConfigurationAdditionals"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/digitalConfiguration/authExpirySearch": {
-      "get": {
-        "summary": "To get all detail of merchant list on key-up event ",
-        "description": "To get all detail of merchant list on key-up event ",
-        "operationId": "To get all detail of merchant list on key-up event ",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "DigitalConfiguration"
-        ],
-        "parameters": [
-          {
-            "name": "merchantName",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "allowEmptyValue": true
-          }
-        ],
-        "x-google-backend": {
-          "address": "http://techomni.in/api/digitalConfiguration/authExpirySearch/"
-        },
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/todosResponse"
+      },
+      "/digitalConfiguration/softwareSetup/{page}": {
+        "get": {
+          "summary": "To get all software versions & it's details",
+          "description": "To get all software versions & it's details",
+          "operationId": "To get all software versions & it's details",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalConfiguration"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "pageLength",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "10"
+            },
+            {
+              "name": "sort_property",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": false,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "true"
             }
+          ],
+          "x-google-backend": {
+            "address": "http://techomni.in/api/digitalConfiguration/softwareSetup/{page}"
           },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
-          }
-        }
-      }
-    },
-    "/adminUser/{page}": {
-      "get": {
-        "summary": "Get all details of admin user with custom paramters",
-        "description": "Get all details of admin user with custom paramters",
-        "operationId": "Get all details of admin user with custom paramters",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "tags": [
-          "Digital Admin Users"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
-          },
-          {
-            "name": "pageLength",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "10"
-          },
-          {
-            "name": "sort_property",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "isDesc",
-            "in": "query",
-            "required": true,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "true"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/adminUser"
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/digitalConfigurationSoftwareSetup"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
           }
         }
-      }
-    },
-    "/adminUser/searchForm": {
-      "get": {
-        "summary": "To get results of AdminUser SearchForm",
-        "description": "To get results of AdminUser SearchForm",
-        "operationId": "To get results of AdminUser SearchForm",
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Digital Admin Users"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
+      },
+      "/digitalConfiguration/authExpirySearch": {
+        "get": {
+          "summary": "To get all detail of merchant list on key-up event ",
+          "description": "To get all detail of merchant list on key-up event ",
+          "operationId": "To get all detail of merchant list on key-up event ",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "DigitalConfiguration"
+          ],
+          "parameters": [
+            {
+              "name": "merchantName",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": true
+            }
+          ],
+          "x-google-backend": {
+            "address": "http://techomni.in/api/digitalConfiguration/authExpirySearch/"
+          },
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
                 "$ref": "#/definitions/todosResponse"
               }
-            }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
-          }
-        }
-      }
-    },
-    "/receiptImager/{page}": {
-      "get": {
-        "summary": "Get all receipt imager",
-        "description": "Get all receipt imager",
-        "operationId": "Get all receipt imager",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "tags": [
-          "Digital ReceiptImager"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "default": "1"
-          },
-          {
-            "name": "pageLength",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "allowEmptyValue": true,
-            "default": "10"
-          },
-          {
-            "name": "sort_property",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "allowEmptyValue": true
-          },
-          {
-            "name": "isDesc",
-            "in": "query",
-            "required": true,
-            "type": "boolean",
-            "allowEmptyValue": true,
-            "default": "true"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/receiptImager"
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
+          }
+        }
+      },
+      "/adminUser/{page}": {
+        "get": {
+          "summary": "Get all details of admin user with custom paramters",
+          "description": "Get all details of admin user with custom paramters",
+          "operationId": "Get all details of admin user with custom paramters",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "tags": [
+            "Digital Admin Users"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "pageLength",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "10"
+            },
+            {
+              "name": "sort_property",
+              "in": "query",
+              "required": false,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": true,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "true"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/adminUser"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
+              }
             }
           }
         }
-      }
-    },
-    "/addNewUser": {
-      "post": {
-        "summary": "Save the task",
-        "description": "Save the task",
-        "operationId": "Save the task",
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Add New User",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "addNewUser": {
-                  "$ref": "#/definitions/addNewUser"
+      },
+      "/adminUser/searchForm": {
+        "get": {
+          "summary": "To get results of AdminUser SearchForm",
+          "description": "To get results of AdminUser SearchForm",
+          "operationId": "To get results of AdminUser SearchForm",
+          "produces": [
+            "application/json"
+          ],
+          "tags": [
+            "Digital Admin Users"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/todosResponse"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
+              }
+            }
+          }
+        }
+      },
+      "/receiptImager/{page}": {
+        "get": {
+          "summary": "Get all receipt imager",
+          "description": "Get all receipt imager",
+          "operationId": "Get all receipt imager",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "tags": [
+            "Digital ReceiptImager"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "name": "pageLength",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "allowEmptyValue": true,
+              "default": "10"
+            },
+            {
+              "name": "sort_property",
+              "in": "query",
+              "required": false,
+              "type": "string",
+              "allowEmptyValue": true
+            },
+            {
+              "name": "isDesc",
+              "in": "query",
+              "required": true,
+              "type": "boolean",
+              "allowEmptyValue": true,
+              "default": "true"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/receiptImager"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
+              }
+            }
+          }
+        }
+      },
+      "/addNewUser": {
+        "post": {
+          "summary": "Save the task",
+          "description": "Save the task",
+          "operationId": "Save the task",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Add New User",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "addNewUser": {
+                    "$ref": "#/definitions/addNewUser"
+                  }
                 }
               }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/todosResponse"
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/todosResponse"
+                }
               }
-            }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
-            }
-          }
-        }
-      }
-    },
-    "/footer/version": {
-      "get": {
-        "summary": "Get footer version",
-        "description": "Get footer version",
-        "operationId": "Get footer version",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/todosResponse"
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
-            }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
             }
           }
         }
-      }
-    },
-    "/getUrlPath": {
-      "get": {
-        "summary": "Get URL path",
-        "description": "Get URL path",
-        "operationId": "Get URL path",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/todosResponse"
+      },
+      "/footer/version": {
+        "get": {
+          "summary": "Get footer version",
+          "description": "Get footer version",
+          "operationId": "Get footer version",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/todosResponse"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
               }
             }
-          },
-          "400": {
-            "description": "Invalid status value",
-            "schema": {
-              "$ref": "#/definitions/InvalidResponse"
+          }
+        }
+      },
+      "/getUrlPath": {
+        "get": {
+          "summary": "Get URL path",
+          "description": "Get URL path",
+          "operationId": "Get URL path",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/todosResponse"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
+              }
             }
           }
         }
@@ -4012,26 +4185,26 @@
         },
         "preAuthList ": {
           "type": "array",
-          "items":{
-            "type":"object"
+          "items": {
+            "type": "object"
           }
         },
         "cardList ": {
           "type": "array",
-          "items":{
-            "type":"object"
+          "items": {
+            "type": "object"
           }
         },
         "bankCardDTOList ": {
           "type": "array",
-          "items":{
-            "type":"object"
+          "items": {
+            "type": "object"
           }
         },
         "txnStatusDTOList ": {
           "type": "array",
-          "items":{
-            "$ref":"#/definitions/txnStatusDTOList"
+          "items": {
+            "$ref": "#/definitions/txnStatusDTOList"
           }
         },
         "cardTypeMap": {
@@ -4119,14 +4292,14 @@
         }
       }
     },
-    "txnStatusDTOList":{
-      "type":"object",
-      "properties":{
-        "statusId":{
-          "type":"integer"
+    "txnStatusDTOList": {
+      "type": "object",
+      "properties": {
+        "statusId": {
+          "type": "integer"
         },
-        "statusName":{
-          "type":"string"
+        "statusName": {
+          "type": "string"
         }
       }
     },
@@ -4569,29 +4742,6 @@
         }
       }
     },
-    "helperDTO": {
-      "type": "object",
-      "properties": {
-        "current": {
-          "type": "integer"
-        },
-        "begin": {
-          "type": "integer"
-        },
-        "end": {
-          "type": "integer"
-        },
-        "startFrm": {
-          "type": "integer"
-        },
-        "endFrm": {
-          "type": "integer"
-        },
-        "totalResults": {
-          "type": "integer"
-        }
-      }
-    },
     "payNowPaymentDTOList": {
       "type": "object",
       "properties": {
@@ -4696,7 +4846,7 @@
         "payNowReportsRequestDTOList": {
           "type": "array",
           "items": {
-            "type":"object"
+            "type": "object"
           }
         },
         "isDeviceListEmpty": {
@@ -5034,7 +5184,7 @@
         }
       }
     },
-    "EditFollowLead":{
+    "EditFollowLead": {
       "type": "object",
       "properties": {
         "leadId": {
@@ -5151,7 +5301,6 @@
         "items": {
           "$ref": "#/definitions/statusMaps1"
         }
-      }
       }
     },
     "RegisterationReport": {
@@ -5397,13 +5546,13 @@
         }
       }
     },
-    "digitalConfigurationDevices":{
-      "type":"object",
-      "properties":{
-        "dataList":{
-          "type":"array",
-          "items":{
-            "$ref":"#/definitions/dataList"
+    "digitalConfigurationDevices": {
+      "type": "object",
+      "properties": {
+        "dataList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dataList"
           }
         },
         "helperDTO": {
@@ -5424,34 +5573,34 @@
         "totalPages": {
           "type": "integer"
         },
-        "deviceList":{
-          "type":"string"
+        "deviceList": {
+          "type": "string"
         },
-        "tokenList":{
-          "type":"string"
+        "tokenList": {
+          "type": "string"
         },
-        "countryStatesMap":{
-          "type":"string"
+        "countryStatesMap": {
+          "type": "string"
         },
-        "stateCitiesMap":{
-          "type":"string"
+        "stateCitiesMap": {
+          "type": "string"
         },
-        "deviceEmpty":{
-          "type":"string"
+        "deviceEmpty": {
+          "type": "string"
         }
       }
     },
-    "digitalConfigurationAcquirerGroup":{
-      "type":"object",
-      "properties":{
-        "acquirerList":{
-          "type":"array",
-          "items":{
-            "$ref":"#/definitions/acquirerList"
+    "digitalConfigurationAcquirerGroup": {
+      "type": "object",
+      "properties": {
+        "acquirerList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/acquirerList"
           }
         },
-        "isAcquirerEmpty":{
-          "type":"boolean"
+        "isAcquirerEmpty": {
+          "type": "boolean"
         },
         "helperDTO": {
           "type": "array",
@@ -5471,69 +5620,69 @@
         "totalPages": {
           "type": "integer"
         },
-        "countryStatesMap":{
-          "type":"object",
-          "properties":{
-            "3186":{
-              "type":"string"
+        "countryStatesMap": {
+          "type": "object",
+          "properties": {
+            "3186": {
+              "type": "string"
             }
           }
         },
-        "stateCitiesMap":{
-          "type":"object",
-          "properties":{
-            "37541":{
-              "type":"string"
+        "stateCitiesMap": {
+          "type": "object",
+          "properties": {
+            "37541": {
+              "type": "string"
             }
           }
         }
       }
-    },  
-    "acquirerList":{
-      "type":"object",
-      "properties":{
-        "acquirerId":{
-          "type":"integer"
+    },
+    "acquirerList": {
+      "type": "object",
+      "properties": {
+        "acquirerId": {
+          "type": "integer"
         },
-        "acquirerName":{
-          "type":"string"
+        "acquirerName": {
+          "type": "string"
         },
-        "address1":{
-          "type":"string"
+        "address1": {
+          "type": "string"
         },
-        "address2":{
-          "type":"string"
+        "address2": {
+          "type": "string"
         },
-        "address3":{
-          "type":"string"
+        "address3": {
+          "type": "string"
         },
-        "postalCode":{
-          "type":"string"
+        "postalCode": {
+          "type": "string"
         },
-        "createdBy":{
-          "type":"string"
+        "createdBy": {
+          "type": "string"
         },
-        "selectedCity":{
-          "type":"integer"
+        "selectedCity": {
+          "type": "integer"
         },
-        "selectedState":{
-          "type":"integer"
+        "selectedState": {
+          "type": "integer"
         },
-        "selectedStateName":{
-          "type":"string"
+        "selectedStateName": {
+          "type": "string"
         },
-        "selectedCityName":{
-          "type":"string"
+        "selectedCityName": {
+          "type": "string"
         }
       }
     },
-    "digitalConfigurationAdditionals":{
-      "type":"object",
-      "properties":{
-        "paygateAcquirerList":{
-          "type":"array",
-          "items":{
-            "$ref":"#/definitions/paygateAcquirerList"
+    "digitalConfigurationAdditionals": {
+      "type": "object",
+      "properties": {
+        "paygateAcquirerList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/paygateAcquirerList"
           }
         },
         "helperDTO": {
@@ -5556,13 +5705,13 @@
         }
       }
     },
-    "digitalConfigurationReceiptLogo":{
-      "type":"object",
-      "properties":{
-        "receiptLogoDTOList":{
-          "type":"array",
-          "items":{
-            "$ref":"#/definitions/receiptLogoDTOList"
+    "digitalConfigurationReceiptLogo": {
+      "type": "object",
+      "properties": {
+        "receiptLogoDTOList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/receiptLogoDTOList"
           }
         },
         "helperDTO": {
@@ -5585,17 +5734,17 @@
         }
       }
     },
-    "digitalConfigurationSoftwareSetup":{
-      "type":"object",
-      "properties":{
-        "softwareList":{
-          "type":"array",
-          "items":{
-            "$ref":"#/definitions/softwareList"
+    "digitalConfigurationSoftwareSetup": {
+      "type": "object",
+      "properties": {
+        "softwareList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/softwareList"
           }
         },
-        "isSoftwareEmpty":{
-          "type":"boolean"
+        "isSoftwareEmpty": {
+          "type": "boolean"
         },
         "helperDTO": {
           "type": "array",
@@ -5617,167 +5766,167 @@
         }
       }
     },
-    "softwareList":{
-      "type":"object",
-      "properties":{
-        "id":{
-          "type":"integer"
+    "softwareList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
         },
-        "name":{
-          "type":"string"
+        "name": {
+          "type": "string"
         },
-        "softwareVersion":{
-          "type":"string"
+        "softwareVersion": {
+          "type": "string"
         },
-        "terminalModel":{
-          "type":"string"
+        "terminalModel": {
+          "type": "string"
         },
-        "status":{
-          "type":"integer"
+        "status": {
+          "type": "integer"
         }
       }
     },
-    "receiptLogoDTOList":{
-      "type":"object",
-      "properties":{
-        "id":{
-          "type":"integer"
+    "receiptLogoDTOList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
         },
-        "filename":{
-          "type":"string"
+        "filename": {
+          "type": "string"
         },
-        "description":{
-          "type":"string"
+        "description": {
+          "type": "string"
         },
-        "filesize":{
-          "type":"integer"
+        "filesize": {
+          "type": "integer"
         },
-        "receiptBlob":{
-          "type":"string"
+        "receiptBlob": {
+          "type": "string"
         },
-        "logoFormat":{
-          "type":"string"
+        "logoFormat": {
+          "type": "string"
         },
-        "logoHeight":{
-          "type":"integer"
+        "logoHeight": {
+          "type": "integer"
         },
-        "createdDateTime":{
-          "type":"string"
-        } 
-      }
-    },
-    "paygateAcquirerList":{
-      "type":"object",
-      "properties":{
-        "id":{
-          "type":"integer"
-        },
-        "attrName":{
-          "type":"string"
-        },
-        "attrKey":{
-          "type":"string"
-        },
-        "acquirerGroupName":{
-          "type":"string"
+        "createdDateTime": {
+          "type": "string"
         }
       }
     },
-    "dataList":{
-      "type":"object",
-      "properties":{
-        "createdBy":{
-          "type":"string"
+    "paygateAcquirerList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
         },
-        "lastUpdatedBy":{
-          "type":"string"
+        "attrName": {
+          "type": "string"
         },
-        "createdDateTime":{
-          "type":"string"
+        "attrKey": {
+          "type": "string"
         },
-        "lastUpdatedDateTime":{
-          "type":"string"
+        "acquirerGroupName": {
+          "type": "string"
+        }
+      }
+    },
+    "dataList": {
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "type": "string"
         },
-        "id":{
-          "type":"integer"
+        "lastUpdatedBy": {
+          "type": "string"
         },
-        "merchantName":{
-          "type":"string"
+        "createdDateTime": {
+          "type": "string"
         },
-        "merchantId":{
-          "type":"string"
+        "lastUpdatedDateTime": {
+          "type": "string"
         },
-        "merchantUserId":{
-          "type":"string"
+        "id": {
+          "type": "integer"
         },
-        "merchantUserIds":{
-          "type":"string"
+        "merchantName": {
+          "type": "string"
         },
-        "hostName":{
-          "type":"string"
+        "merchantId": {
+          "type": "string"
         },
-        "deviceType":{
-          "type":"string"
+        "merchantUserId": {
+          "type": "string"
         },
-        "accessToken":{
-          "type":"string"
+        "merchantUserIds": {
+          "type": "string"
         },
-        "deviceName":{
-          "type":"string"
+        "hostName": {
+          "type": "string"
         },
-        "tokenName":{
-          "type":"string"
+        "deviceType": {
+          "type": "string"
         },
-        "deviceId":{
-          "type":"string"
+        "accessToken": {
+          "type": "string"
         },
-        "description":{
-          "type":"string"
+        "deviceName": {
+          "type": "string"
         },
-        "merchantMap":{
-          "type":"string"
+        "tokenName": {
+          "type": "string"
         },
-        "acquirerMap":{
-          "type":"string"
+        "deviceId": {
+          "type": "string"
         },
-        "bankTid":{
-          "type":"string"
+        "description": {
+          "type": "string"
         },
-        "bankMid":{
-          "type":"string"
+        "merchantMap": {
+          "type": "string"
         },
-        "tokenListtokenList":{
-          "type":"string"
+        "acquirerMap": {
+          "type": "string"
         },
-        "result":{
-          "type":"string"
+        "bankTid": {
+          "type": "string"
         },
-        "bindBy":{
-          "type":"string"
+        "bankMid": {
+          "type": "string"
         },
-        "bindDate":{
-          "type":"string"
+        "tokenListtokenList": {
+          "type": "string"
         },
-        "brand":{
-          "type":"string"
+        "result": {
+          "type": "string"
         },
-        "model":{
-          "type":"string"
+        "bindBy": {
+          "type": "string"
         },
-        "serialNumber":{
-          "type":"string"
+        "bindDate": {
+          "type": "string"
         },
-        "deviceToken":{
-          "type":"string"
+        "brand": {
+          "type": "string"
         },
-        "activateId":{
-          "type":"string"
+        "model": {
+          "type": "string"
         },
-        "encryptionKey":{
-          "type":"string"
+        "serialNumber": {
+          "type": "string"
         },
-        "merchantCode":{
-          "type":"string"
+        "deviceToken": {
+          "type": "string"
+        },
+        "activateId": {
+          "type": "string"
+        },
+        "encryptionKey": {
+          "type": "string"
+        },
+        "merchantCode": {
+          "type": "string"
         }
       }
     },
@@ -6470,6 +6619,23 @@
         }
       }
     },
+    "DebitCardBinUpload": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "progressPercentage": {
+          "type": "integer"
+        }
+      }
+    },
     "topCustomerCountDTOListOfTopCustomerCardList": {
       "properties": {
         "cardNumberMask": {
@@ -7140,3 +7306,4 @@
       }
     }
   }
+}

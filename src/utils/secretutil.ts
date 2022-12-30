@@ -74,6 +74,7 @@ class SecretUtil {
     public preAuthFilterList_PATH = "/preAuth/list/"
     public preAuthDeviceHealth_PATH = "/preAuth/device/health/"
     public preAuthDebitCardBin_PATH = "/config/bin/list/"
+    public preAuthDebitCardBinUpload_PATH = "/config/bin/upload/"
     public preAuthDebitCardBinActivate_Path = "/config/bin/activate/"
     public preAuthLocalServer_PATH="/hotelServer/device/list/"
     public preAuthServerHealth_PATH="/preAuth/device/health/details/"
@@ -81,6 +82,7 @@ class SecretUtil {
     //Lead Management Path 
     public LeadMngGenerateLead_PATH= "/main/leadManagement/generateLead/"
     public LeadMngFollowLead_PATH= "/main/leadManagement/followLead/"
+    public LeadMngFollowLeadUpdate_PATH = "/main/leadManagement/followLead/update"
     public LeadMngEditFollowLead_Path = "/main/leadManagement/generateLead/edit/"
     public LeadMngRegisterationReport_PATH= "/report/init/list/"
     

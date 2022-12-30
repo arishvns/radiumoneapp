@@ -1,4 +1,7 @@
+
+import { json } from 'express';
 import request from 'request';
+import { URLSearchParams } from 'url';
 import { secretUtil } from '../../utils/secretutil';
 import { authenticateService } from '../authenticate/authenticateServices';
 
@@ -99,6 +102,45 @@ class LeadManagementService {
                 if (err) return resolve(null);
                 try {
                     resolve(JSON.parse(res.body));
+                }
+                catch (ex) {
+                    return resolve(null);
+                }
+            });
+        });
+        return resData
+        } catch (err) {
+            return err;
+        }
+    }
+
+    public updateFollowLead = async (req?: any) => {
+       try{
+        let token =  await authenticateService.authenticateToken().then( (res)=>{
+            return res.token;
+        }).catch((err)=>{
+            return (err);
+        })
+        if (req?.body == null || "" || undefined){
+            return console.error("There is no data in body,kindly send some data");
+        }
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.LeadMngFollowLeadUpdate_PATH ;
+        let options = {
+            method: 'PUT',
+            body: (JSON.stringify(req.body)),
+            url : _url,
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": 'application/json;'
+            },
+            strictSSL: false
+        }
+
+        let resData: any = await new Promise((resolve, reject) => {
+            request(options, (err: any, res: any,body:any) => {
+                if (err) return resolve(null);
+                try {
+                    resolve(res.body);
                 }
                 catch (ex) {
                     return resolve(null);
