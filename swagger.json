@@ -2758,6 +2758,163 @@
               }
           }
       },
+      "/digitalUser/user":{
+        "get": {
+            "summary": "To get all digital user details",
+            "description": "To get all digital user details",
+            "operationId": "To get all digital user details",
+            "produces": [
+                "application/json"
+            ],
+            "tags": [
+                "DigitalUser"
+            ],
+            "parameters": [
+                {
+                    "name": "pageLength",
+                    "in": "query",
+                    "required": true,
+                    "type": "string",
+                    "allowEmptyValue": true,
+                    "default": "10"
+                },
+                {
+                    "name": "sort_property",
+                    "in": "query",
+                    "required": true,
+                    "type": "string",
+                    "allowEmptyValue": true
+                },
+                {
+                    "name": "isDesc",
+                    "in": "query",
+                    "required": false,
+                    "type": "boolean",
+                    "allowEmptyValue": true,
+                    "default": "true"
+                },
+                {
+                    "name": "pageNumber",
+                    "in": "query",
+                    "required": false,
+                    "type": "integer",
+                    "allowEmptyValue": true,
+                    "default": "1"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "successful operation",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/todosResponse"
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Invalid status value",
+                    "schema": {
+                        "$ref": "#/definitions/InvalidResponse"
+                    }
+                }
+            }
+        }
+      },
+      "/digitalUser/userInit":{
+        "get": {
+            "summary": "To get User init info",
+            "description": "To get User init info",
+            "operationId": "To get User init info",
+            "produces": [
+                "application/json"
+            ],
+            "tags": [
+                "DigitalUser"
+            ],
+            "parameters": [
+            ],
+            "responses": {
+                "200": {
+                    "description": "successful operation",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/userInit"
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Invalid status value",
+                    "schema": {
+                        "$ref": "#/definitions/InvalidResponse"
+                    }
+                }
+            }
+        }
+      },
+      "/digitalUser/searchForm":{
+        "get": {
+            "summary": "To get search form details",
+            "description": "To get search form details",
+            "operationId": "To get search form details",
+            "produces": [
+                "application/json"
+            ],
+            "tags": [
+                "DigitalUser"
+            ],
+            "parameters": [],
+            "responses": {
+                "200": {
+                    "description": "successful operation",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/digitalUserSearchForm"
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Invalid status value",
+                    "schema": {
+                        "$ref": "#/definitions/InvalidResponse"
+                    }
+                }
+            }
+        }
+      },
+      "/digitalUser/timeZone":{
+        "get": {
+            "summary": "To get search form details",
+            "description": "To get search form details",
+            "operationId": "To get search form details",
+            "produces": [
+                "application/json"
+            ],
+            "tags": [
+                "DigitalUser"
+            ],
+            "parameters": [],
+            "responses": {
+                "200": {
+                    "description": "successful operation",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/digitalUserSearchForm"
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Invalid status value",
+                    "schema": {
+                        "$ref": "#/definitions/InvalidResponse"
+                    }
+                }
+            }
+        }
+      },
       "/digitalConfiguration/merchant/{page}": {
           "get": {
               "summary": "To get all info of merchants under configuration",
@@ -3415,6 +3572,210 @@
               ],
               "x-google-backend": {
                   "address": "http://techomni.in/api/digitalConfiguration/authExpirySearch/"
+              },
+              "responses": {
+                  "200": {
+                      "description": "successful operation",
+                      "schema": {
+                          "$ref": "#/definitions/todosResponse"
+                      }
+                  },
+                  "400": {
+                      "description": "Invalid status value",
+                      "schema": {
+                          "$ref": "#/definitions/InvalidResponse"
+                      }
+                  }
+              }
+          }
+      },
+      "/digitalConfiguration/blockedDevices/{page}": {
+          "get": {
+              "summary": "To get all detail of blocked devices",
+              "description": "To get all detail of blocked devices",
+              "operationId": "To get all detail of blocked devices",
+              "produces": [
+                  "application/json"
+              ],
+              "tags": [
+                  "DigitalConfiguration"
+              ],
+              "parameters": [
+                {
+                    "name": "page",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer",
+                    "default": "1"
+                },
+                {
+                    "name": "pageLength",
+                    "in": "query",
+                    "required": true,
+                    "type": "integer",
+                    "allowEmptyValue": true,
+                    "default": "10"
+                },
+                {
+                    "name": "sort_property",
+                    "in": "query",
+                    "required": false,
+                    "type": "string",
+                    "allowEmptyValue": true
+                },
+                {
+                    "name": "isDesc",
+                    "in": "query",
+                    "required": true,
+                    "type": "boolean",
+                    "allowEmptyValue": true,
+                    "default": "true"
+                }
+              ],
+              "x-google-backend": {
+                  "address": "http://techomni.in/api/digitalConfiguration/blockedDevices/"
+              },
+              "responses": {
+                  "200": {
+                      "description": "successful operation",
+                      "schema": {
+                          "$ref": "#/definitions/todosResponse"
+                      }
+                  },
+                  "400": {
+                      "description": "Invalid status value",
+                      "schema": {
+                          "$ref": "#/definitions/InvalidResponse"
+                      }
+                  }
+              }
+          }
+      },
+      "/digitalConfiguration/tokenAccess": {
+          "get": {
+              "summary": "To get all detail of token access",
+              "description": "To get all detail of token access",
+              "operationId": "To get all detail of token access",
+              "produces": [
+                  "application/json"
+              ],
+              "tags": [
+                  "DigitalConfiguration"
+              ],
+              "parameters": [
+                {
+                    "name": "page",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer",
+                    "default": "1"
+                },
+                {
+                    "name": "pageLength",
+                    "in": "query",
+                    "required": true,
+                    "type": "integer",
+                    "allowEmptyValue": true,
+                    "default": "10"
+                },
+                {
+                    "name": "sort_property",
+                    "in": "query",
+                    "required": false,
+                    "type": "string",
+                    "allowEmptyValue": true
+                },
+                {
+                    "name": "isDesc",
+                    "in": "query",
+                    "required": true,
+                    "type": "boolean",
+                    "allowEmptyValue": true,
+                    "default": "true"
+                },
+                {
+                    "name": "pageNumber",
+                    "in": "query",
+                    "required": false,
+                    "type": "integer",
+                    "allowEmptyValue": true,
+                    "default":"1"
+                },
+                {
+                    "name": "instanceDefaultCountry",
+                    "in": "query",
+                    "required": true,
+                    "type": "string",
+                    "allowEmptyValue": true,
+                    "default": "SG"
+                }
+              ],
+              "x-google-backend": {
+                  "address": "http://techomni.in/api/digitalConfiguration/blockedDevices/"
+              },
+              "responses": {
+                  "200": {
+                      "description": "successful operation",
+                      "schema": {
+                          "$ref": "#/definitions/todosResponse"
+                      }
+                  },
+                  "400": {
+                      "description": "Invalid status value",
+                      "schema": {
+                          "$ref": "#/definitions/InvalidResponse"
+                      }
+                  }
+              }
+          }
+      },
+      "/digitalConfiguration/paynowDevices/": {
+          "get": {
+              "summary": "To get all detail of paynow devices",
+              "description": "To get all detail of paynow devices",
+              "operationId": "To get all detail of paynow devices",
+              "produces": [
+                  "application/json"
+              ],
+              "tags": [
+                  "DigitalConfiguration"
+              ],
+              "parameters": [
+                
+                {
+                    "name": "pageLength",
+                    "in": "query",
+                    "required": true,
+                    "type": "integer",
+                    "allowEmptyValue": true,
+                    "default": "10"
+                },
+                {
+                    "name": "sort_property",
+                    "in": "query",
+                    "required": false,
+                    "type": "string",
+                    "allowEmptyValue": true
+                },
+                {
+                    "name": "isDesc",
+                    "in": "query",
+                    "required": true,
+                    "type": "boolean",
+                    "allowEmptyValue": true,
+                    "default": "true"
+                },
+                {
+                    "name": "pageNumber",
+                    "in": "query",
+                    "required": false,
+                    "type": "integer",
+                    "allowEmptyValue": true,
+                    "default":"1"
+                }
+              ],
+              "x-google-backend": {
+                  "address": "http://techomni.in/api/digitalConfiguration/blockedDevices/"
               },
               "responses": {
                   "200": {
@@ -5422,6 +5783,34 @@
                   "type": "integer"
               }
           }
+      },
+      "digitalUserSearchForm":{
+        "type":"object",
+        "properties":{
+            "currentIndex": {
+                "type": "integer"
+            },
+            "beginIndex": {
+                "type": "integer"
+            },
+            "endIndex": {
+                "type": "integer"
+            },
+            "totalPages": {
+                "type": "integer"
+            },
+            "listCount": {
+                "type": "integer"
+            },
+            "userRoleMap": {
+                "type": "object"
+            },
+            "allRolesWithPermDetails":{
+                "type":"object"
+            },"authExpiryConfig":{
+                "type":"integer"
+            }
+        }
       },
       "digitalConfiguration": {
           "type": "object",

@@ -89,6 +89,14 @@ class SecretUtil {
     // ScheduleJobs Path 
     public gbcc_PATH= "/main/admin/dailyrun/gdbcc/"
 
+    // User component paths
+    
+    public DigitalUsers_PATH= "/users/"
+    public DigitalUsersInit_PATH= "/users/init"
+    public DigitalUsersSearchForm_PATH= "/users/searchForm"
+    public DigitalUsersTimeZone_PATH = "/user/timezone/getTimezoneByCountry/200"
+    
+
     // Configuration Path
     public ConfigMerchant_Path = "/main/admin/merchants/"
     public ConfigBranchCode_Path = "/main/admin/merchants/branch_code/"
@@ -101,11 +109,14 @@ class SecretUtil {
     public ConfigReceiptLogo_Path = "/config/receiptLogo/list/1"
     public ConfigSoftwareSetup_Path = "/main/admin/software/list/"
     public ConfigAuthExpirySearch_Path = "/authExpiry/search"
+    public ConfigBlockedDevices_Path = "/issues/blockTid/list/"
+    public ConfigTokenAccess_Path = "/config/tokenizations/"
+    public ConfigPayNowDevices_Path = "/config/paynow/devices/"
 
     // Receipt Imager Path
     public ReceiptImager_PATH = "/drs/issues/imager/getAll/"
 
-    //  Users endPoints
+    //  Admin Users endPoints
     public AddNewUser_PATH = "/main/admin/user/addNewUser";
     public AdminUser_PATH= "/main/admin/user/";
     public SearchForm_PATH = "/main/admin/user/searchForm"

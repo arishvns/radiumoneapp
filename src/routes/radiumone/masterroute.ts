@@ -15,12 +15,11 @@ import { adminController } from "../../controllers/Users/adminController";
 import { receiptImagerService } from "../../services/Issues/ReceiptImagerService";
 import { receiptImagerController } from "../../controllers/Issues/RecieptImagerController";
 import { configurationController } from "../../controllers/Configuration/ConfigController";
+import { userComponentController } from "../../controllers/UserComponent/UserComponentController";
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../../swagger.json');
 const customCss = fs.readFileSync((process.cwd() + "/swagger.css"), 'utf8');
-
-
 
 
 class MasterRouteV1 extends BaseRoutes {
@@ -250,6 +249,28 @@ class MasterRouteV1 extends BaseRoutes {
             globalBlueDCCController.digitalScheduleJobsGbcc(req, res, next);
         })
 
+
+        // User component paths 
+        this.router.get('/digitalUser/user',
+        (req: Request, res: Response, next: NextFunction) => {
+            userComponentController.digitalUser(req, res, next);
+        })
+
+        this.router.get('/digitalUser/userInit',
+        (req: Request, res: Response, next: NextFunction) => {
+            userComponentController.digitalUserInit(req, res, next);
+        })
+
+        this.router.get('/digitalUser/timeZone',
+        (req: Request, res: Response, next: NextFunction) => {
+            userComponentController.digitalUserTimeZone(req, res, next);
+        })
+
+        this.router.get('/digitalUser/searchForm',
+        (req: Request, res: Response, next: NextFunction) => {
+            userComponentController.digitalUserSearchForm(req, res, next);
+        })
+
         // Configuration route
         this.router.get('/digitalConfiguration/merchant/'+ ':page',
         (req: Request, res: Response, next: NextFunction) => {
@@ -305,6 +326,21 @@ class MasterRouteV1 extends BaseRoutes {
         this.router.get('/digitalConfiguration/authExpirySearch',
         (req: Request, res: Response, next: NextFunction) => {
             configurationController.authExpirySearch(req, res, next);
+        })
+
+        this.router.get('/digitalConfiguration/blockedDevices/'+ ':page',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.blockedDevices(req, res, next);
+        })
+
+        this.router.get('/digitalConfiguration/tokenAccess',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.tokenAccess(req, res, next);
+        })
+
+        this.router.get('/digitalConfiguration/paynowDevices/',
+        (req: Request, res: Response, next: NextFunction) => {
+            configurationController.paynowDevices(req, res, next);
         })
 
         // Users endpoints

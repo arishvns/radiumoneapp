@@ -106,6 +106,34 @@ class ConfigurationController extends BaseController {
         }
     }
 
+
+    public async blockedDevices(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await configurationService.blockedDevices(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    public async tokenAccess(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await configurationService.tokenAccess(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    public async paynowDevices(req: IFilteredRequest, res: Response, next: NextFunction) {
+        try {
+            const requestResult = await configurationService.paynowDevices(req);
+            return res.send(requestResult);
+        } catch (error) {
+            return null;
+        }
+    }
+
 }
 
 export const configurationController = new ConfigurationController();
