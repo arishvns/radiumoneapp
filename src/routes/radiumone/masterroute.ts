@@ -66,12 +66,12 @@ class MasterRouteV1 extends BaseRoutes {
                 receiptsControler.exportTransaction(req, res, next);
             })          
 
-        this.router.get('/digitalReceipt/transactionList/' + ':page',
+        this.router.get('/digitalReceipt/transactionList/',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transactionList(req, res, next);
             })
 
-        this.router.get('/digitalReceipt/transactionReceipt/' + ':trans_id',
+        this.router.get('/digitalReceipt/transactionReceipt/',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.transactionReceipt(req, res, next);
             })
@@ -101,7 +101,7 @@ class MasterRouteV1 extends BaseRoutes {
                 receiptsControler.getDate(req, res, next);
             })
 
-        this.router.get('/digitalReceipt/settlementList/' + ':page',
+        this.router.get('/digitalReceipt/settlementList/',
             (req: Request, res: Response, next: NextFunction) => {
                 receiptsControler.settlementList(req, res, next);
             })

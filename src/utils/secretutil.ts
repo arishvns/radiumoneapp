@@ -33,7 +33,6 @@ class SecretUtil {
     public SettleSummary_PATH = "/dashboard/settleSummary";
     public BankCardStats_PATH = "/dashboard/bankCardStats";
     public TopCardtype_PATH = "/dashboard/topCardtype";
-    
     public DashboardCard_PATH = "/dashboard/dashboardCard";
     public AnalyticsCard_PATH = "/dashboard/analyticsCard";
     public TopCustomerCardList = "/dashboard/topCustomerCardList";
@@ -41,16 +40,17 @@ class SecretUtil {
     
     
     // Receipts
-    public Transaction_PATH = "/main/merchant/transaction";
-    public TransactionList_PATH = "/main/merchant/transaction/";
-    public TransactionReceipt_PATH = "/main/merchant/transaction/receipt/";
-    public TransactionReceiptImg_PATH = "/receipt/img/retKey";
-    public TransactionUploadInit_PATH= "/receipt/manual/upload/init";
-    public TransactionUploadProcessReceipt_PATH ="/receipt/manual/upload/process/receipt";
+    public Config_PATH = "/receipt/transactions/config"
+    public TransactionDate_PATH = "/receipt/transactions/date";
+    public TransactionList_PATH = "/receipt/transactions";
+    public TransactionReceipt_PATH = "/receipt/transactions/export/pdf_receipt/";
+    public TransactionReceiptImg_PATH = "/receipt/transactions/printCount/";
+    public TransactionUploadInit_PATH= "/receipt/manual/uploads/init";
+    public TransactionUploadProcessReceipt_PATH ="/receipt/manual/uploads/process/receipt";
     public TransactionUploadReceiptCardTransTypeList_Path = "/uploadreceipts/cards";
-    public exportTransaction_PATH = "/main/merchant/transaction/export/excel/"
-    public GetDate_Path = "/merchant/settlement/getDate";
-    public settlement_Path = "/merchant/settlement/getSettlementList/";
+    public exportTransaction_PATH = "/receipt/transactions/export/excel/"
+    public GetDate_Path = "/receipt/settlements/date";
+    public settlement_Path = "/receipt/settlements";
 
     //Payment Gateway paths 
     public PaymentGatewayTransaction_PATH = "/main/paygate/transaction/"
@@ -122,7 +122,7 @@ class SecretUtil {
     public SearchForm_PATH = "/main/admin/user/searchForm"
 
     // Default url 
-    public Config_PATH = "/config"
+    
     public GetUrlPath_PATH ="/logo/getUrlPath";
     public FooterVersion_PATH = "/footer/version"
     

@@ -138,7 +138,7 @@
               }
           }
       },
-      "/digitalReceipt/transactionList/{page}": {
+      "/digitalReceipt/transactionList": {
           "get": {
               "summary": "Get all the transaction list by current date",
               "description": "Get all the transaction list by current date",
@@ -147,13 +147,6 @@
                   "Digital Receipt"
               ],
               "parameters": [
-                  {
-                      "name": "page",
-                      "in": "path",
-                      "required": true,
-                      "type": "integer",
-                      "default": "1"
-                  },
                   {
                       "name": "branch_code",
                       "in": "query",
@@ -280,6 +273,13 @@
                       "required": true,
                       "type": "integer",
                       "default": "10"
+                  },
+                  {
+                      "name": "pageNumber",
+                      "in": "query",
+                      "required": true,
+                      "type": "integer",
+                      "default": "1"
                   }
               ],
               "responses": {
@@ -301,7 +301,7 @@
               }
           }
       },
-      "/digitalReceipt/transactionReceipt/{trans_id}": {
+      "/digitalReceipt/transactionReceipt": {
           "get": {
               "summary": "Get transaction receipt by selected transaction id",
               "description": "Get transaction receipt by selected transaction id",
@@ -314,11 +314,11 @@
               ],
               "parameters": [
                   {
-                      "name": "trans_id",
-                      "in": "path",
+                      "name": "trans_ids",
+                      "in": "query",
                       "required": true,
                       "type": "integer",
-                      "default": "90766116"
+                      "default": "90766296"
                   }
               ],
               "responses": {
@@ -512,7 +512,7 @@
                       "in": "query",
                       "required": true,
                       "type": "string",
-                      "default": "90766109"
+                      "default": "90766296"
                   },
                   {
                       "name": "ismidempty",
@@ -572,7 +572,7 @@
               }
           }
       },
-      "/digitalReceipt/settlementList/{page}": {
+      "/digitalReceipt/settlementList": {
           "get": {
               "summary": "Get all the settlement list by putting date range",
               "description": "Get all the settlement list by putting date range",
@@ -584,13 +584,6 @@
                   "Digital Receipt"
               ],
               "parameters": [
-                  {
-                      "name": "page",
-                      "in": "path",
-                      "required": true,
-                      "type": "integer",
-                      "default": "1"
-                  },
                   {
                       "name": "mid",
                       "in": "query",
@@ -667,7 +660,14 @@
                       "default": "true",
                       "required": true,
                       "type": "boolean"
-                  }
+                  },
+                  {
+                    "name": "pageNumber",
+                    "in": "query",
+                    "required": true,
+                    "type": "integer",
+                    "default": "1"
+                }
               ],
               "responses": {
                   "200": {

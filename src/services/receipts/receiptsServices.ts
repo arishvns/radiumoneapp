@@ -18,7 +18,7 @@ class ReceiptsService {
         }).catch((err)=>{
             return console.log("Error",err);
         })
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.Transaction_PATH;
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionDate_PATH;
         let options = {
             method: 'GET',
             url: _url,
@@ -91,7 +91,8 @@ class ReceiptsService {
         }).catch((err)=>{
             return console.log("Error",err);
         })
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionList_PATH + req.params.page+ "?" + new URLSearchParams(req.query);
+
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionList_PATH + "?" + new URLSearchParams(req.query);
         let options = {
             method: 'GET',
             url: _url,
@@ -127,7 +128,7 @@ class ReceiptsService {
         }).catch((err)=>{
             return console.log("Error",err);
         })
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionReceipt_PATH + req.params.trans_id;
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.TransactionReceipt_PATH  + "?"  + new URLSearchParams(req.query);
         let options = {
             method: 'GET',
             url: _url,
@@ -152,7 +153,7 @@ class ReceiptsService {
         return resData
 
         } catch (err) {
-            
+          return err;  
         }
     }
 
@@ -163,7 +164,7 @@ class ReceiptsService {
         }).catch((err)=>{
             return console.log("Error",err);
         })
-        let _url = secretUtil.ssl + "://" + secretUtil.ReceiptImgDomain + secretUtil.TransactionReceiptImg_PATH +  "=" + req.params.filename + "?" + new URLSearchParams(req.query);
+        let _url = secretUtil.ssl + "://" + secretUtil.ReceiptImgDomain + secretUtil.TransactionReceiptImg_PATH +  "=" + req.params.filename;
         let options = {
             method: 'GET',
             url: _url,
@@ -188,7 +189,7 @@ class ReceiptsService {
         return resData
 
         } catch (err) {
-            
+            return err;
         }
     }
 
@@ -235,7 +236,7 @@ class ReceiptsService {
         }).catch((err)=>{
             return console.log("Error",err);
         })
-        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.settlement_Path + req.params.page+ "?" + new URLSearchParams(req.query);
+        let _url = secretUtil.ssl + "://" + secretUtil.Domain + secretUtil.settlement_Path + "?" + new URLSearchParams(req.query);
         let options = {
             method: 'GET',
             url: _url,
