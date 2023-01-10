@@ -145,7 +145,7 @@
               "operationId": "Get all the transaction list by current date - application/json",
               "tags": [
                   "Digital Receipt"
-              ],
+              ],  
               "parameters": [
                   {
                       "name": "branch_code",
